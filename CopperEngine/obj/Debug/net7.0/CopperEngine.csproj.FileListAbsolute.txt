@@ -1,0 +1,12 @@
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\bin\Debug\net7.0\CopperEngine.deps.json
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\bin\Debug\net7.0\CopperEngine.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\bin\Debug\net7.0\CopperEngine.pdb
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\obj\Debug\net7.0\CopperEngine.csproj.AssemblyReference.cache
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\obj\Debug\net7.0\CopperEngine.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\obj\Debug\net7.0\CopperEngine.AssemblyInfoInputs.cache
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\obj\Debug\net7.0\CopperEngine.AssemblyInfo.cs
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\obj\Debug\net7.0\CopperEngine.csproj.CoreCompileInputs.cache
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\obj\Debug\net7.0\CopperEngine.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\obj\Debug\net7.0\refint\CopperEngine.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\obj\Debug\net7.0\CopperEngine.pdb
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\obj\Debug\net7.0\ref\CopperEngine.dll

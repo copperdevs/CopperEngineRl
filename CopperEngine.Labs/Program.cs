@@ -1,3 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Raylib_CsLo;
 
-Console.WriteLine("Hello, World!");
+namespace CopperEngine.Labs;
+
+public static class Program
+{
+    public static void Main()
+    {
+        
+    }
+}
