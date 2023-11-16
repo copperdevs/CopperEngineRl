@@ -22,7 +22,7 @@ public class ImGuiTesting
     {
         Position = new Vector3(-10, 10, -10),
         Target = Vector3.Zero
-    };  
+    };
     
     public static void Run()
     {

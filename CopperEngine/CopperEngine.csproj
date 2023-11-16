@@ -12,7 +12,55 @@
       <PackageReference Include="Raylib-CsLo" Version="4.2.0.9" />
     </ItemGroup>
 
-
-
-
+    <ItemGroup>
+      <Folder Include="Resources\Fonts\Inter\" />
+      <None Remove="Resources\Fonts\Inter\static\Inter-Light.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\static\Inter-Light.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-Regular.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\static\Inter-Regular.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-SemiBold.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\static\Inter-SemiBold.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-Medium.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\static\Inter-Medium.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-Thin.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\static\Inter-Thin.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-ExtraLight.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\static\Inter-ExtraLight.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\OFL.txt" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\OFL.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-Black.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\static\Inter-Black.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\Inter-VariableFont_slnt,wght.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\Inter-VariableFont_slnt,wght.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-ExtraBold.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\static\Inter-ExtraBold.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\static\Inter-Bold.ttf" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\static\Inter-Bold.ttf">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Fonts\Inter\README.txt" />
+      <EmbeddedResource Include="Resources\Fonts\Inter\README.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
 </Project>

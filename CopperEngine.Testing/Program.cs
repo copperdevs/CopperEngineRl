@@ -1,3 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using CopperEngine;
 
-Console.WriteLine("Hello, World!");
+namespace CopperEngine.Testing;
+
+public static class Program
+{
+    public static void Main()
+    {
+        Engine.Initialize();
+        Engine.Run();
+    }
+}
