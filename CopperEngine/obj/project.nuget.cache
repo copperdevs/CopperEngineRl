@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "xoziX2xADeRzf5eiMuppco29Uxw5epsZaJkw3NA270NJQUsrY/6UEzqU+HmsbXinLfYaIsAnLG6ycBPeA1pSEA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\715263\\Desktop\\School-Work\\Dev\\Projects\\Rider\\CopperEngineRl\\CopperEngine\\CopperEngine.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\715263\\.nuget\\packages\\imgui.net\\1.89.9.3\\imgui.net.1.89.9.3.nupkg.sha512",
+    "C:\\Users\\715263\\.nuget\\packages\\microsoft.toolkit.highperformance\\7.1.2\\microsoft.toolkit.highperformance.7.1.2.nupkg.sha512",
+    "C:\\Users\\715263\\.nuget\\packages\\raylib-cslo\\4.2.0.9\\raylib-cslo.4.2.0.9.nupkg.sha512",
+    "C:\\Users\\715263\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
+    "C:\\Users\\715263\\.nuget\\packages\\system.numerics.vectors\\4.4.0\\system.numerics.vectors.4.4.0.nupkg.sha512",
+    "C:\\Users\\715263\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.4.0\\system.runtime.compilerservices.unsafe.4.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
