@@ -268,7 +268,8 @@ public static class rlImGui
         ImGui.SetCurrentContext(ImGuiContext);
 
         var fonts = ImGui.GetIO().Fonts;
-        ImGui.GetIO().Fonts.AddFontDefault();
+        ImGui.GetIO().Fonts.AddFontFromFileTTF("Resources/Fonts/Inter/static/Inter-Regular.ttf", 15);
+        // ImGui.GetIO().Fonts.AddFontDefault();
 
         // remove this part if you don't want font awesome
         unsafe

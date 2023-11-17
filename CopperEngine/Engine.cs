@@ -7,6 +7,14 @@ public static class Engine
 {
     private static bool initialized;
     internal static DateTime StartTime = DateTime.Now;
+
+    internal static EngineState State = EngineState.Editor;
+
+    internal enum EngineState
+    {
+        Game,
+        Editor
+    }
     
     public static void Initialize()
     {

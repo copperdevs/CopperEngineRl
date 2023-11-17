@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using CopperEngine.Editor;
 using CopperEngine.Editor.DearImGui;
 using ImGuiNET;
 
@@ -11,53 +12,58 @@ internal static class EngineEditor
     internal static bool EditorWindowFocused;
     internal static bool GameWindowFocused;
 
+    private static List<LoadedEditorWindow> editorWindows = new();
+    private static bool showImGuiDemo = false;
+
     internal static void Initialize()
     {
         if (initialized)
             return;
         initialized = true;
+
+        if (Engine.State is not Engine.EngineState.Editor)
+            return;
         
+        // ui
         rlImGui.Setup();
-        
         LoadConfig();
         LoadStyle();
-        LoadFont();
+        
+        // windows
+        LoadWindows();
     }
 
     internal static void Render()
     {
+        if (Engine.State is not Engine.EngineState.Editor)
+            return;
+        
         rlImGui.Begin();
         ImGui.DockSpaceOverViewport();
-            
-            
-        ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0, 0));
-
-        if (ImGui.Begin("Game"))
+        
+        if (ImGui.BeginMainMenuBar())
         {
-            GameWindowFocused = ImGui.IsWindowFocused();
-            rlImGui.ImageRenderTextureFit(EngineRenderer.gameTexture);
-            ImGui.End();
+            if (ImGui.BeginMenu("Windows"))
+            {
+                ImGui.MenuItem("ImGui Demo", null, ref showImGuiDemo);
+                editorWindows.ForEach(window => { ImGui.MenuItem(window.WindowName, null, ref window.IsOpen); });
+                ImGui.EndMenu();
+            }
+                
+            ImGui.EndMainMenuBar();
         }
-            
-        ImGui.PopStyleVar();
-            
-        ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0, 0));
-
-        if (ImGui.Begin("Editor"))
-        {
-            EditorWindowFocused = ImGui.IsWindowFocused();
-            rlImGui.ImageRenderTextureFit(EngineRenderer.editorTexture);
-            ImGui.End();
-        }
-            
-        ImGui.PopStyleVar();
+        
+        if(showImGuiDemo)
+            ImGui.ShowDemoWindow(ref showImGuiDemo);
+        
+        editorWindows.ForEach(window => window.RenderWindow());
             
         rlImGui.End();
     }
 
     internal static void Stop()
     {
-
+        editorWindows.ForEach(window => window.StopWindow());
     }
     
     private static void LoadConfig()
@@ -115,10 +121,67 @@ internal static class EngineEditor
         colors[(int)ImGuiCol.TitleBgActive] = new Vector4( 0.15f, 0.1505f, 0.151f, 1.0f );
         colors[(int)ImGuiCol.TitleBgCollapsed] = new Vector4( 0.15f, 0.1505f, 0.151f, 1.0f );
     }
-
-    private static void LoadFont()
+    
+    private static void LoadWindows()
     {
-        ImGui.GetIO().Fonts.AddFontFromFileTTF("Resources/Fonts/Inter/static/Inter-Regular.ttf", 15);
+        var assemblies = AppDomain.CurrentDomain.GetAssemblies();
+        var baseType = typeof(BaseEditorWindow);
+
+        var derivedTypes = assemblies
+            .SelectMany(assembly => assembly.GetTypes())
+            .Where(type => baseType.IsAssignableFrom(type) && type != baseType);
+
+        foreach (var type in derivedTypes)
+        {
+            editorWindows.Add(new LoadedEditorWindow((Activator.CreateInstance(type) as BaseEditorWindow)!));
+        }
     }
 
+    private class LoadedEditorWindow
+    {
+        public BaseEditorWindow Window;
+        public readonly EditorWindowAttribute? Attribute;
+        
+        public bool IsOpen = true;
+        public ImGuiWindowFlags WindowFlags;
+        public string WindowName;
+        
+        public LoadedEditorWindow(BaseEditorWindow window)
+        {
+            Window = window;
+
+            Attribute = (EditorWindowAttribute) System.Attribute.GetCustomAttribute(window.GetType(), typeof(EditorWindowAttribute))!;
+
+            if (Attribute is null)
+            {
+                WindowFlags = ImGuiWindowFlags.None;
+                WindowName = window.GetType().Name;
+                Window.Start();
+                return;
+            }
+            
+            WindowName = Attribute.WindowName;
+            WindowFlags = Attribute.WindowFlags;
+            Window.Start();
+        }
+
+        public void RenderWindow()
+        {
+            if (!IsOpen)
+                return;
+
+            Window.PreRender();
+            if (ImGui.Begin(WindowName, ref IsOpen, WindowFlags))
+            {
+                Window.Render();
+                ImGui.End();
+            }
+            Window.PostRender();
+        }
+
+        public void StopWindow()
+        {
+            Window.Stop();
+        }
+    }
 }

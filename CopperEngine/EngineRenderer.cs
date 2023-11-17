@@ -43,9 +43,7 @@ public static class EngineRenderer
             editorTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
         }
             
-        Raylib.BeginDrawing();
-            
-        // game
+        // game - always do this
         {
             Raylib.BeginTextureMode(gameTexture);
             Raylib.ClearBackground(ColorUtil.DarkGray);
@@ -57,7 +55,8 @@ public static class EngineRenderer
             Raylib.EndTextureMode();
         }
             
-        // editor
+        // editor - only do if editor
+        if(Engine.State is Engine.EngineState.Editor)
         {
             Raylib.BeginTextureMode(editorTexture);
             Raylib.ClearBackground(ColorUtil.DarkGray);
@@ -65,13 +64,17 @@ public static class EngineRenderer
             
             RenderScene();
             
-            
             Raylib.SetConfigFlags(ConfigFlags.FLAG_VSYNC_HINT | ConfigFlags.FLAG_WINDOW_MAXIMIZED);
             Raylib.DrawGrid(100, 1);
             Raylib.SetConfigFlags(ConfigFlags.FLAG_VSYNC_HINT | ConfigFlags.FLAG_WINDOW_MAXIMIZED | ConfigFlags.FLAG_MSAA_4X_HINT);
             
             Raylib.EndMode3D();
             Raylib.EndTextureMode();
+        }
+
+        if (Engine.State is not Engine.EngineState.Editor)
+        {
+            Raylib.DrawTextureRec(gameTexture.texture, new Rectangle(0, 0, gameTexture.texture.width, -gameTexture.texture.height), Vector2.Zero, ColorUtil.White);
         }
     }
     
