@@ -1,5 +1,7 @@
 ﻿using System.Numerics;
 using CopperEngine.Data;
+using CopperEngine.Editor;
+using CopperEngine.Scenes;
 using CopperEngine.Utility;
 using Raylib_CsLo;
 
@@ -8,14 +10,14 @@ namespace CopperEngine;
 public static class EngineRenderer
 {
     internal static RenderTexture gameTexture;
-    private static Camera gameCamera = new()
+    internal static Camera gameCamera = new()
     {
         Position = new Vector3(10, 10, 10),
         Target = Vector3.Zero
     };
 
     internal static RenderTexture editorTexture;
-    private static Camera editorCamera = new()
+    internal static Camera editorCamera = new()
     {
         Position = new Vector3(-10, 10, -10),
         Target = Vector3.Zero
@@ -67,6 +69,8 @@ public static class EngineRenderer
             Raylib.SetConfigFlags(ConfigFlags.FLAG_VSYNC_HINT | ConfigFlags.FLAG_WINDOW_MAXIMIZED);
             Raylib.DrawGrid(100, 1);
             Raylib.SetConfigFlags(ConfigFlags.FLAG_VSYNC_HINT | ConfigFlags.FLAG_WINDOW_MAXIMIZED | ConfigFlags.FLAG_MSAA_4X_HINT);
+
+            InspectorWindow.RenderGizmos();
             
             Raylib.EndMode3D();
             Raylib.EndTextureMode();
@@ -81,6 +85,7 @@ public static class EngineRenderer
     private static void RenderScene()
     {
         Raylib.DrawCube(Vector3.Zero, 1, 1, 1, ColorUtil.Red);
+        SceneManager.UpdateCurrentScene();
     }
 
     internal static void Stop()

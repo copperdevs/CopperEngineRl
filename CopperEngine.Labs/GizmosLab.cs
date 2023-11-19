@@ -36,7 +36,7 @@ public static class GizmosLab
 
 			BeginMode3D(camera);
 			
-			Gizmo.DrawTranslationGizmo(ref cubePosition, ref camera);
+			Gizmo.DrawTranslationGizmo(ref cubePosition, camera);
 			Log.Info(GetMouseDelta());
 			
 			DrawCube(cubePosition, 1, 1, 1, GREEN);
