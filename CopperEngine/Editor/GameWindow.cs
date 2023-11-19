@@ -7,6 +7,8 @@ namespace CopperEngine.Editor;
 [EditorWindow("Game")]
 public class GameWindow : BaseEditorWindow
 {
+    internal static Vector2 WindowSize;
+    internal static Vector2 WindowPosition;
     internal override void PreRender()
     {
         ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0, 0));
@@ -16,6 +18,8 @@ public class GameWindow : BaseEditorWindow
     {
         EngineEditor.GameWindowFocused = ImGui.IsWindowFocused();
         rlImGui.ImageRenderTextureFit(EngineRenderer.gameTexture);
+        WindowSize = ImGui.GetWindowSize();
+        WindowPosition = ImGui.GetWindowPos();
     }
 
     internal override void PostRender()

@@ -1,4 +1,6 @@
 ﻿using System.Numerics;
+using CopperEngine.Editor;
+using CopperEngine.Utility;
 using Raylib_CsLo;
 using static Raylib_CsLo.Raylib;
 
@@ -39,7 +41,12 @@ public static class Gizmo
         RlGl.rlPushMatrix();
         RlGl.rlTranslatef(position.X, position.Y, position.Z);
 
-        ray = GetMouseRay(GetMousePosition(), camera);
+        // var mousePos = GetMousePosition().Remap(
+            // Vector2.Zero, new Vector2(GetScreenWidth(), GetScreenHeight()),
+            // SceneWindow.WindowPosition, SceneWindow.WindowPosition + SceneWindow.WindowSize);
+            
+        var mousePos = (Raylib.GetMousePosition() - SceneWindow.WindowPosition) * 2;
+        ray = GetMouseRay(mousePos, camera);
 
         if (movingGizmo && IsMouseButtonReleased(MouseButton.MOUSE_BUTTON_LEFT))
             movingGizmo = false;

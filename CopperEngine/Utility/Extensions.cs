@@ -74,4 +74,6 @@ public static class Extensions
             _ => char.ToUpper(message[0]) + message[1..]
         };;
     }
+
+    public static Vector2 Remap(this Vector2 value, Vector2 iMin, Vector2 iMax, Vector2 oMin, Vector2 oMax) => MathUtil.Remap(iMin, iMax, oMin, oMax, value);
 }
