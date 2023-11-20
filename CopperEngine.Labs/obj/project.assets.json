@@ -2,7 +2,204 @@
   "version": 3,
   "targets": {
     "net7.0": {
-      "ImGui.NET/1.89.9.3": {
+      "Hexa.NET.ImGui/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Hexa.NET.ImGui.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Hexa.NET.ImGui.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/linux-arm64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/cimgui.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/cimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Hexa.NET.ImGuizmo/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Hexa.NET.ImGui": "1.0.0"
+        },
+        "compile": {
+          "lib/net7.0/Hexa.NET.ImGuizmo.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Hexa.NET.ImGuizmo.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm64/native/cimguizmo.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-x64/native/cimguizmo.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/linux-arm64/native/cimguizmo.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/cimguizmo.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/cimguizmo.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/cimguizmo.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm64/native/cimguizmo.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/cimguizmo.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimguizmo.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Hexa.NET.ImNodes/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Hexa.NET.ImGui": "1.0.0"
+        },
+        "compile": {
+          "lib/net7.0/Hexa.NET.ImNodes.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Hexa.NET.ImNodes.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm64/native/cimnodes.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-x64/native/cimnodes.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/linux-arm64/native/cimnodes.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/cimnodes.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/cimnodes.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/cimnodes.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm64/native/cimnodes.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/cimnodes.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimnodes.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Hexa.NET.ImPlot/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Hexa.NET.ImGui": "1.0.0"
+        },
+        "compile": {
+          "lib/net7.0/Hexa.NET.ImPlot.dll": {}
+        },
+        "runtime": {
+          "lib/net7.0/Hexa.NET.ImPlot.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/android-arm64/native/cimplot.so": {
+            "assetType": "native",
+            "rid": "android-arm64"
+          },
+          "runtimes/android-x64/native/cimplot.so": {
+            "assetType": "native",
+            "rid": "android-x64"
+          },
+          "runtimes/linux-arm64/native/cimplot.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/cimplot.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-arm64/native/cimplot.dylib": {
+            "assetType": "native",
+            "rid": "osx-arm64"
+          },
+          "runtimes/osx-x64/native/cimplot.dylib": {
+            "assetType": "native",
+            "rid": "osx-x64"
+          },
+          "runtimes/win-arm64/native/cimplot.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/cimplot.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimplot.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "ImGui.NET/1.89.9.4": {
         "type": "package",
         "dependencies": {
           "System.Buffers": "4.4.0",
@@ -147,12 +344,102 @@
           }
         }
       },
+      "Twizzle.ImGui.NET/1.89.4": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.4.0",
+          "System.Numerics.Vectors": "4.4.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.4.0"
+        },
+        "compile": {
+          "lib/net7.0/ImGui.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/ImGui.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libcimgui.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx/native/libcimgui.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win-x64/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/cimgui.pdb": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimgui.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
+      "Twizzle.ImGuizmo.NET/1.89.4.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Buffers": "4.4.0",
+          "System.Numerics.Vectors": "4.4.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.4.0",
+          "Twizzle.ImGui.NET": "1.89.4"
+        },
+        "compile": {
+          "lib/net7.0/ImGuizmo.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/ImGuizmo.NET.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libcimguizmo.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx/native/libcimguizmo.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          },
+          "runtimes/win-x64/native/cimguizmo.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/cimguizmo.pdb": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x86/native/cimguizmo.dll": {
+            "assetType": "native",
+            "rid": "win-x86"
+          },
+          "runtimes/win-x86/native/cimguizmo.pdb": {
+            "assetType": "native",
+            "rid": "win-x86"
+          }
+        }
+      },
       "CopperEngine/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "ImGui.NET": "1.89.9.3",
-          "Raylib-CsLo": "4.2.0.9"
+          "Hexa.NET.ImGui": "1.0.0",
+          "Hexa.NET.ImGuizmo": "1.0.0",
+          "Hexa.NET.ImNodes": "1.0.0",
+          "Hexa.NET.ImPlot": "1.0.0",
+          "ImGui.NET": "1.89.9.4",
+          "Raylib-CsLo": "4.2.0.9",
+          "Twizzle.ImGuizmo.NET": "1.89.4.1"
         },
         "compile": {
           "bin/placeholder/CopperEngine.dll": {}
@@ -164,15 +451,107 @@
     }
   },
   "libraries": {
-    "ImGui.NET/1.89.9.3": {
-      "sha512": "KDU6oYAju/c1JR5gP23Ea+FUR62J3AvoDB5zlKHCALi3u5sGBmdFcSOE6bg8DJeGgzluWOS5IO/MhJtrGdkNKw==",
+    "Hexa.NET.ImGui/1.0.0": {
+      "sha512": "eVgBa1K1/iH/xphpuX8+zEzkyd3A9c0SF7v7jPAVINgmo1vVJNzBAGZCafZgi199SeD7PQ3/nS41Xw24/U2Bqw==",
       "type": "package",
-      "path": "imgui.net/1.89.9.3",
+      "path": "hexa.net.imgui/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexa.net.imgui.1.0.0.nupkg.sha512",
+        "hexa.net.imgui.nuspec",
+        "lib/net7.0/Hexa.NET.ImGui.dll",
+        "runtimes/android-arm64/native/cimgui.so",
+        "runtimes/android-x64/native/cimgui.so",
+        "runtimes/linux-arm64/native/cimgui.so",
+        "runtimes/linux-x64/native/cimgui.so",
+        "runtimes/osx-arm64/native/cimgui.dylib",
+        "runtimes/osx-x64/native/cimgui.dylib",
+        "runtimes/win-arm64/native/cimgui.dll",
+        "runtimes/win-x64/native/cimgui.dll",
+        "runtimes/win-x86/native/cimgui.dll"
+      ]
+    },
+    "Hexa.NET.ImGuizmo/1.0.0": {
+      "sha512": "tvFEb+VcsUFTApCUe7CW+4vh6PFrD58mshLSeyyPZcz9sMfJ2xWl0Pw4DQ/B5LLA3f2EYX3UR+HtpnKisyttWw==",
+      "type": "package",
+      "path": "hexa.net.imguizmo/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexa.net.imguizmo.1.0.0.nupkg.sha512",
+        "hexa.net.imguizmo.nuspec",
+        "lib/net7.0/Hexa.NET.ImGuizmo.dll",
+        "runtimes/android-arm64/native/cimguizmo.so",
+        "runtimes/android-x64/native/cimguizmo.so",
+        "runtimes/linux-arm64/native/cimguizmo.so",
+        "runtimes/linux-x64/native/cimguizmo.so",
+        "runtimes/osx-arm64/native/cimguizmo.dylib",
+        "runtimes/osx-x64/native/cimguizmo.dylib",
+        "runtimes/win-arm64/native/cimguizmo.dll",
+        "runtimes/win-x64/native/cimguizmo.dll",
+        "runtimes/win-x86/native/cimguizmo.dll"
+      ]
+    },
+    "Hexa.NET.ImNodes/1.0.0": {
+      "sha512": "OXgpaiciVGyMIQRrD2HPtV1DbZMwt88CudowGye8E9mgB7fqTiZeB9KQP2Pf87U7aF/K56PP0B62nwLKTLy4YQ==",
+      "type": "package",
+      "path": "hexa.net.imnodes/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexa.net.imnodes.1.0.0.nupkg.sha512",
+        "hexa.net.imnodes.nuspec",
+        "lib/net7.0/Hexa.NET.ImNodes.dll",
+        "runtimes/android-arm64/native/cimnodes.so",
+        "runtimes/android-x64/native/cimnodes.so",
+        "runtimes/linux-arm64/native/cimnodes.so",
+        "runtimes/linux-x64/native/cimnodes.so",
+        "runtimes/osx-arm64/native/cimnodes.dylib",
+        "runtimes/osx-x64/native/cimnodes.dylib",
+        "runtimes/win-arm64/native/cimnodes.dll",
+        "runtimes/win-x64/native/cimnodes.dll",
+        "runtimes/win-x86/native/cimnodes.dll"
+      ]
+    },
+    "Hexa.NET.ImPlot/1.0.0": {
+      "sha512": "+P98motd8nArl4pxbCH0b/GwKp6rKU6P/GVZo8VzPI4NhIYwII5m4j8ZY7bFYSBMHtSw7j20t2k1VSpB7YMiWw==",
+      "type": "package",
+      "path": "hexa.net.implot/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "hexa.net.implot.1.0.0.nupkg.sha512",
+        "hexa.net.implot.nuspec",
+        "lib/net7.0/Hexa.NET.ImPlot.dll",
+        "runtimes/android-arm64/native/cimplot.so",
+        "runtimes/android-x64/native/cimplot.so",
+        "runtimes/linux-arm64/native/cimplot.so",
+        "runtimes/linux-x64/native/cimplot.so",
+        "runtimes/osx-arm64/native/cimplot.dylib",
+        "runtimes/osx-x64/native/cimplot.dylib",
+        "runtimes/win-arm64/native/cimplot.dll",
+        "runtimes/win-x64/native/cimplot.dll",
+        "runtimes/win-x86/native/cimplot.dll"
+      ]
+    },
+    "ImGui.NET/1.89.9.4": {
+      "sha512": "9dkya/rigoasxmjprRy8D/bxHgpe3OnY7V6hDB8dN4Cnf0h2GoFtn+vizMdsvJOLlP/NNIkuAbMgNFm2dKalwQ==",
+      "type": "package",
+      "path": "imgui.net/1.89.9.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "build/net40/ImGui.NET.targets",
-        "imgui.net.1.89.9.3.nupkg.sha512",
+        "imgui.net.1.89.9.4.nupkg.sha512",
         "imgui.net.nuspec",
         "lib/net6.0/ImGui.NET.dll",
         "lib/net6.0/ImGui.NET.xml",
@@ -336,6 +715,56 @@
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
+      ]
+    },
+    "Twizzle.ImGui.NET/1.89.4": {
+      "sha512": "/6zb43KRJqZWh+J0/WqyRSH7SMrRRAto9+MZoNZ9RsojnZz3Af5TUzP4udg+FVIJVmZcEXaKKsY3Vvzhjikj4g==",
+      "type": "package",
+      "path": "twizzle.imgui.net/1.89.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "build/net40/ImGui.NET.targets",
+        "lib/net6.0/ImGui.NET.dll",
+        "lib/net6.0/ImGui.NET.xml",
+        "lib/net7.0/ImGui.NET.dll",
+        "lib/net7.0/ImGui.NET.xml",
+        "lib/netstandard2.0/ImGui.NET.dll",
+        "lib/netstandard2.0/ImGui.NET.xml",
+        "runtimes/linux-x64/native/libcimgui.so",
+        "runtimes/osx/native/libcimgui.dylib",
+        "runtimes/win-x64/native/cimgui.dll",
+        "runtimes/win-x64/native/cimgui.pdb",
+        "runtimes/win-x86/native/cimgui.dll",
+        "twizzle.imgui.net.1.89.4.nupkg.sha512",
+        "twizzle.imgui.net.nuspec"
+      ]
+    },
+    "Twizzle.ImGuizmo.NET/1.89.4.1": {
+      "sha512": "LUFkfUe9TB4Aoe5o0dYkTmkqRJMo8y441IjvnNNIbQM0YCqQFjkDgOWxKvMP7aq5guUqSO1jd4qxHQaeKm82sw==",
+      "type": "package",
+      "path": "twizzle.imguizmo.net/1.89.4.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "lib/net6.0/ImGuizmo.NET.dll",
+        "lib/net6.0/ImGuizmo.NET.xml",
+        "lib/net7.0/ImGuizmo.NET.dll",
+        "lib/net7.0/ImGuizmo.NET.xml",
+        "lib/netstandard2.0/ImGuizmo.NET.dll",
+        "lib/netstandard2.0/ImGuizmo.NET.xml",
+        "runtimes/linux-x64/native/libcimguizmo.so",
+        "runtimes/osx/native/libcimguizmo.dylib",
+        "runtimes/win-x64/native/cimguizmo.dll",
+        "runtimes/win-x64/native/cimguizmo.pdb",
+        "runtimes/win-x86/native/cimguizmo.dll",
+        "runtimes/win-x86/native/cimguizmo.pdb",
+        "twizzle.imguizmo.net.1.89.4.1.nupkg.sha512",
+        "twizzle.imguizmo.net.nuspec"
       ]
     },
     "CopperEngine/1.0.0": {

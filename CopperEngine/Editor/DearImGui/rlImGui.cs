@@ -13,8 +13,11 @@
 
 using System.Numerics;
 using System.Runtime.InteropServices;
+// using CopperEngine.Editor.DearImGui.ImGuizmoNET;
 using ImGuiNET;
 using Raylib_CsLo;
+
+using ImGuizmoNET;
 
 namespace CopperEngine.Editor.DearImGui;
 
@@ -222,6 +225,7 @@ public static class rlImGui
     public static unsafe void ReloadFonts()
     {
         ImGui.SetCurrentContext(ImGuiContext);
+        ImGuizmo.SetImGuiContext(ImGuiContext);
         ImGuiIOPtr io = ImGui.GetIO();
 
         int width, height, bytesPerPixel;
@@ -268,8 +272,8 @@ public static class rlImGui
         ImGui.SetCurrentContext(ImGuiContext);
 
         var fonts = ImGui.GetIO().Fonts;
-        ImGui.GetIO().Fonts.AddFontFromFileTTF("Resources/Fonts/Inter/static/Inter-Regular.ttf", 15);
-        // ImGui.GetIO().Fonts.AddFontDefault();
+        ImGui.GetIO().Fonts.AddFontFromFileTTF("Resources/Fonts/Inter/static/Inter-Regular.ttf", 14);
+        ImGui.GetIO().Fonts.AddFontDefault();
 
         // remove this part if you don't want font awesome
         unsafe
@@ -465,15 +469,16 @@ public static class rlImGui
     public static void Begin(float dt = -1)
     {
         ImGui.SetCurrentContext(ImGuiContext);
+        ImGuizmo.SetImGuiContext(ImGuiContext);
 
         NewFrame(dt);
         FrameEvents();
         ImGui.NewFrame();
+        ImGuizmo.BeginFrame();
     }
 
     private static void EnableScissor(float x, float y, float width, float height)
     {
-        
         RlGl.rlEnableScissorTest();
         RlGl.rlScissor((int)x, Raylib.GetScreenHeight() - (int)(y + height), (int)width, (int)height);
     }
@@ -495,17 +500,15 @@ public static class rlImGui
         uint textureId = 0;
         if (texturePtr != IntPtr.Zero)
             textureId = (uint)texturePtr.ToInt32();
-        
-        // RlGl.rlBegin(DrawMode.TRIANGLES);
-        RlGl.rlBegin(0x0004);
+
+        RlGl.rlBegin((int)DrawMode.TRIANGLES);
         RlGl.rlSetTexture(textureId);
 
         for (int i = 0; i <= (count - 3); i += 3)
         {
             if (RlGl.rlCheckRenderBatchLimit(3))
             {
-                // RlGl.rlBegin(DrawMode.TRIANGLES);
-                RlGl.rlBegin(0x0004);
+                RlGl.rlBegin((int)DrawMode.TRIANGLES);
                 RlGl.rlSetTexture(textureId);
             }
 
@@ -565,6 +568,7 @@ public static class rlImGui
     public static void End()
     {
         ImGui.SetCurrentContext(ImGuiContext);
+        ImGuizmo.SetImGuiContext(ImGuiContext);
         ImGui.Render();
         RenderData();
     }
@@ -706,7 +710,7 @@ public static class rlImGui
     /// <param name="name">The display name and ImGui ID for the button</param>
     /// <param name="image">The texture to draw</param>
     /// <returns>True if the button was clicked</returns>
-    public static bool ImageButton(string name, Texture image)
+    public static bool ImageButton(System.String name, Texture image)
     {
         return ImageButtonSize(name, image, new Vector2(image.width, image.height));
     }
@@ -718,9 +722,26 @@ public static class rlImGui
     /// <param name="image">The texture to draw</param>
     /// <param name="size">The size of the button/param>
     /// <returns>True if the button was clicked</returns>
-    public static bool ImageButtonSize(string name, Texture image, Vector2 size)
+    public static bool ImageButtonSize(System.String name, Texture image, Vector2 size)
     {
         return ImGui.ImageButton(name, new IntPtr(image.id), size);
     }
 
+    public enum DrawMode : int
+    {
+        /// <summary>
+        /// GL_LINES
+        /// </summary>
+        LINES = 0x0001,
+
+        /// <summary>
+        /// GL_TRIANGLES
+        /// </summary>
+        TRIANGLES = 0x0004,
+
+        /// <summary>
+        /// GL_QUADS
+        /// </summary>
+        QUADS = 0x0007
+    }
 }

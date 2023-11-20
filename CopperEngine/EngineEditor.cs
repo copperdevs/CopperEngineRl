@@ -14,7 +14,6 @@ internal static class EngineEditor
     internal static bool GameWindowFocused;
 
     private static List<LoadedEditorWindow> editorWindows = new();
-    private static bool showImGuiDemo = false;
 
     internal static void Initialize()
     {
@@ -46,16 +45,12 @@ internal static class EngineEditor
         {
             if (ImGui.BeginMenu("Windows"))
             {
-                ImGui.MenuItem("ImGui Demo", null, ref showImGuiDemo);
                 editorWindows.ForEach(window => { ImGui.MenuItem(window.WindowName, null, ref window.IsOpen); });
                 ImGui.EndMenu();
             }
                 
             ImGui.EndMainMenuBar();
         }
-        
-        if(showImGuiDemo)
-            ImGui.ShowDemoWindow(ref showImGuiDemo);
         
         editorWindows.ForEach(window => window.RenderWindow());
             
@@ -168,6 +163,8 @@ internal static class EngineEditor
 
         public void RenderWindow()
         {
+            Window.Update();
+            
             if (!IsOpen)
                 return;
 

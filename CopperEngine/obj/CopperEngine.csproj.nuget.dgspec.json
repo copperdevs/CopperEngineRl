@@ -38,13 +38,33 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Hexa.NET.ImGui": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Hexa.NET.ImGuizmo": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Hexa.NET.ImNodes": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
+            "Hexa.NET.ImPlot": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "ImGui.NET": {
               "target": "Package",
-              "version": "[1.89.9.3, )"
+              "version": "[1.89.9.4, )"
             },
             "Raylib-CsLo": {
               "target": "Package",
               "version": "[4.2.0.9, )"
+            },
+            "Twizzle.ImGuizmo.NET": {
+              "target": "Package",
+              "version": "[1.89.4.1, )"
             }
           },
           "imports": [

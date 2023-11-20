@@ -1,8 +1,11 @@
 ﻿using System.Numerics;
 using CopperEngine.Data;
 using CopperEngine.Editor;
+using CopperEngine.Editor.DearImGui;
+using CopperEngine.Editor.Windows;
 using CopperEngine.Scenes;
 using CopperEngine.Utility;
+using ImGuizmoNET;
 using Raylib_CsLo;
 
 namespace CopperEngine;
@@ -66,9 +69,7 @@ public static class EngineRenderer
             
             RenderScene();
             
-            Raylib.SetConfigFlags(ConfigFlags.FLAG_VSYNC_HINT | ConfigFlags.FLAG_WINDOW_MAXIMIZED);
             Raylib.DrawGrid(100, 1);
-            Raylib.SetConfigFlags(ConfigFlags.FLAG_VSYNC_HINT | ConfigFlags.FLAG_WINDOW_MAXIMIZED | ConfigFlags.FLAG_MSAA_4X_HINT);
 
             InspectorWindow.RenderGizmos();
             
@@ -84,7 +85,7 @@ public static class EngineRenderer
     
     private static void RenderScene()
     {
-        Raylib.DrawCube(Vector3.Zero, 1, 1, 1, ColorUtil.Red);
+        // Raylib.DrawCube(Vector3.Zero, 1, 1, 1, ColorUtil.Red);
         SceneManager.UpdateCurrentScene();
     }
 
