@@ -11,7 +11,12 @@ public class SceneWindow : BaseEditorWindow
 {
     internal static Vector2 WindowSize;
     internal static Vector2 WindowPosition;
-    
+
+    internal override void Start()
+    {
+        EditorCameraController.Start(); 
+    }
+
     internal override void PreRender()
     {
         ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0, 0));
@@ -30,7 +35,7 @@ public class SceneWindow : BaseEditorWindow
         
         // Gizmo.ViewManipulate();
         
-        if(ImGui.IsWindowFocused() && ImGui.IsWindowHovered())
+        if((ImGui.IsWindowFocused() && ImGui.IsWindowHovered()))
             EditorCameraController.Update();
     }
 

@@ -7,7 +7,7 @@ using Raylib_CsLo;
 
 namespace CopperEngine.Editor.Components;
 
-public static class EditorCameraController 
+internal static class EditorCameraController 
 {
     private static Camera3D Camera
     {
@@ -26,7 +26,9 @@ public static class EditorCameraController
     private static float pitch;
     private static float yaw;
 
-    public static void Start()
+    internal static bool IsMoving;
+
+    internal static void Start()
     {
         var camera = Camera;
         Raylib.SetCameraMode(Camera, CameraMode.CAMERA_CUSTOM);
@@ -41,19 +43,28 @@ public static class EditorCameraController
         cameraUp = Vector3.Cross(direction, cameraRight);
 
         camera.target = Vector3.Add(camera.position, cameraFront);
+        camera.position = new Vector3(10, 10, 10);
+        
         Camera = camera;
     }
     
-    public static void Update()
+    internal static void Update()
     {
-        if (!Input.IsMouseButtonDown(MouseButton.MOUSE_BUTTON_RIGHT)) 
-            return;
-        
         var camera = Camera;
+        
         
         SpeedControls();
         
         MoveInput(ref camera);
+        
+        // IsMoving = Input.IsMouseButtonDown(MouseButton.MOUSE_BUTTON_RIGHT);
+
+        // if (!IsMoving)
+        // {
+            // Raylib.EnableCursor();
+            // return;
+        // }
+        
         LookInput(ref camera);
         
         Camera = camera;
