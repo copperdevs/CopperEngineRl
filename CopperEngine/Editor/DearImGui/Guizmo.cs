@@ -82,4 +82,15 @@ public static class Guizmo
             ImGuizmoNative.ImGuizmo_ViewManipulate_FloatPtr((float*)view1, (float*)projection1, operation, mode,
                 (float*)matrix1, length, position, size, backgroundColor);
     }
+
+    public static unsafe void ViewManipulate(
+        ref Matrix4x4 view,
+        float length,
+        Vector2 position,
+        Vector2 size,
+        uint backgroundColor)
+    {
+        fixed (Matrix4x4* view1 = &view)
+            ImGuizmoNative.ImGuizmo_ViewManipulate_Float((float*)view1, length, position, size, backgroundColor);
+    }
 }

@@ -6,11 +6,11 @@ namespace CopperEngine.Editor;
 public class EditorWindowAttribute : Attribute
 {
     internal string WindowName;
-    internal ImGuiWindowFlags WindowFlags;
+    public ImGuiWindowFlags WindowFlags = ImGuiWindowFlags.None;
+    public bool StartingState = true;
 
-    public EditorWindowAttribute(string windowName, ImGuiWindowFlags windowFlags = ImGuiWindowFlags.None)
+    public EditorWindowAttribute(string windowName)
     {
         WindowName = windowName;
-        WindowFlags = windowFlags;
     }
 }

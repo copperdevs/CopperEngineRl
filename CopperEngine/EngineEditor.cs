@@ -158,6 +158,7 @@ internal static class EngineEditor
             
             WindowName = Attribute.WindowName;
             WindowFlags = Attribute.WindowFlags;
+            IsOpen = Attribute.StartingState;
             Window.Start();
         }
 

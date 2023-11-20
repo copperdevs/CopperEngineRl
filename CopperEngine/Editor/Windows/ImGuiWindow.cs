@@ -2,7 +2,7 @@
 
 namespace CopperEngine.Editor.Windows;
 
-[EditorWindow("Style")]
+[EditorWindow("Style", StartingState = false)]
 public class ImGuiWindow : BaseEditorWindow
 {
     private static bool showAboutWindow;

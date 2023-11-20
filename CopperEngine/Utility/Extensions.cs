@@ -76,4 +76,25 @@ public static class Extensions
     }
 
     public static Vector2 Remap(this Vector2 value, Vector2 iMin, Vector2 iMax, Vector2 oMin, Vector2 oMax) => MathUtil.Remap(iMin, iMax, oMin, oMax, value);
+    
+    public static Matrix4x4 ToRowMajor(this Matrix4x4 columnMatrix)
+    {
+        return new Matrix4x4(
+            columnMatrix.M11, columnMatrix.M21, columnMatrix.M31, columnMatrix.M41,
+            columnMatrix.M12, columnMatrix.M22, columnMatrix.M32, columnMatrix.M42,
+            columnMatrix.M13, columnMatrix.M23, columnMatrix.M33, columnMatrix.M43,
+            columnMatrix.M14, columnMatrix.M24, columnMatrix.M34, columnMatrix.M44
+        );
+    }
+
+    // Extension method to convert a row-major Matrix4x4 to a column-major Matrix4x4
+    public static Matrix4x4 ToColumnMajor(this Matrix4x4 rowMatrix)
+    {
+        return new Matrix4x4(
+            rowMatrix.M11, rowMatrix.M12, rowMatrix.M13, rowMatrix.M14,
+            rowMatrix.M21, rowMatrix.M22, rowMatrix.M23, rowMatrix.M24,
+            rowMatrix.M31, rowMatrix.M32, rowMatrix.M33, rowMatrix.M34,
+            rowMatrix.M41, rowMatrix.M42, rowMatrix.M43, rowMatrix.M44
+        );
+    }
 }

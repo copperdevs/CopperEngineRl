@@ -8,7 +8,7 @@ namespace CopperEngine.Data;
 
 public class Camera
 {
-    private RaylibCamera Camera3D = new(Vector3.Zero, Vector3.One, Vector3.UnitY, 45, CameraProjection.CAMERA_PERSPECTIVE);
+    internal RaylibCamera Camera3D = new(Vector3.Zero, Vector3.One, Vector3.UnitY, 45, CameraProjection.CAMERA_PERSPECTIVE);
 
     public Vector3 Position
     {
@@ -23,7 +23,12 @@ public class Camera
     }
 
     // public Vector3 Front = new(0.0f, 0.0f, -1.0f);
-    public Vector3 Up => Camera3D.up;
+    public Vector3 Up
+    {
+        get => Camera3D.up;
+        set => Camera3D.up = value;
+    }
+
     public Vector3 Direction => Vector3.Normalize(Camera3D.target - Position);
 
     // public float Yaw = -90f;
@@ -38,9 +43,19 @@ public class Camera
 
     public static implicit operator RaylibCamera(Camera camera) => camera.Camera3D;
     
-    public Matrix4x4 ViewMatrix => Matrix4x4.CreateLookAt(Position, Camera3D.target, Up);
-    
-    
+    public Matrix4x4 ViewMatrix
+    {
+        get => Matrix4x4.CreateLookAt(Position, Camera3D.target, Up);
+        set => SetViewMatrix(value);
+    }
+
+    private void SetViewMatrix(Matrix4x4 matrix)
+    {
+        Position = new Vector3(matrix.M41, matrix.M42, matrix.M43);
+        Up = new Vector3(matrix.M21, matrix.M22, matrix.M23);
+    }
+
+
     public Matrix4x4 ProjectionMatrix => Matrix4x4.CreatePerspectiveFieldOfView(
         MathUtil.DegreesToRadians(Zoom), 
         (float)Raylib.GetScreenWidth() / (float)Raylib.GetScreenHeight(), 

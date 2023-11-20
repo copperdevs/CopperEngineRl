@@ -71,7 +71,6 @@ public static class EngineRenderer
             
             Raylib.DrawGrid(100, 1);
 
-            InspectorWindow.RenderGizmos();
             
             Raylib.EndMode3D();
             Raylib.EndTextureMode();

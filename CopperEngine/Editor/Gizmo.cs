@@ -2,6 +2,7 @@
 using CopperEngine.Data;
 using CopperEngine.Editor.DearImGui;
 using CopperEngine.Editor.Windows;
+using CopperEngine.Utility;
 using ImGuiNET;
 using ImGuizmoNET;
 using static Raylib_CsLo.Raylib;
@@ -15,8 +16,8 @@ public static class Gizmo
     
     public static bool gimbalGrabbed;
     public static bool overGimbal;
-    
-    internal static void Manipulate(ref Transform transform)
+
+    private static (Matrix4x4, Matrix4x4) BaseGizmo()
     {
         ImGuizmo.SetDrawlist();
         
@@ -29,16 +30,17 @@ public static class Gizmo
         ImGuizmo.SetOrthographic(false);
         ImGuizmo.SetRect(position.X, position.Y, size.X, size.Y);
         
-        
-        var localTransform = transform.Matrix;
-        
-        // var matrix = Matrix4x4.Identity * Matrix4x4.CreateTranslation(transform.Position);
-        // Guizmo.DrawGrid(ref view, ref proj, ref matrix, 10);
-        // Guizmo.DrawCubes(ref view, ref proj, ref localTransform, 1);
         ImGuizmo.SetID(0);
 
+        return (view, proj);
+    }
+    
+    internal static void Manipulate(ref Transform transform)
+    {
+        var camera = BaseGizmo();
+        var localTransform = transform.Matrix;
         
-        if (Guizmo.Manipulate(ref view, ref proj, operation, mode, ref localTransform))
+        if (Guizmo.Manipulate(ref camera.Item1, ref camera.Item2, operation, mode, ref localTransform))
         {
             gimbalGrabbed = true;
             transform.Matrix = localTransform;
@@ -49,5 +51,15 @@ public static class Gizmo
             gimbalGrabbed = false;
         }
         overGimbal = ImGuizmo.IsOver();
+    }
+
+    private static Matrix4x4 viewMatrix = Matrix4x4.Identity;
+    
+    internal static void ViewManipulate()
+    {
+        var (view, _) = BaseGizmo();
+
+        Guizmo.ViewManipulate(ref viewMatrix, 25, ImGui.GetWindowPos() + (Vector2.One * 25), Vector2.One*100, 100);
+        EngineRenderer.editorCamera.ViewMatrix = viewMatrix.ToColumnMajor();
     }
 }

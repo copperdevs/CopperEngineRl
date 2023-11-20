@@ -106,4 +106,14 @@ public static class MathUtil
             Remap(iMin.Y, iMax.Y, oMin.Y, oMax.Y, value.Y)
         );
     }
+    
+    public static Vector3 Scale(Vector3 vector, float scale)
+    {
+        return Scale(vector, new Vector3(scale));
+    }
+
+    public static Vector3 Scale(Vector3 vec1, Vector3 vec2)
+    {
+        return new Vector3(vec1.X * vec2.X, vec1.Y * vec2.Y, vec1.Z * vec2.Z);
+    }
 }

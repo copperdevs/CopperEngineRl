@@ -4,7 +4,7 @@ using ImGuiNET;
 
 namespace CopperEngine.Editor.Windows;
 
-[EditorWindow("Game")]
+[EditorWindow("Game", StartingState = true)]
 public class GameWindow : BaseEditorWindow
 {
     internal static Vector2 WindowSize;

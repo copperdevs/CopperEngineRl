@@ -1,10 +1,12 @@
 ﻿using System.Numerics;
+using CopperEngine.Editor.Components;
 using CopperEngine.Editor.DearImGui;
+using CopperEngine.Logs;
 using ImGuiNET;
 
 namespace CopperEngine.Editor.Windows;
 
-[EditorWindow("Scene")]
+[EditorWindow("Scene", StartingState = true)]
 public class SceneWindow : BaseEditorWindow
 {
     internal static Vector2 WindowSize;
@@ -25,6 +27,11 @@ public class SceneWindow : BaseEditorWindow
         
         if(InspectorWindow.transformOpen && HierarchyWindow.CurrentTarget is not null)
             Gizmo.Manipulate(ref HierarchyWindow.CurrentTarget.Transform);
+        
+        // Gizmo.ViewManipulate();
+        
+        if(ImGui.IsWindowFocused() && ImGui.IsWindowHovered())
+            EditorCameraController.Update();
     }
 
     internal override void PostRender()

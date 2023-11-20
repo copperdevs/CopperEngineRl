@@ -3,7 +3,7 @@ using ImGuiNET;
 
 namespace CopperEngine.Editor.Windows;
 
-[EditorWindow("Scene Manager")]
+[EditorWindow("Scene Manager", StartingState = true)]
 public class SceneManagerWindow : BaseEditorWindow
 {
     internal override void Render()
