@@ -1,8 +1,11 @@
 ﻿using System.Numerics;
 using CopperEngine.Editor;
 using CopperEngine.Editor.DearImGui;
+using Hexa.NET.ImGuizmo;
 using ImGuiNET;
+using ImGuizmoNET;
 using Raylib_CsLo;
+using ImGuizmo = Hexa.NET.ImGuizmo.ImGuizmo;
 
 namespace CopperEngine;
 
@@ -64,11 +67,16 @@ internal static class EngineEditor
     
     private static void LoadConfig()
     {
-        ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.DockingEnable;
-        ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;
-        ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
-        ImGui.GetIO().ConfigFlags |= ImGuiConfigFlags.NavEnableGamepad;
-        ImGui.GetIO().ConfigWindowsMoveFromTitleBarOnly = true;
+        ImGuizmo.GetStyle();
+	    
+	    var io = ImGui.GetIO();
+        io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
+        io.ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;
+        io.ConfigFlags |= ImGuiConfigFlags.NavEnableKeyboard;
+        io.ConfigFlags |= ImGuiConfigFlags.NavEnableGamepad;
+        io.ConfigWindowsMoveFromTitleBarOnly = true;
+        io.ConfigWindowsResizeFromEdges = true;
+        io.ConfigViewportsNoTaskBarIcon = true;
         
         ImGui.GetStyle().WindowRounding = 5;
         ImGui.GetStyle().ChildRounding = 5;
