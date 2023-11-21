@@ -2,6 +2,7 @@
 using CopperEngine.Editor;
 using CopperEngine.Editor.DearImGui;
 using ImGuiNET;
+using Raylib_CsLo;
 
 namespace CopperEngine;
 
@@ -34,6 +35,16 @@ internal static class EngineEditor
 
     internal static void Render()
     {
+        if (Raylib.IsKeyPressed(KeyboardKey.KEY_F1))
+        {
+            Engine.State = Engine.State switch
+            {
+                Engine.EngineState.Game => Engine.EngineState.Editor,
+                Engine.EngineState.Editor => Engine.EngineState.Game,
+                _ => Engine.EngineState.Editor
+            };
+        }
+        
         if (Engine.State is not Engine.EngineState.Editor)
             return;
         

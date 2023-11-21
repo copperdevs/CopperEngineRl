@@ -21,6 +21,7 @@
     <ItemGroup>
       <Folder Include="Lighting\" />
       <Folder Include="Physics\" />
+      <Folder Include="Rendering\" />
       <Folder Include="Resources\Fonts\Inter\" />
       <None Remove="Resources\Fonts\Inter\static\Inter-Light.ttf" />
       <EmbeddedResource Include="Resources\Fonts\Inter\static\Inter-Light.ttf">
@@ -68,6 +69,10 @@
       </EmbeddedResource>
       <None Remove="Resources\Fonts\Inter\README.txt" />
       <EmbeddedResource Include="Resources\Fonts\Inter\README.txt">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Shaders\bloom.fs" />
+      <EmbeddedResource Include="Resources\Shaders\bloom.fs">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
     </ItemGroup>

@@ -25,6 +25,8 @@ public class SceneWindow : BaseEditorWindow
     internal override void Render()
     {
         EngineEditor.EditorWindowFocused = ImGui.IsWindowFocused();
+        
+        
         rlImGui.ImageRenderTextureFit(EngineRenderer.editorTexture);
         
         WindowSize = ImGui.GetWindowSize();

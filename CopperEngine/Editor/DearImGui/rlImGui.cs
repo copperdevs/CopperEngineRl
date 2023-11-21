@@ -727,7 +727,7 @@ public static class rlImGui
         return ImGui.ImageButton(name, new IntPtr(image.id), size);
     }
 
-    public enum DrawMode : int
+    public enum DrawMode
     {
         /// <summary>
         /// GL_LINES

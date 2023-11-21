@@ -95,3 +95,4 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngi
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\runtimes\win-arm64\native\joltc_double.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\runtimes\win-x64\native\joltc.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\runtimes\win-x64\native\joltc_double.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Resources\Shaders\bloom.fs
