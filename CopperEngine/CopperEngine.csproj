@@ -13,6 +13,7 @@
       <PackageReference Include="Hexa.NET.ImNodes" Version="1.0.0" />
       <PackageReference Include="Hexa.NET.ImPlot" Version="1.0.0" />
       <PackageReference Include="ImGui.NET" Version="1.89.9.4" />
+      <PackageReference Include="JoltPhysicsSharp" Version="1.9.12" />
       <PackageReference Include="Raylib-CsLo" Version="4.2.0.9" />
       <PackageReference Include="Twizzle.ImGuizmo.NET" Version="1.89.4.1" />
     </ItemGroup>

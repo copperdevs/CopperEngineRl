@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pPAQrE7TuUrd8+Z4Pz5Z7bbHoD+T6js7WD2yXJhTg87knImo332rD6Y0d1OGFmVTMRydBOTXTFsgqM4tydTt8g==",
+  "dgSpecHash": "LrybOYTfid9ZAasHUh2/Fkn+vqTawvbd+xK5Cu4xhaioeepxFgzegZqEnLEuXDdqEpi60KzN9bWHIxa6WDhYAw==",
   "success": true,
   "projectFilePath": "C:\\Users\\715263\\Desktop\\School-Work\\Dev\\Projects\\Rider\\CopperEngineRl\\CopperEngine.Testing\\CopperEngine.Testing.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\715263\\.nuget\\packages\\hexa.net.imnodes\\1.0.0\\hexa.net.imnodes.1.0.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\hexa.net.implot\\1.0.0\\hexa.net.implot.1.0.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\imgui.net\\1.89.9.4\\imgui.net.1.89.9.4.nupkg.sha512",
+    "C:\\Users\\715263\\.nuget\\packages\\joltphysicssharp\\1.9.12\\joltphysicssharp.1.9.12.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\microsoft.toolkit.highperformance\\7.1.2\\microsoft.toolkit.highperformance.7.1.2.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\raylib-cslo\\4.2.0.9\\raylib-cslo.4.2.0.9.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",

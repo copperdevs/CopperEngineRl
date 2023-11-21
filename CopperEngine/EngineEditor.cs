@@ -1,11 +1,7 @@
 ﻿using System.Numerics;
 using CopperEngine.Editor;
 using CopperEngine.Editor.DearImGui;
-using Hexa.NET.ImGuizmo;
 using ImGuiNET;
-using ImGuizmoNET;
-using Raylib_CsLo;
-using ImGuizmo = Hexa.NET.ImGuizmo.ImGuizmo;
 
 namespace CopperEngine;
 
@@ -67,8 +63,6 @@ internal static class EngineEditor
     
     private static void LoadConfig()
     {
-        ImGuizmo.GetStyle();
-	    
 	    var io = ImGui.GetIO();
         io.ConfigFlags |= ImGuiConfigFlags.DockingEnable;
         io.ConfigFlags |= ImGuiConfigFlags.ViewportsEnable;

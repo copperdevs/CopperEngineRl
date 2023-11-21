@@ -239,6 +239,45 @@
           }
         }
       },
+      "JoltPhysicsSharp/1.9.12": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/JoltPhysicsSharp.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/JoltPhysicsSharp.dll": {
+            "related": ".pdb"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/linux-x64/native/libjoltc.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          },
+          "runtimes/osx-universal/native/libjoltc.dylib": {
+            "assetType": "native",
+            "rid": "osx-universal"
+          },
+          "runtimes/win-arm64/native/joltc.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-arm64/native/joltc_double.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/joltc.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          },
+          "runtimes/win-x64/native/joltc_double.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          }
+        }
+      },
       "Microsoft.Toolkit.HighPerformance/7.1.2": {
         "type": "package",
         "compile": {
@@ -438,6 +477,7 @@
           "Hexa.NET.ImNodes": "1.0.0",
           "Hexa.NET.ImPlot": "1.0.0",
           "ImGui.NET": "1.89.9.4",
+          "JoltPhysicsSharp": "1.9.12",
           "Raylib-CsLo": "4.2.0.9",
           "Twizzle.ImGuizmo.NET": "1.89.4.1"
         },
@@ -562,6 +602,28 @@
         "runtimes/win-arm64/native/cimgui.dll",
         "runtimes/win-x64/native/cimgui.dll",
         "runtimes/win-x86/native/cimgui.dll"
+      ]
+    },
+    "JoltPhysicsSharp/1.9.12": {
+      "sha512": "Edre9KsjBZP6Uhi0rnBjcrlbes3iAGvHlEfVhczTcDoSoXXnc2oQmXPq+x+0mULFIp6xlnFfL7HL8CkQxuG7yg==",
+      "type": "package",
+      "path": "joltphysicssharp/1.9.12",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "joltphysicssharp.1.9.12.nupkg.sha512",
+        "joltphysicssharp.nuspec",
+        "lib/net7.0/JoltPhysicsSharp.dll",
+        "lib/net7.0/JoltPhysicsSharp.pdb",
+        "lib/net8.0/JoltPhysicsSharp.dll",
+        "lib/net8.0/JoltPhysicsSharp.pdb",
+        "runtimes/linux-x64/native/libjoltc.so",
+        "runtimes/osx-universal/native/libjoltc.dylib",
+        "runtimes/win-arm64/native/joltc.dll",
+        "runtimes/win-arm64/native/joltc_double.dll",
+        "runtimes/win-x64/native/joltc.dll",
+        "runtimes/win-x64/native/joltc_double.dll"
       ]
     },
     "Microsoft.Toolkit.HighPerformance/7.1.2": {

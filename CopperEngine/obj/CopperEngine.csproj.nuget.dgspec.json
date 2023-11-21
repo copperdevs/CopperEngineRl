@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[1.89.9.4, )"
             },
+            "JoltPhysicsSharp": {
+              "target": "Package",
+              "version": "[1.9.12, )"
+            },
             "Raylib-CsLo": {
               "target": "Package",
               "version": "[4.2.0.9, )"
