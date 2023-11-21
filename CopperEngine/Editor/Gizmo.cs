@@ -1,11 +1,9 @@
 ﻿using System.Numerics;
 using CopperEngine.Data;
 using CopperEngine.Editor.DearImGui;
-using CopperEngine.Editor.Windows;
 using CopperEngine.Utility;
 using ImGuiNET;
 using ImGuizmoNET;
-using static Raylib_CsLo.Raylib;
 
 namespace CopperEngine.Editor;
 
@@ -39,7 +37,14 @@ public static class Gizmo
     {
         var camera = BaseGizmo();
         var localTransform = transform.Matrix;
-        
+
+        if (ImGui.IsKeyPressed(ImGuiKey.E)) 
+            operation = OPERATION.TRANSLATE;
+        if (ImGui.IsKeyPressed(ImGuiKey.R))
+            operation = operation is OPERATION.SCALE ? OPERATION.BOUNDS : OPERATION.SCALE;
+        if (ImGui.IsKeyPressed(ImGuiKey.T))
+            operation = operation is OPERATION.ROTATE ? OPERATION.ROTATE_SCREEN : OPERATION.ROTATE;
+
         if (Guizmo.Manipulate(ref camera.Item1, ref camera.Item2, operation, mode, ref localTransform))
         {
             gimbalGrabbed = true;

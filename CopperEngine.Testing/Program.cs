@@ -9,10 +9,15 @@ public static class Program
     {
         Engine.Initialize();
 
-        var scene = new Scene("Test Scene");
+        var sceneTwo = new Scene("Test Scene Two");
         
-        var gameObject = scene.CreateGameObject();
-        gameObject.AddComponent<TestComponent>();
+        var gameObjectTwo = sceneTwo.CreateGameObject();
+        gameObjectTwo.AddComponent<TestComponent>();
+
+        var sceneOne = new Scene("Test Scene One");
+        
+        var gameObjectOne = sceneOne.CreateGameObject();
+        gameObjectOne.AddComponent<TestComponent>();
         
         Engine.Run();
     }

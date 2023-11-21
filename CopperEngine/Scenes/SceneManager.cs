@@ -1,24 +1,28 @@
 ﻿using CopperEngine.Components;
+using Force.DeepCloner;
 using Raylib_CsLo;
 
 namespace CopperEngine.Scenes;
 
 public static class SceneManager
 {
-    private static readonly Scenes.Scene EmptyScene = new("Empty Scene");
+    private static readonly Scene EmptyScene = new("Empty Scene");
     internal static Dictionary<Guid, Scene>? Scenes = new();
     internal static Scene ActiveScene = EmptyScene;
 
+    public static Action? SceneChanged;
+
     public static void LoadScene(Guid scene)
     {
-        ActiveScene = Scenes?[scene]!;
+        var targetScene = (Scenes?[scene]).DeepClone();
+        ActiveScene = targetScene;
+        
+        SceneChanged?.Invoke();
     }
 
     internal static void RegisterScene(Scene scene)
     {
-        if (Scenes is null)
-            Scenes = new Dictionary<Guid, Scene>();
-        
+        Scenes ??= new Dictionary<Guid, Scene>();
         Scenes.Add(scene, scene);
     }
 
@@ -29,12 +33,15 @@ public static class SceneManager
         UpdateGameComponents(scene, gm =>
         {
             RlGl.rlPushMatrix();
-            RlGl.rlRotatef(gm.Transform.Rotation.W, gm.Transform.Rotation.X, gm.Transform.Rotation.Y, gm.Transform.Rotation.Z);
-            RlGl.rlScalef(gm.Transform.Scale.X, gm.Transform.Scale.Y, gm.Transform.Scale.Z);
+            
             RlGl.rlTranslatef(gm.Transform.Position.X, gm.Transform.Position.Y, gm.Transform.Position.Z);
+            RlGl.rlScalef(gm.Transform.Scale.X, gm.Transform.Scale.Y, gm.Transform.Scale.Z);
+            RlGl.rlRotatef(gm.Transform.Rotation.W, gm.Transform.Rotation.X, gm.Transform.Rotation.Y, gm.Transform.Rotation.Z);
+            
             gm.PreUpdate();
             gm.Update();
             gm.PostUpdate();
+            
             RlGl.rlPopMatrix();
         });
         

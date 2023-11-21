@@ -95,6 +95,18 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "BepuPhysics": {
+              "target": "Package",
+              "version": "[2.5.0-beta.14, )"
+            },
+            "BepuUtilities": {
+              "target": "Package",
+              "version": "[2.5.0-beta.14, )"
+            },
+            "DeepCloner": {
+              "target": "Package",
+              "version": "[0.10.4, )"
+            },
             "Hexa.NET.ImGui": {
               "target": "Package",
               "version": "[1.0.0, )"
@@ -114,6 +126,10 @@
             "ImGui.NET": {
               "target": "Package",
               "version": "[1.89.9.4, )"
+            },
+            "Jitter2": {
+              "target": "Package",
+              "version": "[2.0.1, )"
             },
             "JoltPhysicsSharp": {
               "target": "Package",

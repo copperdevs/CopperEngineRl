@@ -8,7 +8,8 @@ public class SceneManagerWindow : BaseEditorWindow
 {
     internal override void Render()
     {
-        foreach (var scene in SceneManager.Scenes!)
+        ImGui.LabelText("Current Scene", SceneManager.ActiveScene.DisplayName);
+        foreach (var scene in SceneManager.Scenes!.ToList())
         {
             if(ImGui.Button(scene.Value.DisplayName))
                 SceneManager.LoadScene(scene.Key);

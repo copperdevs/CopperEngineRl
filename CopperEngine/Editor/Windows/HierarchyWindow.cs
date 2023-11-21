@@ -9,6 +9,11 @@ public class HierarchyWindow : BaseEditorWindow
 {
     internal static GameObject? CurrentTarget;
 
+    internal override void Start()
+    {
+        SceneManager.SceneChanged += () => CurrentTarget = null;
+    }
+
     internal override void Render()
     {
         for (var index = 0; index < SceneManager.ActiveScene.GameObjects.Count; index++)

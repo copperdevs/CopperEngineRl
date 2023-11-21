@@ -1,4 +1,7 @@
-﻿using CopperEngine.Components;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using CopperEngine.Components;
+using Force.DeepCloner;
 
 namespace CopperEngine.Scenes;
 
@@ -10,6 +13,15 @@ public class Scene
     internal List<GameObject> GameObjects = new();
     
     public Scene(string displayName) : this (displayName, Guid.NewGuid()) {}
+
+    internal Scene(string displayName, Guid sceneId, bool register)
+    {
+        DisplayName = displayName;
+        SceneId = sceneId;
+        
+        if(register)
+            SceneManager.RegisterScene(this);
+    }
     
     public Scene(string displayName, Guid sceneId)
     {
@@ -30,4 +42,33 @@ public class Scene
     }
 
     public static implicit operator Guid(Scene scene) => scene.SceneId;
+}
+
+internal static class SceneExtensions
+{
+    public static Scene Deserialize(this SerializedScene scene)
+    {
+        return new Scene(scene.DisplayName!, scene.SceneId, false)
+        {
+            GameObjects = scene.GameObjects
+        };
+    }
+
+    public static SerializedScene Serialize(this Scene scene)
+    {
+        return new SerializedScene()
+        {
+            DisplayName = scene.DisplayName,
+            GameObjects = scene.GameObjects,
+            SceneId = scene.SceneId
+        };
+    }
+}
+
+internal class SerializedScene
+{
+    public string? DisplayName;
+    public Guid SceneId;
+
+    public List<GameObject> GameObjects = new();
 }

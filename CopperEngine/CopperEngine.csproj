@@ -8,18 +8,21 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="BepuPhysics" Version="2.5.0-beta.14" />
+      <PackageReference Include="BepuUtilities" Version="2.5.0-beta.14" />
+      <PackageReference Include="DeepCloner" Version="0.10.4" />
       <PackageReference Include="Hexa.NET.ImGui" Version="1.0.0" />
       <PackageReference Include="Hexa.NET.ImGuizmo" Version="1.0.0" />
       <PackageReference Include="Hexa.NET.ImNodes" Version="1.0.0" />
       <PackageReference Include="Hexa.NET.ImPlot" Version="1.0.0" />
       <PackageReference Include="ImGui.NET" Version="1.89.9.4" />
+      <PackageReference Include="Jitter2" Version="2.0.1" />
       <PackageReference Include="JoltPhysicsSharp" Version="1.9.12" />
       <PackageReference Include="Raylib-CsLo" Version="4.2.0.9" />
       <PackageReference Include="Twizzle.ImGuizmo.NET" Version="1.89.4.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Lighting\" />
       <Folder Include="Physics\" />
       <Folder Include="Rendering\" />
       <Folder Include="Resources\Fonts\Inter\" />
