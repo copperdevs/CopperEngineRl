@@ -19,6 +19,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Lighting\" />
+      <Folder Include="Physics\" />
       <Folder Include="Resources\Fonts\Inter\" />
       <None Remove="Resources\Fonts\Inter\static\Inter-Light.ttf" />
       <EmbeddedResource Include="Resources\Fonts\Inter\static\Inter-Light.ttf">
