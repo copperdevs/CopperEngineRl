@@ -7,10 +7,10 @@
   - [ ] Input combination (Ctrl + A)
   - [ ] Key up, Key down, Key pressed events
 - [ ] Multi camera support
-- [ ] Component versions of multiple things
-  - [ ] Shaders
-  - [ ] Models
+- [X] Component versions of a Raylib model 
 - [ ] Lighting system
+  - [ ] Point light
+  - [ ] Spot light
   - [ ] Global Illumination
   - [ ] Raytraced lights
 - [ ] Game UI System
