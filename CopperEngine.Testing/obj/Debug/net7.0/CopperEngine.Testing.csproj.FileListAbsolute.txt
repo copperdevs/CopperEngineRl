@@ -100,3 +100,9 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngi
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\BepuUtilities.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\DeepCloner.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Jitter2.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\SharpGen.Runtime.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\SharpGen.Runtime.COM.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Vortice.DirectX.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Vortice.Mathematics.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Vortice.XAudio2.dll
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Vortice.XInput.dll

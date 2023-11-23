@@ -30,4 +30,8 @@
       <Link>raylib.pdb</Link>
     </Content>
   </ItemGroup>
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)vortice.directx\3.3.4\build\Vortice.DirectX.props" Condition="Exists('$(NuGetPackageRoot)vortice.directx\3.3.4\build\Vortice.DirectX.props')" />
+    <Import Project="$(NuGetPackageRoot)vortice.xaudio2\3.3.4\build\Vortice.XAudio2.props" Condition="Exists('$(NuGetPackageRoot)vortice.xaudio2\3.3.4\build\Vortice.XAudio2.props')" />
+  </ImportGroup>
 </Project>

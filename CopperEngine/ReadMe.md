@@ -1,0 +1,169 @@
+﻿
+## ToDo
+- [ ] Updated input
+  - [ ] Unified Input handling
+  - [ ] Raylib Input (Keyboard & Mouse)
+  - [ ] Vortice Input (Controller/Gamepad)
+  - [ ] Input combination (Ctrl + A)
+  - [ ] Key up, Key down, Key pressed events
+- [ ] Multi camera support
+- [ ] Component versions of multiple things
+  - [ ] Shaders
+  - [ ] Models
+- [ ] Lighting system
+  - [ ] Global Illumination
+  - [ ] Raytraced lights
+- [ ] Game UI System
+  - [ ] HTML/CSS support?
+  - [ ] Button
+  - [ ] Checkbox
+  - [ ] Dropdown
+  - [ ] Radio button
+  - [ ] Slider
+  - [ ] Text field
+  - [ ] Color picker
+  - [ ] File manager
+  - [ ] Table
+  - [ ] Tooltip
+- [ ] Dynamic loading and unloading of art assets for scenes
+- [ ] Particle System
+  - [ ] CPU Based
+  - [ ] GPU Based
+- [ ] Update editor UI
+  - [ ] More preferences
+  - [ ] Multi window support?
+    - [ ] Implement Hexa Bindings
+      - [ ] Hexa.NET.ImGui
+      - [ ] Hexa.NET.ImGuizmo
+      - [ ] Hexa.NET.ImNodes
+      - [ ] Hexa.NET.Plot
+- [ ] Implement Physics
+  - [ ] Linear velocity, angular velocity
+  - [ ] Forces, acceleration
+  - [ ] Center of mass
+  - [ ] Moment of inertia
+  - [ ] Collision detection
+  - [ ] Velocity constraints, position constraints
+  - [ ] Split impulses
+  - [ ] Joints (e.g., spherical, cylindrical, revolute)
+  - [ ] Restitution
+  - [ ] Friction
+  - [ ] Rolling resistance
+  - [ ] Buoyancy
+  - [ ] Rigidbodies
+  - [ ] Softbodies
+  - [ ] Engine
+    - Different branches with different physics engines before deciding in which to use.
+    - [ ] BepuPhysics
+    - [ ] JoltPhysics
+    - [ ] JitterPhysics 2
+    - [ ] PhysX
+    - [ ] Custom
+- [ ] Audio Updates
+  - [ ] Stop use of Raylib audio
+  - [ ] OpenAL
+  - [ ] Vortice.XAudio2
+  - [ ] Vortice.X3DAudio
+  - [ ] Play, pause, resume, mute, stop, repeat, fade
+  - [ ] Stereo playback based on position of sound
+  - [ ] Volume adjustment based on obstacles
+  - [ ] Maximum instances per sound
+  - [ ] Sound banks which choose a sound to play based on probability
+  - [ ] FMOD?
+- [ ] Raylib Updates
+  - [ ] Update to Raylib 5
+  - [ ] Convert from using Raylib-CsLo to Raylib-cs
+  - [ ] Less Raylib dependency
+- [ ] Pathfinding
+- [ ] Console build
+- [ ] LODs
+- [ ] Documentation
+  - [ ] Code comments
+  - [ ] XML comments
+  - [ ] Wiki
+- [ ] Animation handler
+  - [ ] Sprite Animations
+  - [ ] Skeletal Animations
+  - [ ] Generic Animation System
+  - [ ] Play, Pause, Resume, Queue, Seek, Reverse
+  - [ ] Partial Animations
+  - [ ] Transitioning
+  - [ ] Animation Blending
+  - [ ] Additive Animations
+  - [ ] Sequential Animations
+  - [ ] Keyframe Animations
+  - [ ] Animation Events
+  - [ ] Multi-input Animations
+- [ ] Post processing
+  - [ ] Bloom
+  - [ ] Tonemapping
+  - [ ] Motion blur
+  - [ ] Lens flare
+  - [ ] Vignette
+  - [ ] Depth of field
+  - [ ] Chromatic Aberration
+  - [ ] Color Grading
+  - [ ] Lens Distortion
+
+## Considering ToDo
+- [ ] Custom mathematics
+  - [ ] Math types
+    - [ ] Vector2
+    - [ ] Vector2Int
+    - [ ] Vector3
+    - [ ] Vector3Int
+    - [ ] Vector4
+    - [ ] Vector4Int
+    - [ ] Matrix2x2
+    - [ ] Matrix2x3
+    - [ ] Matrix4x4
+  - [ ] Random
+  - [ ] Noise
+  - [ ] Easing
+    - [ ] Single argument function which takes a delta and returns a new delta
+    - Ex: linear, elastic, ease, cubic, quartic, sine
+    - Type
+      - [ ] Double argument factory which takes a delta and an easing function and generates a new easing function
+      - Ex: in, out, reverse, ping-pong, back, in-out
+    - [ ] Scale
+      - [ ] Double argument factory which takes a scalar value and easing function and generates a new easing function
+    - [ ] Parses easing expression strings into Easings
+  - [ ] Operations
+    - [ ] Cross product 
+    - [ ] Dot product 
+    - [ ] Addition, 
+    - [ ] Subtraction
+- [ ] Networking
+  - [ ] Synced Values
+  - [ ] Transports
+    - [ ] UTP
+    - [ ] TCP
+    - [ ] Steam Sockets
+    - [ ] Epic Online Services
+- [ ] Multi window support
+- [ ] Switch from Raylib to custom rendering backend
+  - [ ] OpenGL
+  - [ ] WebGPU
+  - [ ] DirectX
+    - [ ] Direct3D11
+    - [ ] Direct3D12
+  - [ ] Vulkan
+  - [ ] Metal?
+- [ ] Moving away from a framework engine to an actual game engine
+  - [ ] Ui overhaul
+  - [ ] Custom project system
+  - [ ] Custom scripting language? 
+  - [ ] Git/Github integrated
+  - [ ] Asset Builder/Bundler
+  - [ ] Terrain system
+    - [ ] Terrain editor?
+  - [ ] other stuff (didnt wanna spend time on maybes)
+- [ ] 2D support
+  - [ ] Tile maps
+    - [ ] Autotile
+  - [ ] Orthographic camera
+- [ ] Simple 3D modeling tool (Simmilar to Unity's Probuilder)
+- [ ] Steamworks integration
+  - [ ] Steam Input
+  - [ ] Steam Sockets
+  - [ ] Steamworks SDK

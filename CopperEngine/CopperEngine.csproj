@@ -19,7 +19,12 @@
       <PackageReference Include="Jitter2" Version="2.0.1" />
       <PackageReference Include="JoltPhysicsSharp" Version="1.9.12" />
       <PackageReference Include="Raylib-CsLo" Version="4.2.0.9" />
+      <PackageReference Include="Twizzle.ImGui.NET" Version="1.89.4" />
       <PackageReference Include="Twizzle.ImGuizmo.NET" Version="1.89.4.1" />
+      <PackageReference Include="Vortice.DirectX" Version="3.3.4" />
+      <PackageReference Include="Vortice.Mathematics" Version="1.7.2" />
+      <PackageReference Include="Vortice.XAudio2" Version="3.3.4" />
+      <PackageReference Include="Vortice.XInput" Version="3.3.4" />
     </ItemGroup>
 
     <ItemGroup>
