@@ -12,7 +12,7 @@
   - [ ] Point light
   - [ ] Spot light
   - [ ] Global Illumination
-  - [ ] Raytraced lights
+  - [ ] Raytraced lights?
 - [ ] Game UI System
   - [ ] HTML/CSS support?
   - [ ] Button
@@ -41,18 +41,15 @@
   - [ ] Linear velocity, angular velocity
   - [ ] Forces, acceleration
   - [ ] Center of mass
-  - [ ] Moment of inertia
   - [ ] Collision detection
   - [ ] Velocity constraints, position constraints
-  - [ ] Split impulses
   - [ ] Joints (e.g., spherical, cylindrical, revolute)
-  - [ ] Restitution
   - [ ] Friction
   - [ ] Rolling resistance
   - [ ] Buoyancy
   - [ ] Rigidbodies
   - [ ] Softbodies
-  - [ ] Engine
+  - [ ] Engines
     - Different branches with different physics engines before deciding in which to use.
     - [ ] BepuPhysics
     - [ ] JoltPhysics
@@ -75,7 +72,7 @@
   - [ ] Convert from using Raylib-CsLo to Raylib-cs
   - [ ] Less Raylib dependency
 - [ ] Pathfinding
-- [ ] Console build
+- [ ] Console/Headless build
 - [ ] LODs
 - [ ] Documentation
   - [ ] Code comments
