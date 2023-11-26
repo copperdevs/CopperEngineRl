@@ -11,8 +11,15 @@
 - [ ] Lighting system
   - [ ] Point light
   - [ ] Spot light
+  - [ ] Directional lights
+  - [ ] Cascaded shadowmaps
+  - [ ] Shadowmaps with cubemaps
   - [ ] Global Illumination
+    - [ ] VoxelGI
+    - [ ] Screen space GI
   - [ ] Raytraced lights?
+    - [ ] DDGI
+    - [ ] ReSTIR
 - [ ] Game UI System
   - [ ] HTML/CSS support?
   - [ ] Button
@@ -140,6 +147,8 @@
     - [ ] Epic Online Services
 - [ ] Multi window support
 - [ ] Switch from Raylib to custom rendering backend
+  - [ ] HDR
+  - [ ] PBR
   - [ ] OpenGL
   - [ ] WebGPU
   - [ ] DirectX
