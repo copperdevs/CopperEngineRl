@@ -101,6 +101,7 @@
   - [ ] Chromatic Aberration
   - [ ] Color Grading
   - [ ] Lens Distortion
+  - [ ] Ambient Occlusion
 
 ## Considering ToDo
 - [ ] Custom mathematics
