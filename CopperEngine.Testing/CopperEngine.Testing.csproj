@@ -11,4 +11,23 @@
       <ProjectReference Include="..\CopperEngine\CopperEngine.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Resources\Models\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\Models\cube.blend" />
+      <EmbeddedResource Include="Resources\Models\cube.blend">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Models\cube.mtl" />
+      <EmbeddedResource Include="Resources\Models\cube.mtl">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Models\cube.obj" />
+      <EmbeddedResource Include="Resources\Models\cube.obj">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </EmbeddedResource>
+    </ItemGroup>
+
 </Project>

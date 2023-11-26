@@ -18,7 +18,6 @@ public static class Program
             Scale = Vector3.One
         };
         
-        
 
         var json = JsonSerializer.Serialize(transform);
         Log.Info(json);

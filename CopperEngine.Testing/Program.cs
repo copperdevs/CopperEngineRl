@@ -1,4 +1,5 @@
 ﻿using CopperEngine;
+using CopperEngine.Components;
 using CopperEngine.Scenes;
 
 namespace CopperEngine.Testing;
@@ -18,6 +19,9 @@ public static class Program
         
         var gameObjectOne = sceneOne.CreateGameObject();
         gameObjectOne.AddComponent<TestComponent>();
+
+        var modelObject = sceneOne.CreateGameObject();
+        modelObject.AddComponent(new Model("Resources/Models/cube.obj"));
         
         Engine.Run();
     }

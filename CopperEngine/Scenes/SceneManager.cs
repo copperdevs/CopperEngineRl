@@ -1,4 +1,5 @@
 ﻿using CopperEngine.Components;
+using CopperEngine.Logs;
 using Force.DeepCloner;
 using Raylib_CsLo;
 
@@ -14,10 +15,29 @@ public static class SceneManager
 
     public static void LoadScene(Guid scene)
     {
-        var targetScene = (Scenes?[scene]).DeepClone();
+        Scenes ??= new Dictionary<Guid, Scene>();
+        
+        if (!Scenes!.ContainsKey(scene))
+        {
+            Log.Warning("Target scene to load does not exist. Not loading a new scene. That sucks lmfao");
+            return;
+        }
+        
+        var targetScene = (Scenes[scene]).DeepClone();
+
+        if (targetScene is null)
+        {
+            Log.Warning("Target scene to load is null. Not loading a new scene. lol");
+            return;
+        }
+        
+        UpdateGameComponents(ActiveScene, gm => gm.Sleep());
+        
         ActiveScene = targetScene;
         
         SceneChanged?.Invoke();
+        
+        UpdateGameComponents(ActiveScene, gm => gm.Awake());
     }
 
     internal static void RegisterScene(Scene scene)
@@ -44,10 +64,6 @@ public static class SceneManager
             
             RlGl.rlPopMatrix();
         });
-        
-        UpdateGameComponents(scene, gm => gm.PreUpdate());
-        UpdateGameComponents(scene, gm => gm.Update());
-        UpdateGameComponents(scene, gm => gm.PostUpdate());
     }
 
     internal static void UpdateGameComponents(Scene scene, Action<GameComponent> element)
