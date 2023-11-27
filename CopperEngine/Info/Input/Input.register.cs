@@ -25,31 +25,49 @@ public static partial class Input
 
     internal static void CheckInput()
     {
-        foreach (var button in KeyboardButtonActions.Where(button => CheckButtonInput((int)button.Item1, button.Item2)))
+        foreach (var button in KeyboardButtonActions)
         {
-            button.Item3.Invoke();
+            var buttonDown = button.Item2 switch
+            {
+                ButtonPressType.Down => Raylib.IsKeyDown((int)button.Item1),
+                ButtonPressType.Pressed => Raylib.IsKeyPressed((int)button.Item1),
+                ButtonPressType.Released => Raylib.IsKeyReleased((int)button.Item1),
+                ButtonPressType.Up => Raylib.IsKeyUp((int)button.Item1),
+                _ => false
+            };
+            
+            if(buttonDown)
+                button.Item3.Invoke();
         }
 
-        foreach (var button in MouseButtonActions.Where(button => CheckButtonInput((int)button.Item1, button.Item2)))
+        foreach (var button in MouseButtonActions)
         {
-            button.Item3.Invoke();
+            var buttonDown = button.Item2 switch
+            {
+                ButtonPressType.Down => Raylib.IsMouseButtonDown((int)button.Item1),
+                ButtonPressType.Pressed => Raylib.IsMouseButtonPressed((int)button.Item1),
+                ButtonPressType.Released => Raylib.IsMouseButtonReleased((int)button.Item1),
+                ButtonPressType.Up => Raylib.IsMouseButtonUp((int)button.Item1),
+                _ => false
+            };
+            
+            if(buttonDown)
+                button.Item3.Invoke();
         }
 
-        foreach (var button in GamepadButtonActions.Where(button => CheckButtonInput((int)button.Item1, button.Item2)))
+        foreach (var button in GamepadButtonActions)
         {
-            button.Item3.Invoke();
+            var buttonDown = button.Item2 switch
+            {
+                ButtonPressType.Down => Raylib.IsGamepadButtonDown(0, (int)button.Item1),
+                ButtonPressType.Pressed => Raylib.IsGamepadButtonPressed(0, (int)button.Item1),
+                ButtonPressType.Released => Raylib.IsGamepadButtonReleased(0, (int)button.Item1),
+                ButtonPressType.Up => Raylib.IsGamepadButtonUp(0, (int)button.Item1),
+                _ => false
+            };
+            
+            if(buttonDown)
+                button.Item3.Invoke();
         }
-    }
-
-    private static bool CheckButtonInput(int key, ButtonPressType type)
-    {
-        return type switch
-        {
-            ButtonPressType.Down => Raylib.IsKeyDown(key),
-            ButtonPressType.Pressed => Raylib.IsKeyPressed(key),
-            ButtonPressType.Released => Raylib.IsKeyReleased(key),
-            ButtonPressType.Up => Raylib.IsKeyUp(key),
-            _ => false
-        };
     }
 }
