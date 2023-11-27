@@ -31,7 +31,7 @@
   - [ ] File manager
   - [ ] Table
   - [ ] Tooltip
-- [ ] Dynamic loading and unloading of art assets for scenes
+- [X] Dynamic loading and unloading of art assets for scenes // On more of a asset per asset basis so uhh yeah its done :3
 - [ ] Particle System
   - [ ] CPU Based
   - [ ] GPU Based

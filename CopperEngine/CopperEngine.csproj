@@ -76,8 +76,5 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
       <None Remove="Resources\Shaders\bloom.fs" />
-      <EmbeddedResource Include="Resources\Shaders\bloom.fs">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </EmbeddedResource>
     </ItemGroup>
 </Project>

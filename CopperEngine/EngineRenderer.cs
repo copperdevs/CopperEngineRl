@@ -28,8 +28,6 @@ public static class EngineRenderer
 
     private static bool initialized;
 
-    private static Shader bloomShader;
-
     internal static void Initialize()
     {
         if (initialized)
@@ -38,8 +36,6 @@ public static class EngineRenderer
         
         gameTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
         editorTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
-
-        bloomShader = Raylib.LoadShader(null, "Resources/Shaders/Bloom.fs");
     }
 
     internal static void Render()
@@ -91,9 +87,7 @@ public static class EngineRenderer
 
     internal static void PostProcessingRender(Action renderMethod)
     {
-        Raylib.BeginShaderMode(bloomShader);
-        renderMethod.Invoke();
-        Raylib.EndShaderMode();
+        renderMethod.Invoke();  
     }
     
     private static void RenderScene()
@@ -106,6 +100,5 @@ public static class EngineRenderer
     {
         Raylib.UnloadRenderTexture(gameTexture);
         Raylib.UnloadRenderTexture(editorTexture);
-        Raylib.UnloadShader(bloomShader);
     }
 }
