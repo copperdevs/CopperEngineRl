@@ -146,22 +146,6 @@
             "Twizzle.ImGuizmo.NET": {
               "target": "Package",
               "version": "[1.89.4.1, )"
-            },
-            "Vortice.DirectX": {
-              "target": "Package",
-              "version": "[3.3.4, )"
-            },
-            "Vortice.Mathematics": {
-              "target": "Package",
-              "version": "[1.7.2, )"
-            },
-            "Vortice.XAudio2": {
-              "target": "Package",
-              "version": "[3.3.4, )"
-            },
-            "Vortice.XInput": {
-              "target": "Package",
-              "version": "[3.3.4, )"
             }
           },
           "imports": [

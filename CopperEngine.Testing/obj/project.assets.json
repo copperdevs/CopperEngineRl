@@ -661,39 +661,6 @@
           }
         }
       },
-      "SharpGen.Runtime/2.1.2-beta": {
-        "type": "package",
-        "compile": {
-          "lib/net7.0/SharpGen.Runtime.dll": {}
-        },
-        "runtime": {
-          "lib/net7.0/SharpGen.Runtime.dll": {}
-        },
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
-        }
-      },
-      "SharpGen.Runtime.COM/2.1.2-beta": {
-        "type": "package",
-        "dependencies": {
-          "SharpGen.Runtime": "2.1.2-beta"
-        },
-        "compile": {
-          "lib/net7.0/SharpGen.Runtime.COM.dll": {}
-        },
-        "runtime": {
-          "lib/net7.0/SharpGen.Runtime.COM.dll": {}
-        },
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
-        }
-      },
       "System.AppContext/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1825,81 +1792,6 @@
           }
         }
       },
-      "Vortice.DirectX/3.3.4": {
-        "type": "package",
-        "dependencies": {
-          "SharpGen.Runtime": "2.1.2-beta",
-          "SharpGen.Runtime.COM": "2.1.2-beta",
-          "Vortice.Mathematics": "1.7.2"
-        },
-        "compile": {
-          "lib/net7.0/Vortice.DirectX.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/Vortice.DirectX.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
-        }
-      },
-      "Vortice.Mathematics/1.7.2": {
-        "type": "package",
-        "compile": {
-          "lib/net7.0/Vortice.Mathematics.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/Vortice.Mathematics.dll": {
-            "related": ".pdb;.xml"
-          }
-        }
-      },
-      "Vortice.XAudio2/3.3.4": {
-        "type": "package",
-        "dependencies": {
-          "SharpGen.Runtime": "2.1.2-beta",
-          "SharpGen.Runtime.COM": "2.1.2-beta",
-          "Vortice.DirectX": "3.3.4",
-          "Vortice.Mathematics": "1.7.2"
-        },
-        "compile": {
-          "lib/net7.0/Vortice.XAudio2.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/Vortice.XAudio2.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "build/_._": {}
-        },
-        "buildMultiTargeting": {
-          "buildMultiTargeting/_._": {}
-        }
-      },
-      "Vortice.XInput/3.3.4": {
-        "type": "package",
-        "compile": {
-          "lib/net7.0/Vortice.XInput.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/Vortice.XInput.dll": {
-            "related": ".pdb;.xml"
-          }
-        }
-      },
       "CopperEngine/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
@@ -1916,11 +1808,7 @@
           "JoltPhysicsSharp": "1.9.12",
           "Raylib-CsLo": "4.2.0.9",
           "Twizzle.ImGui.NET": "1.89.4",
-          "Twizzle.ImGuizmo.NET": "1.89.4.1",
-          "Vortice.DirectX": "3.3.4",
-          "Vortice.Mathematics": "1.7.2",
-          "Vortice.XAudio2": "3.3.4",
-          "Vortice.XInput": "3.3.4"
+          "Twizzle.ImGuizmo.NET": "1.89.4.1"
         },
         "compile": {
           "bin/placeholder/CopperEngine.dll": {}
@@ -2493,48 +2381,6 @@
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.nuspec",
         "runtimes/ubuntu.16.10-x64/native/System.Security.Cryptography.Native.OpenSsl.so"
-      ]
-    },
-    "SharpGen.Runtime/2.1.2-beta": {
-      "sha512": "nqZAjfEG1jX1ivvdZLsi6Pkt0DiOJyuOgRgldNFsmjXFPhxUbXQibofLSwuDZidL2kkmtTF8qLoRIeqeVdXgYw==",
-      "type": "package",
-      "path": "sharpgen.runtime/2.1.2-beta",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/Mapping.xml",
-        "build/SharpGen.Runtime.props",
-        "buildMultiTargeting/SharpGen.Runtime.props",
-        "lib/net461/SharpGen.Runtime.dll",
-        "lib/net471/SharpGen.Runtime.dll",
-        "lib/net7.0/SharpGen.Runtime.dll",
-        "lib/net8.0/SharpGen.Runtime.dll",
-        "lib/netcoreapp3.1/SharpGen.Runtime.dll",
-        "lib/netstandard2.0/SharpGen.Runtime.dll",
-        "lib/netstandard2.1/SharpGen.Runtime.dll",
-        "sharpgen.runtime.2.1.2-beta.nupkg.sha512",
-        "sharpgen.runtime.nuspec"
-      ]
-    },
-    "SharpGen.Runtime.COM/2.1.2-beta": {
-      "sha512": "HBCrb6HfnUWx9v5/GjJeBr5DuodZLnHlFQQYXPrQs1Hbe1c6Wd0uCXf+SJp4hW8fQNxjXEu0FgiyHGlA/SRzRw==",
-      "type": "package",
-      "path": "sharpgen.runtime.com/2.1.2-beta",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/SharpGen.Runtime.COM.BindMapping.xml",
-        "build/SharpGen.Runtime.COM.props",
-        "buildMultiTargeting/SharpGen.Runtime.COM.props",
-        "lib/net461/SharpGen.Runtime.COM.dll",
-        "lib/net471/SharpGen.Runtime.COM.dll",
-        "lib/net7.0/SharpGen.Runtime.COM.dll",
-        "lib/net8.0/SharpGen.Runtime.COM.dll",
-        "lib/netcoreapp3.1/SharpGen.Runtime.COM.dll",
-        "lib/netstandard2.0/SharpGen.Runtime.COM.dll",
-        "lib/netstandard2.1/SharpGen.Runtime.COM.dll",
-        "sharpgen.runtime.com.2.1.2-beta.nupkg.sha512",
-        "sharpgen.runtime.com.nuspec"
       ]
     },
     "System.AppContext/4.3.0": {
@@ -5625,86 +5471,6 @@
         "runtimes/win-x86/native/cimguizmo.pdb",
         "twizzle.imguizmo.net.1.89.4.1.nupkg.sha512",
         "twizzle.imguizmo.net.nuspec"
-      ]
-    },
-    "Vortice.DirectX/3.3.4": {
-      "sha512": "HWvIGYz8XtWZpJW8xGYq5gex/HUPf5u3kDY7w/5WLCXzuR+hqLB7p6tInYePnuVLvfuI/rKMMhlzmnceoP3tIw==",
-      "type": "package",
-      "path": "vortice.directx/3.3.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/Vortice.DirectX.BindMapping.xml",
-        "build/Vortice.DirectX.props",
-        "buildMultiTargeting/Vortice.DirectX.props",
-        "lib/net7.0/Vortice.DirectX.dll",
-        "lib/net7.0/Vortice.DirectX.pdb",
-        "lib/net7.0/Vortice.DirectX.xml",
-        "lib/net8.0-windows10.0.19041/Vortice.DirectX.dll",
-        "lib/net8.0-windows10.0.19041/Vortice.DirectX.pdb",
-        "lib/net8.0-windows10.0.19041/Vortice.DirectX.xml",
-        "lib/net8.0/Vortice.DirectX.dll",
-        "lib/net8.0/Vortice.DirectX.pdb",
-        "lib/net8.0/Vortice.DirectX.xml",
-        "vortice.directx.3.3.4.nupkg.sha512",
-        "vortice.directx.nuspec"
-      ]
-    },
-    "Vortice.Mathematics/1.7.2": {
-      "sha512": "WUUzB3MowHdOqNfSMAms5Ovra+SKgLC4ttH1w75ra3srDGctebSg+aywm7hLdvDn592ydgdbOJN11JKsyAcX+A==",
-      "type": "package",
-      "path": "vortice.mathematics/1.7.2",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net7.0/Vortice.Mathematics.dll",
-        "lib/net7.0/Vortice.Mathematics.pdb",
-        "lib/net7.0/Vortice.Mathematics.xml",
-        "lib/net8.0-windows10.0.19041/Vortice.Mathematics.dll",
-        "lib/net8.0-windows10.0.19041/Vortice.Mathematics.pdb",
-        "lib/net8.0-windows10.0.19041/Vortice.Mathematics.xml",
-        "lib/net8.0/Vortice.Mathematics.dll",
-        "lib/net8.0/Vortice.Mathematics.pdb",
-        "lib/net8.0/Vortice.Mathematics.xml",
-        "vortice.mathematics.1.7.2.nupkg.sha512",
-        "vortice.mathematics.nuspec"
-      ]
-    },
-    "Vortice.XAudio2/3.3.4": {
-      "sha512": "pYBS8G7VnYNqpEC1iK0EaamaYejeWdzHF7cWV8NlBN012sepJozG/27pMLifL9w4sJfZEHBn0Ylewt5pwK73pA==",
-      "type": "package",
-      "path": "vortice.xaudio2/3.3.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/Vortice.XAudio2.BindMapping.xml",
-        "build/Vortice.XAudio2.props",
-        "buildMultiTargeting/Vortice.XAudio2.props",
-        "lib/net7.0/Vortice.XAudio2.dll",
-        "lib/net7.0/Vortice.XAudio2.pdb",
-        "lib/net7.0/Vortice.XAudio2.xml",
-        "lib/net8.0/Vortice.XAudio2.dll",
-        "lib/net8.0/Vortice.XAudio2.pdb",
-        "lib/net8.0/Vortice.XAudio2.xml",
-        "vortice.xaudio2.3.3.4.nupkg.sha512",
-        "vortice.xaudio2.nuspec"
-      ]
-    },
-    "Vortice.XInput/3.3.4": {
-      "sha512": "OgBvBJEWfQ+nJ90M75qolhEliK7hVLOMOZ9clI/cVQdOqN2bOyzRkxrMvJkYOdRgukdazJafwUhEXCROb7H/qw==",
-      "type": "package",
-      "path": "vortice.xinput/3.3.4",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net7.0/Vortice.XInput.dll",
-        "lib/net7.0/Vortice.XInput.pdb",
-        "lib/net7.0/Vortice.XInput.xml",
-        "lib/net8.0/Vortice.XInput.dll",
-        "lib/net8.0/Vortice.XInput.pdb",
-        "lib/net8.0/Vortice.XInput.xml",
-        "vortice.xinput.3.3.4.nupkg.sha512",
-        "vortice.xinput.nuspec"
       ]
     },
     "CopperEngine/1.0.0": {

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "id/bJgXUTEdyoW1xtNpUgMzkU5QirneZj3ZpTB99gwaZopyq89S7pXLfPDZfh+FrNPZv9Dp+W1wESZ0eqsU4vw==",
+  "dgSpecHash": "nNq5hv/XA0RD9r7l0JgBBkLCxSOgpQrtHBSvNVRPyp+tZ58//W6ejsNk1ozHrxeN+z8X+2W01Cng00HmkxRLOw==",
   "success": true,
   "projectFilePath": "C:\\Users\\715263\\Desktop\\School-Work\\Dev\\Projects\\Rider\\CopperEngineRl\\CopperEngine.Labs\\CopperEngine.Labs.csproj",
   "expectedPackageFiles": [
@@ -36,8 +36,6 @@
     "C:\\Users\\715263\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
-    "C:\\Users\\715263\\.nuget\\packages\\sharpgen.runtime\\2.1.2-beta\\sharpgen.runtime.2.1.2-beta.nupkg.sha512",
-    "C:\\Users\\715263\\.nuget\\packages\\sharpgen.runtime.com\\2.1.2-beta\\sharpgen.runtime.com.2.1.2-beta.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\system.appcontext\\4.3.0\\system.appcontext.4.3.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
@@ -94,11 +92,7 @@
     "C:\\Users\\715263\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\twizzle.imgui.net\\1.89.4\\twizzle.imgui.net.1.89.4.nupkg.sha512",
-    "C:\\Users\\715263\\.nuget\\packages\\twizzle.imguizmo.net\\1.89.4.1\\twizzle.imguizmo.net.1.89.4.1.nupkg.sha512",
-    "C:\\Users\\715263\\.nuget\\packages\\vortice.directx\\3.3.4\\vortice.directx.3.3.4.nupkg.sha512",
-    "C:\\Users\\715263\\.nuget\\packages\\vortice.mathematics\\1.7.2\\vortice.mathematics.1.7.2.nupkg.sha512",
-    "C:\\Users\\715263\\.nuget\\packages\\vortice.xaudio2\\3.3.4\\vortice.xaudio2.3.3.4.nupkg.sha512",
-    "C:\\Users\\715263\\.nuget\\packages\\vortice.xinput\\3.3.4\\vortice.xinput.3.3.4.nupkg.sha512"
+    "C:\\Users\\715263\\.nuget\\packages\\twizzle.imguizmo.net\\1.89.4.1\\twizzle.imguizmo.net.1.89.4.1.nupkg.sha512"
   ],
   "logs": []
 }

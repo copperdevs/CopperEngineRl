@@ -1,9 +1,9 @@
 ﻿
 ## ToDo
 - [ ] Updated input
-  - [ ] Unified Input handling
-  - [ ] Raylib Input (Keyboard & Mouse)
-  - [ ] Vortice Input (Controller/Gamepad)
+  - [ ] Keyboard
+  - [ ] Mouse
+  - [ ] Gamepad
   - [ ] Input combination (Ctrl + A)
   - [ ] Key up, Key down, Key pressed events
 - [ ] Multi camera support
@@ -66,8 +66,6 @@
 - [ ] Audio Updates
   - [ ] Stop use of Raylib audio
   - [ ] OpenAL
-  - [ ] Vortice.XAudio2
-  - [ ] Vortice.X3DAudio
   - [ ] Play, pause, resume, mute, stop, repeat, fade
   - [ ] Stereo playback based on position of sound
   - [ ] Volume adjustment based on obstacles

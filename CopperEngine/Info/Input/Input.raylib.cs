@@ -3,7 +3,7 @@ using Raylib_CsLo;
 
 namespace CopperEngine.Info;
 
-public static class Input
+public static partial class Input
 {
     public static bool IsKeyPressed(KeyboardKey key) => Raylib.IsKeyPressed(key);
     public static bool IsKeyDown(KeyboardKey key) => Raylib.IsKeyDown(key);
