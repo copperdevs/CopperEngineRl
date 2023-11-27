@@ -1,7 +1,5 @@
 ﻿using CopperEngine.Info;
 using CopperEngine.Logs;
-using Raylib_CsLo;
-using MouseButton = CopperEngine.Info.MouseButton;
 
 namespace CopperEngine.Examples;
 
@@ -16,5 +14,8 @@ public class InputExample : EmptyApplication
         
         Input.RegisterInput(MouseButton.Left, ButtonPressType.Pressed, () => Log.Info("Pressed  | Left Mouse"));
         Input.RegisterInput(MouseButton.Left, ButtonPressType.Released, () => Log.Info("Released | Left Mouse"));
+        
+        Input.RegisterInput(new[]{MouseButton.Left, MouseButton.Right}, ButtonPressType.Pressed, () => Log.Info("Pressed  | Left & Right Mouse"));
+        Input.RegisterInput(new[]{MouseButton.Left, MouseButton.Right}, ButtonPressType.Released, () => Log.Info("Released | Left & Right Mouse"));
     }
 }
