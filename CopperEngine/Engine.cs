@@ -1,4 +1,5 @@
-﻿using CopperEngine.Logs;
+﻿using CopperEngine.Info;
+using CopperEngine.Logs;
 using Raylib_CsLo;
 
 namespace CopperEngine;
@@ -67,6 +68,8 @@ public static class Engine
     {
         while (!Raylib.WindowShouldClose())
         {
+            Input.CheckInput();
+            
             EngineWindow.Update();
             
             Raylib.BeginDrawing();
