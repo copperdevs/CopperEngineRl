@@ -10,23 +10,49 @@ public static class Engine
 
     internal static EngineState State = EngineState.Editor;
 
+    private static EngineApplication? engineApplication;
+
     internal enum EngineState
     {
         Game,
         Editor
     }
+
+    public static void Initialize<T>() where T : EngineApplication, new()
+    {
+        Initialize(new T());
+    }
     
+    public static void Initialize(EngineApplication application)
+    {
+        Initialize(() =>
+        {
+            engineApplication = application;
+            
+            engineApplication.Load();
+            EngineWindow.WindowResized += engineApplication.WindowResize;
+        });
+    }
+
     public static void Initialize()
+    {
+        Initialize(() => {});
+    }
+    
+    public static void Initialize(Action loadAction)
     {
         if (initialized)
             return;
         initialized = true;
-        
+
         CopperLogger.Initialize();
 
         InitializeElement(EngineWindow.Initialize, "Engine Window");
         InitializeElement(EngineRenderer.Initialize, "Engine Renderer");
         InitializeElement(EngineEditor.Initialize, "Engine Editor");
+        
+        InitializeElement(loadAction, "Engine Load Action");
+        
         return;
 
         void InitializeElement(Action target, string name)
@@ -39,11 +65,15 @@ public static class Engine
 
     public static void Run()
     {
-        Initialize();
-        
         while (!Raylib.WindowShouldClose())
         {
+            EngineWindow.Update();
+            
             Raylib.BeginDrawing();
+            
+            engineApplication?.PreUpdate();
+            engineApplication?.Update();
+            engineApplication?.PostUpdate();
             
             EngineRenderer.Render();
             EngineEditor.Render();
@@ -56,6 +86,7 @@ public static class Engine
 
     private static void Stop()
     {
+        engineApplication?.Stop();
         EngineEditor.Stop();
         EngineRenderer.Stop();
         EngineWindow.Stop();

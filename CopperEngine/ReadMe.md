@@ -136,7 +136,7 @@
   - [ ] Operations
     - [ ] Cross product 
     - [ ] Dot product 
-    - [ ] Addition, 
+    - [ ] Addition
     - [ ] Subtraction
 - [ ] Networking
   - [ ] Synced Values
@@ -145,10 +145,10 @@
     - [ ] TCP
     - [ ] Steam Sockets
     - [ ] Epic Online Services
-- [ ] Multi window support
 - [ ] Switch from Raylib to custom rendering backend
   - [ ] HDR
   - [ ] PBR
+  - [ ] Multi window support
   - [ ] OpenGL
   - [ ] WebGPU
   - [ ] DirectX
