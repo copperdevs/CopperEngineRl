@@ -6,7 +6,6 @@
   - [X] Gamepad
   - [X] Input combination (Ctrl + A)
   - [X] Key up, Key down, Key pressed events
-- [ ] Multi camera support
 - [X] Component versions of a Raylib model 
 - [ ] Lighting system
   - [ ] Point light
