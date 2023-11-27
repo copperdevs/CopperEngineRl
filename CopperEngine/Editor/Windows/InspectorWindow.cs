@@ -1,4 +1,5 @@
-﻿using CopperEngine.Utility;
+﻿using CopperEngine.Editor.DearImGui;
+using CopperEngine.Utility;
 using ImGuiNET;
 using Raylib_CsLo;
 
@@ -31,6 +32,22 @@ public class InspectorWindow : BaseEditorWindow
             // HierarchyWindow.CurrentTarget.Transform.Rotation = transformRotation.FromEulerAngles();
             HierarchyWindow.CurrentTarget.Transform.Rotation =
                 RayMath.QuaternionFromEuler(transformRotation.X, transformRotation.Y, transformRotation.Z);
+        }
+
+        for (var index = 0; index < HierarchyWindow.CurrentTarget.GameComponents.Count; index++)
+        {
+            var component = HierarchyWindow.CurrentTarget.GameComponents[index];
+            
+            if (ImGui.CollapsingHeader($"{component.GetType().Name}##{index}"))
+            {
+                ImGui.Indent();
+                
+                ImGuiReflection.RenderValues(component);
+                component.EditorUpdate();
+                HierarchyWindow.CurrentTarget.GameComponents[index] = component;
+                
+                ImGui.Unindent();
+            }
         }
     }
 }

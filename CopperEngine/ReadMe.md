@@ -37,6 +37,7 @@
   - [ ] CPU Based
   - [ ] GPU Based
 - [ ] Update editor UI
+  - [ ] Component Reflection 
   - [ ] More preferences
   - [ ] Multi window support?
     - [ ] Implement Hexa Bindings

@@ -13,12 +13,12 @@ public class GameComponent
         set => Parent.Transform = value;
     }
     
-    
     protected internal virtual void Start() { }
     protected internal virtual void Awake() { }
     protected internal virtual void PreUpdate() { }
     protected internal virtual void Update() { }
     protected internal virtual void PostUpdate() { }
+    protected internal virtual void EditorUpdate() { }
     protected internal virtual void Sleep() { }
     protected internal virtual void Stop() { }
 }
