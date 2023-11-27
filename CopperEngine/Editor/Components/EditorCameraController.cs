@@ -4,6 +4,7 @@ using CopperEngine.Info;
 using CopperEngine.Utility;
 using CopperEngine.Utils;
 using Raylib_CsLo;
+using MouseButton = Raylib_CsLo.MouseButton;
 
 namespace CopperEngine.Editor.Components;
 

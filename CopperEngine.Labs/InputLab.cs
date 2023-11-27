@@ -1,6 +1,10 @@
-﻿using CopperEngine.Info;
+﻿using System.Numerics;
+using CopperEngine.Info;
 using CopperEngine.Logs;
+using CopperEngine.Utility;
 using Raylib_CsLo;
+using GamepadButton = CopperEngine.Info.GamepadButton;
+using MouseButton = CopperEngine.Info.MouseButton;
 
 namespace CopperEngine.Labs;
 
@@ -10,17 +14,19 @@ public static class InputLab
     {
         var lab = new Lab("Input Lab", () =>
         {
-            Log.Info((int)ButtonInput.MouseButtonLeft);
-            Log.Info((int)ButtonInput.MouseButtonRight);
-            Log.Info((int)ButtonInput.MouseButtonMiddle);
-            Log.Info((int)ButtonInput.MouseButtonSide);
-            Log.Info((int)ButtonInput.MouseButtonExtra);
-            Log.Info((int)ButtonInput.MouseButtonForward);
-            Log.Info((int)ButtonInput.MouseButtonBack);
+            Log.Info((int)KeyboardButton.Null);
+            Log.Info((int)MouseButton.Left);
+            Log.Info((int)GamepadButton.Unknown);
         }, () =>
         {
-            Log.Info(Raylib.IsKeyDown((int)ButtonInput.KeySpace));
-            Log.Info(Raylib.IsMouseButtonDown((int)ButtonInput.MouseButtonLeft));
+            Log.Info(Raylib.IsKeyDown((int)KeyboardButton.Space));
+            Log.Info(Raylib.IsMouseButtonDown((int)MouseButton.Left));
+            
+            
+            // Raylib.IsKeyDown()
+            // Raylib.IsKeyPressed()
+            // Raylib.IsKeyReleased()
+            // Raylib.IsKeyUp()
         });
         
         lab.Run();
