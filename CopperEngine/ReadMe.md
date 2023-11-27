@@ -1,11 +1,11 @@
 ﻿
 ## ToDo
-- [ ] Updated input
-  - [ ] Keyboard
-  - [ ] Mouse
-  - [ ] Gamepad
+- [X] Updated input
+  - [X] Keyboard
+  - [X] Mouse
+  - [X] Gamepad
   - [ ] Input combination (Ctrl + A)
-  - [ ] Key up, Key down, Key pressed events
+  - [X] Key up, Key down, Key pressed events
 - [ ] Multi camera support
 - [X] Component versions of a Raylib model 
 - [ ] Lighting system
