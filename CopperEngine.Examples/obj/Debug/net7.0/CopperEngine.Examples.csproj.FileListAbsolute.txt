@@ -28,13 +28,7 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngi
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\JoltPhysicsSharp.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\Microsoft.Toolkit.HighPerformance.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\Raylib-CsLo.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\SharpGen.Runtime.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\SharpGen.Runtime.COM.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\ImGuizmo.NET.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\Vortice.DirectX.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\Vortice.Mathematics.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\Vortice.XAudio2.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\Vortice.XInput.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\runtimes\android-arm64\native\cimgui.so
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\runtimes\android-x64\native\cimgui.so
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Examples\bin\Debug\net7.0\runtimes\linux-arm64\native\cimgui.so
