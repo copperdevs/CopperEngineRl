@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using CopperEngine.Components;
+using CopperEngine.Editor.Attributes;
 using ImGuizmoNET;
 using Raylib_CsLo;
 using Color = CopperEngine.Data.Color;

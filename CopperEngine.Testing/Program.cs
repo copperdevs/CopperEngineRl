@@ -22,6 +22,9 @@ public static class Program
 
         var modelObject = sceneOne.CreateGameObject();
         modelObject.AddComponent(new Model("Resources/Models/cube.obj"));
+
+        var reflectionObject = sceneOne.CreateGameObject();
+        reflectionObject.AddComponent<ReflectionComponent>();
         
         Engine.Run();
     }

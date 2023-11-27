@@ -2,6 +2,7 @@
 using System.Reflection;
 using CopperEngine.Components;
 using CopperEngine.Data;
+using CopperEngine.Editor.Attributes;
 using CopperEngine.Scenes;
 using CopperEngine.Utility;
 using ImGuiNET;
@@ -30,19 +31,43 @@ public static class ImGuiReflection
         { typeof(Transform), TransformFieldRenderer },
         { typeof(Color), ColorFieldRenderer }
     };
+
+    private static RangeAttribute? currentRangeAttribute;
     
     private static void FloatFieldRenderer(FieldInfo fieldInfo, object component)
     {
-        var value = (float)(fieldInfo.GetValue(component) ?? 0);
-        if(ImGui.DragFloat($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
-            fieldInfo.SetValue(component, value);
+        currentRangeAttribute = (RangeAttribute?)Attribute.GetCustomAttribute(fieldInfo, typeof(RangeAttribute))!;
+
+        if (currentRangeAttribute is not null)
+        {
+            var value = (float)(fieldInfo.GetValue(component) ?? 0);
+            if(ImGui.SliderFloat($"{fieldInfo.Name}##{fieldInfo.Name}", ref value, currentRangeAttribute.Min, currentRangeAttribute.Max))
+                fieldInfo.SetValue(component, value); 
+        }
+        else
+        {
+            var value = (float)(fieldInfo.GetValue(component) ?? 0);
+            if(ImGui.DragFloat($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
+                fieldInfo.SetValue(component, value);   
+        }
     }
     
     private static void IntFieldRenderer(FieldInfo fieldInfo, object component)
     {
-        var value = (int)(fieldInfo.GetValue(component) ?? 0);
-        if(ImGui.DragInt($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
-            fieldInfo.SetValue(component, value);
+        currentRangeAttribute = (RangeAttribute?)Attribute.GetCustomAttribute(fieldInfo, typeof(RangeAttribute))!;
+
+        if (currentRangeAttribute is not null)
+        {
+            var value = (int)(fieldInfo.GetValue(component) ?? 0);
+            if(ImGui.SliderInt($"{fieldInfo.Name}##{fieldInfo.Name}", ref value, (int)currentRangeAttribute.Min, (int)currentRangeAttribute.Max))
+                fieldInfo.SetValue(component, value); 
+        }
+        else
+        {
+            var value = (int)(fieldInfo.GetValue(component) ?? 0);
+            if(ImGui.DragInt($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
+                fieldInfo.SetValue(component, value);
+        }
     }
     
     private static void BoolFieldRenderer(FieldInfo fieldInfo, object component)
