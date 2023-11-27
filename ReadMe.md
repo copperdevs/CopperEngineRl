@@ -19,10 +19,6 @@ Engine todo is located in [here](CopperEngine/ReadMe.md)
 - Raylib-CsLo
 - Twizzle.ImGui.NET
 - Twizzle.ImGuizmo.NET
-- Vortice.DirectX
-- Vortice.Mathematics
-- Vortice.XAudio2
-- Vortice.XInput
 
 Theres many ImGui packages because currently, I'm using `ImGui.Net` and `Twizzle.ImGuizmo.NET` because there is no official `ImGuizmo.NET` package. 
 However, soon I plan on moving completely to the `Hexa.NET` set of packages (`Hexa.NET.ImGui`, `Hexa.NET.ImGuizmo`, `Hexa.NET.ImPlot`, `Hexa.NET.ImNodes`) 
