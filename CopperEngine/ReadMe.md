@@ -37,14 +37,14 @@
   - [ ] CPU Based
   - [ ] GPU Based
 - [ ] Update editor UI
-  - [ ] Component Reflection 
+  - [X] Component Reflection 
   - [ ] More preferences
   - [ ] Multi window support?
-    - [ ] Implement Hexa Bindings
-      - [ ] Hexa.NET.ImGui
-      - [ ] Hexa.NET.ImGuizmo
-      - [ ] Hexa.NET.ImNodes
-      - [ ] Hexa.NET.Plot
+  - [ ] Implement Hexa Bindings
+    - [ ] Hexa.NET.ImGui
+    - [ ] Hexa.NET.ImGuizmo
+    - [ ] Hexa.NET.ImNodes
+    - [ ] Hexa.NET.Plot
 - [ ] Implement Physics
   - [ ] Linear velocity, angular velocity
   - [ ] Forces, acceleration
