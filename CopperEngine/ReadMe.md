@@ -64,13 +64,10 @@
     - [ ] PhysX
     - [ ] Custom
 - [ ] Audio Updates
-  - [ ] Stop use of Raylib audio
-  - [ ] OpenAL
+  - [ ] OpenAL?
   - [ ] Play, pause, resume, mute, stop, repeat, fade
   - [ ] Stereo playback based on position of sound
   - [ ] Volume adjustment based on obstacles
-  - [ ] Maximum instances per sound
-  - [ ] Sound banks which choose a sound to play based on probability
   - [ ] FMOD?
 - [ ] Raylib Updates
   - [ ] Update to Raylib 5
