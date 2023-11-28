@@ -12,8 +12,8 @@ internal static class EditorCameraController
 {
     private static Camera3D Camera
     {
-        get => EngineRenderer.editorCamera;
-        set => EngineRenderer.editorCamera.Camera3D = value;
+        get => EngineRenderer.EditorCamera;
+        set => EngineRenderer.EditorCamera.Camera3D = value;
     }
 
     private static bool fastMove = false;

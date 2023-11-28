@@ -17,7 +17,7 @@ public class GameWindow : BaseEditorWindow
     internal override void Render()
     {
         EngineEditor.GameWindowFocused = ImGui.IsWindowFocused();
-        rlImGui.ImageRenderTextureFit(EngineRenderer.gameTexture);
+        rlImGui.ImageRenderTextureFit(EngineRenderer.GameTexture);
         WindowSize = ImGui.GetWindowSize();
         WindowPosition = ImGui.GetWindowPos();
     }

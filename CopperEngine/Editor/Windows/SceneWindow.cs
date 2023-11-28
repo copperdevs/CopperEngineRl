@@ -27,7 +27,7 @@ public class SceneWindow : BaseEditorWindow
         EngineEditor.EditorWindowFocused = ImGui.IsWindowFocused();
         
         
-        rlImGui.ImageRenderTextureFit(EngineRenderer.editorTexture);
+        rlImGui.ImageRenderTextureFit(EngineRenderer.EditorTexture);
         
         WindowSize = ImGui.GetWindowSize();
         WindowPosition = ImGui.GetWindowPos();

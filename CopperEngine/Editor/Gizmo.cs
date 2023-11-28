@@ -22,8 +22,8 @@ public static class Gizmo
         var position = ImGui.GetWindowPos();
         var size = ImGui.GetWindowSize();
         
-        var view = EngineRenderer.editorCamera.ViewMatrix;
-        var proj = EngineRenderer.editorCamera.ProjectionMatrix;
+        var view = EngineRenderer.EditorCamera.ViewMatrix;
+        var proj = EngineRenderer.EditorCamera.ProjectionMatrix;
         ImGuizmo.Enable(true);
         ImGuizmo.SetOrthographic(false);
         ImGuizmo.SetRect(position.X, position.Y, size.X, size.Y);
@@ -65,6 +65,6 @@ public static class Gizmo
         var (view, _) = BaseGizmo();
 
         Guizmo.ViewManipulate(ref viewMatrix, 25, ImGui.GetWindowPos() + (Vector2.One * 25), Vector2.One*100, 100);
-        EngineRenderer.editorCamera.ViewMatrix = viewMatrix.ToColumnMajor();
+        EngineRenderer.EditorCamera.ViewMatrix = viewMatrix.ToColumnMajor();
     }
 }

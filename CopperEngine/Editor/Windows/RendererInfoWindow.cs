@@ -15,16 +15,16 @@ public class RendererInfoWindow : BaseEditorWindow
             if (ImGui.CollapsingHeader("Editor##camera"))
             {
                 ImGui.Indent();
-                EditorUtil.DragMatrix4X4("View Matrix##editor_camera", EngineRenderer.editorCamera.ViewMatrix);
-                EditorUtil.DragMatrix4X4("Projection Matrix##editor_camera", EngineRenderer.editorCamera.ProjectionMatrix);
+                EditorUtil.DragMatrix4X4("View Matrix##editor_camera", EngineRenderer.EditorCamera.ViewMatrix);
+                EditorUtil.DragMatrix4X4("Projection Matrix##editor_camera", EngineRenderer.EditorCamera.ProjectionMatrix);
                 ImGui.Unindent();
             }
 
             if (ImGui.CollapsingHeader("Game##camera"))
             {
                 ImGui.Indent();
-                EditorUtil.DragMatrix4X4("View Matrix##game_camera", EngineRenderer.gameCamera.ViewMatrix);
-                EditorUtil.DragMatrix4X4("Projection Matrix##game_camera", EngineRenderer.gameCamera.ProjectionMatrix);
+                EditorUtil.DragMatrix4X4("View Matrix##game_camera", EngineRenderer.GameCamera.ViewMatrix);
+                EditorUtil.DragMatrix4X4("Projection Matrix##game_camera", EngineRenderer.GameCamera.ProjectionMatrix);
                 ImGui.Unindent();
             }
             

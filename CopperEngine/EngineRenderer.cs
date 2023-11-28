@@ -12,47 +12,47 @@ namespace CopperEngine;
 
 public static class EngineRenderer
 {
-    internal static RenderTexture gameTexture;
-    internal static Camera gameCamera = new()
+    internal static RenderTexture GameTexture;
+    internal static readonly Camera GameCamera = new()
     {
         Position = new Vector3(10, 10, 10),
         Target = Vector3.Zero
     };
 
-    internal static RenderTexture editorTexture;
-    internal static Camera editorCamera = new()
+    internal static RenderTexture EditorTexture;
+    internal static readonly Camera EditorCamera = new()
     {
         Position = new Vector3(-10, 10, -10),
         Target = Vector3.Zero
     };
 
     private static bool initialized;
-
+    
     internal static void Initialize()
     {
         if (initialized)
             return;
         initialized = true;
         
-        gameTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
-        editorTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
+        GameTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
+        EditorTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
     }
 
     internal static void Render()
     {
         if (Raylib.IsWindowResized())
         {
-            Raylib.UnloadRenderTexture(gameTexture);
-            gameTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
-            Raylib.UnloadRenderTexture(editorTexture);
-            editorTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
+            Raylib.UnloadRenderTexture(GameTexture);
+            GameTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
+            Raylib.UnloadRenderTexture(EditorTexture);
+            EditorTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
         }
             
         // game - always do this
         {
-            Raylib.BeginTextureMode(gameTexture);
+            Raylib.BeginTextureMode(GameTexture);
             Raylib.ClearBackground(ColorUtil.DarkGray);
-            Raylib.BeginMode3D(gameCamera);
+            Raylib.BeginMode3D(GameCamera);
             
             RenderScene();
             
@@ -63,9 +63,9 @@ public static class EngineRenderer
         // editor - only do if editor
         if(Engine.State is Engine.EngineState.Editor)
         {
-            Raylib.BeginTextureMode(editorTexture);
+            Raylib.BeginTextureMode(EditorTexture);
             Raylib.ClearBackground(ColorUtil.DarkGray);
-            Raylib.BeginMode3D(editorCamera);
+            Raylib.BeginMode3D(EditorCamera);
             
             RenderScene();
             
@@ -80,14 +80,14 @@ public static class EngineRenderer
         {
             PostProcessingRender(() =>
             {
-                Raylib.DrawTextureRec(gameTexture.texture, new Rectangle(0, 0, gameTexture.texture.width, -gameTexture.texture.height), Vector2.Zero, ColorUtil.White);
+                Raylib.DrawTextureRec(GameTexture.texture, new Rectangle(0, 0, GameTexture.texture.width, -GameTexture.texture.height), Vector2.Zero, ColorUtil.White);
             });
         }
     }
 
     internal static void PostProcessingRender(Action renderMethod)
     {
-        renderMethod.Invoke();  
+        renderMethod.Invoke();
     }
     
     private static void RenderScene()
@@ -98,7 +98,7 @@ public static class EngineRenderer
 
     internal static void Stop()
     {
-        Raylib.UnloadRenderTexture(gameTexture);
-        Raylib.UnloadRenderTexture(editorTexture);
+        Raylib.UnloadRenderTexture(GameTexture);
+        Raylib.UnloadRenderTexture(EditorTexture);
     }
 }

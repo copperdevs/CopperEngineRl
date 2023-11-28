@@ -102,3 +102,4 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngi
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Resources\Models\cube.blend
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Resources\Models\cube.mtl
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Resources\Models\cube.obj
+C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Resources\Shaders\bloom.frag
