@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using System.Reflection;
-using CopperEngine.Components;
 using CopperEngine.Data;
 using CopperEngine.Editor.Attributes;
 using CopperEngine.Scenes;

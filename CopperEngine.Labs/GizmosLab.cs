@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using CopperEngine.Editor;
 using CopperEngine.Logs;
 using Raylib_cs;
 using static Raylib_cs.Raylib;

@@ -1,6 +1,4 @@
-﻿using ImGuiNET;
-
-namespace CopperEngine.Editor;
+﻿namespace CopperEngine.Editor;
 
 public abstract class BaseEditorWindow
 {

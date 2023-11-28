@@ -1,7 +1,4 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using CopperEngine.Components;
-using Force.DeepCloner;
+﻿using CopperEngine.Components;
 
 namespace CopperEngine.Scenes;
 

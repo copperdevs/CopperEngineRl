@@ -1,5 +1,4 @@
-﻿using CopperEngine;
-using CopperEngine.Components;
+﻿using CopperEngine.Components;
 using CopperEngine.Scenes;
 
 namespace CopperEngine.Testing;

@@ -1,9 +1,7 @@
 ﻿using System.Numerics;
-using CopperEngine.Logs;
 using CopperEngine.Utility;
 using CopperEngine.Utils;
 using ImGuiNET;
-using Raylib_cs;
 using Color = CopperEngine.Data.Color;
 using rlModel = Raylib_cs.Model;
 

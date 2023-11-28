@@ -1,6 +1,4 @@
 ﻿using System.Numerics;
-
-using Color = CopperEngine.Data.Color;
 using rlColor = Raylib_cs.Color;
 
 namespace CopperEngine.Data;

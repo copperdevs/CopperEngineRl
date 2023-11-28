@@ -1,9 +1,7 @@
 ﻿using System.Numerics;
 using CopperEngine.Editor.Components;
 using CopperEngine.Editor.DearImGui;
-using CopperEngine.Logs;
 using ImGuiNET;
-using Raylib_cs;
 
 namespace CopperEngine.Editor.Windows;
 

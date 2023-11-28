@@ -1,7 +1,5 @@
 ﻿using System.Numerics;
-using CopperEngine.Data;
 using CopperEngine.Info;
-using CopperEngine.Utility;
 using CopperEngine.Utils;
 using Raylib_cs;
 using MouseButton = Raylib_cs.MouseButton;
@@ -126,7 +124,7 @@ internal static class EditorCameraController
         }
     }
 
-    // TODO: Bug - cursor is being weird
+    // BUG: cursor is being weird
     private static void LookInput(ref Camera3D camera)
     {
         var deltaTime = Time.DeltaTime;
