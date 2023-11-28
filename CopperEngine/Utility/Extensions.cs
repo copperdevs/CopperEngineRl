@@ -1,24 +1,26 @@
 ﻿using System.Numerics;
 using CopperEngine.Utils;
-using Raylib_CsLo;
-using static Raylib_CsLo.Raylib;
+using Raylib_cs;
+using static Raylib_cs.Raylib;
 
 namespace CopperEngine.Utility;
 
 public static class Extensions
-{public static void WithTexture(this ref Material material, Texture texture)
+{
+    public static void WithTexture(this Material material, Texture2D texture)
     {
         unsafe
         {
-            material.maps[(int)MATERIAL_MAP_DIFFUSE].texture = texture;
+            
+            material.Maps[(int)MaterialMapIndex.MATERIAL_MAP_DIFFUSE].Texture = texture;
         }
     }
 
-    public static void WithTexture(this ref Model model, Texture texture)
+    public static void WithTexture(this Model model, Texture2D texture)
     {
         unsafe
         {
-            model.materials[0].WithTexture(texture);
+            model.Materials[0].WithTexture(texture);
         }
     }
 

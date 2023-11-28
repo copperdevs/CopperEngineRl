@@ -1,5 +1,5 @@
 ﻿using CopperEngine.Logs;
-using Raylib_CsLo;
+using Raylib_cs;
 
 namespace CopperEngine.Labs;
 

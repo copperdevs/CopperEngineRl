@@ -1,7 +1,7 @@
 ﻿using System.Numerics;
 using CopperEngine.Editor.Windows;
-using Raylib_CsLo;
-using static Raylib_CsLo.Raylib;
+using Raylib_cs;
+using static Raylib_cs.Raylib;
 
 namespace CopperEngine.Labs;
 
@@ -37,8 +37,8 @@ public static class Gizmo
 
     public static void DrawTranslationGizmo(ref Vector3 position, Camera3D camera)
     {
-        RlGl.rlPushMatrix();
-        RlGl.rlTranslatef(position.X, position.Y, position.Z);
+        Rlgl.PushMatrix();
+        Rlgl.Translatef(position.X, position.Y, position.Z);
 
         // var mousePos = GetMousePosition().Remap(
             // Vector2.Zero, new Vector2(GetScreenWidth(), GetScreenHeight()),
@@ -98,12 +98,12 @@ public static class Gizmo
             }
         }
 
-        DrawCubes(xCollision, xPosition, xSize, (RED, MAROON), (MAROON, RED));
-        DrawCubes(yCollision, yPosition, ySize, (GREEN, DARKGREEN), (DARKGREEN, GREEN));
-        DrawCubes(zCollision, zPosition, zSize, (BLUE, DARKBLUE), (DARKBLUE, BLUE));
+        DrawCubes(xCollision, xPosition, xSize, (Color.RED, Color.MAROON), (Color.MAROON, Color.RED));
+        DrawCubes(yCollision, yPosition, ySize, (Color.GREEN, Color.DARKGREEN), (Color.DARKGREEN, Color.GREEN));
+        DrawCubes(zCollision, zPosition, zSize, (Color.BLUE, Color.DARKBLUE), (Color.DARKBLUE, Color.BLUE));
 
 
-        RlGl.rlPopMatrix();
+        Rlgl.PopMatrix();
     }
 
     private static bool CheckCollision(out RayCollision collision, Vector3 cubePosition, Vector3 cubeSize, MoveDirection direction)
@@ -117,17 +117,17 @@ public static class Gizmo
                     cubePosition.Z + cubeSize.Z / 2)
             ));
         currentDirection = direction;
-        return collision.hit;
+        return collision.Hit;
     }
 
     private static void DrawCubes(RayCollision collision, Vector3 cubePosition, Vector3 cubeSize, (Color,Color) activeColors, (Color,Color) inactiveColors)
     {
-        if (collision.hit && IsMouseButtonDown(MouseButton.MOUSE_BUTTON_LEFT))
+        if (collision.Hit && IsMouseButtonDown(MouseButton.MOUSE_BUTTON_LEFT))
         {
             DrawCube(cubePosition, cubeSize.X, cubeSize.Y, cubeSize.Z, activeColors.Item1);
             DrawCubeWires(cubePosition, cubeSize.X, cubeSize.Y, cubeSize.Z, activeColors.Item2);
 
-            DrawCubeWires(cubePosition, cubeSize.X + 0.2f, cubeSize.Y + 0.2f, cubeSize.Z + 0.2f, GREEN);
+            DrawCubeWires(cubePosition, cubeSize.X + 0.2f, cubeSize.Y + 0.2f, cubeSize.Z + 0.2f, Color.GREEN);
         }
         else
         {

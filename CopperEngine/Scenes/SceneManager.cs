@@ -1,7 +1,7 @@
 ﻿using CopperEngine.Components;
 using CopperEngine.Logs;
 using Force.DeepCloner;
-using Raylib_CsLo;
+using Raylib_cs;
 
 namespace CopperEngine.Scenes;
 
@@ -52,17 +52,17 @@ public static class SceneManager
     {
         UpdateGameComponents(scene, gm =>
         {
-            RlGl.rlPushMatrix();
+            Rlgl.PushMatrix();
             
-            RlGl.rlTranslatef(gm.Transform.Position.X, gm.Transform.Position.Y, gm.Transform.Position.Z);
-            RlGl.rlScalef(gm.Transform.Scale.X, gm.Transform.Scale.Y, gm.Transform.Scale.Z);
-            RlGl.rlRotatef(gm.Transform.Rotation.W, gm.Transform.Rotation.X, gm.Transform.Rotation.Y, gm.Transform.Rotation.Z);
+            Rlgl.Translatef(gm.Transform.Position.X, gm.Transform.Position.Y, gm.Transform.Position.Z);
+            Rlgl.Scalef(gm.Transform.Scale.X, gm.Transform.Scale.Y, gm.Transform.Scale.Z);
+            Rlgl.Rotatef(gm.Transform.Rotation.W, gm.Transform.Rotation.X, gm.Transform.Rotation.Y, gm.Transform.Rotation.Z);
             
             gm.PreUpdate();
             gm.Update();
             gm.PostUpdate();
             
-            RlGl.rlPopMatrix();
+            Rlgl.PopMatrix();
         });
     }
 

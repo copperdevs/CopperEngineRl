@@ -1,51 +1,51 @@
 ﻿using System.Numerics;
 using CopperEngine.Utils;
-using Raylib_CsLo;
+using Raylib_cs;
 
-using RaylibCamera = Raylib_CsLo.Camera3D;
+using rlCamera = Raylib_cs.Camera3D;
 
 namespace CopperEngine.Data;
 
 public class Camera
 {
-    internal RaylibCamera Camera3D = new(Vector3.Zero, Vector3.One, Vector3.UnitY, 45, CameraProjection.CAMERA_PERSPECTIVE);
+    internal rlCamera Camera3D = new(Vector3.Zero, Vector3.One, Vector3.UnitY, 45, CameraProjection.CAMERA_PERSPECTIVE);
 
     public Vector3 Position
     {
-        get => Camera3D.position;
-        set => Camera3D.position = value;
+        get => Camera3D.Position;
+        set => Camera3D.Position = value;
     }
 
     public Vector3 Target
     {
-        get => Camera3D.target;
-        set => Camera3D.target = value;
+        get => Camera3D.Target;
+        set => Camera3D.Target = value;
     }
 
     // public Vector3 Front = new(0.0f, 0.0f, -1.0f);
     public Vector3 Up
     {
-        get => Camera3D.up;
-        set => Camera3D.up = value;
+        get => Camera3D.Up;
+        set => Camera3D.Up = value;
     }
 
-    public Vector3 Direction => Vector3.Normalize(Camera3D.target - Position);
+    public Vector3 Direction => Vector3.Normalize(Camera3D.Target - Position);
 
     // public float Yaw = -90f;
     // public float Pitch = 0f;
     public float Zoom
     {
-        get => Camera3D.fovy;
-        set => Camera3D.fovy = value;
+        get => Camera3D.FovY;
+        set => Camera3D.FovY = value;
     }
 
     public Vector2 ClippingPlane = new(0.1f, 100f);
 
-    public static implicit operator RaylibCamera(Camera camera) => camera.Camera3D;
+    public static implicit operator rlCamera(Camera camera) => camera.Camera3D;
     
     public Matrix4x4 ViewMatrix
     {
-        get => Matrix4x4.CreateLookAt(Position, Camera3D.target, Up);
+        get => Matrix4x4.CreateLookAt(Position, Camera3D.Target, Up);
         set => SetViewMatrix(value);
     }
 

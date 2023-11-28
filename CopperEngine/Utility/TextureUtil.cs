@@ -1,66 +1,75 @@
 ﻿using System.Numerics;
-using Raylib_CsLo;
+using Raylib_cs;
 
 namespace CopperEngine.Utility;
 
 public static class TextureUtil
 {
-    public static Texture Load(string path) => Raylib.LoadTexture(path);
-    public static Texture LoadFromImage(Image image) => Raylib.LoadTextureFromImage(image);
-    public static Texture LoadCubemap(Image image, CubemapLayout layout) => Raylib.LoadTextureCubemap(image, layout);
-    public static RenderTexture LoadRenderTexture(int width, int height) => Raylib.LoadRenderTexture(width, height);
-    public static void Unload(Texture texture) => Raylib.UnloadTexture(texture);
-    public static void Unload(RenderTexture target) => Raylib.UnloadRenderTexture(target);
+    /// <inheritdoc cref="Raylib.LoadTexture(string)"/>
+    public static Texture2D Load(string path) => Raylib.LoadTexture(path);
     
-    public static unsafe void Update<T>(Texture texture, void* pixels) where T : unmanaged => Raylib.UpdateTexture(texture, pixels);
-    public static void Update<T>(Texture texture, ref object pixels) where T : unmanaged
-    {
-        unsafe
-        {
-            fixed (void* pixelsPtr = &pixels)
-                Raylib.UpdateTexture(texture, pixelsPtr);
-        }
-    }
+    /// <inheritdoc cref="Raylib.LoadTextureFromImage"/>
+    public static Texture2D LoadFromImage(Image image) => Raylib.LoadTextureFromImage(image);
+    
+    /// <inheritdoc cref="Raylib.LoadTextureCubemap"/>
+    public static Texture2D LoadCubemap(Image image, CubemapLayout layout) => Raylib.LoadTextureCubemap(image, layout);
+    
+    /// <inheritdoc cref="Raylib.LoadRenderTexture"/>
+    public static RenderTexture2D LoadRenderTexture(int width, int height) => Raylib.LoadRenderTexture(width, height);
+    
+    /// <inheritdoc cref="Raylib.UnloadTexture"/>
+    public static void Unload(Texture2D texture) => Raylib.UnloadTexture(texture);
+    
+    /// <inheritdoc cref="Raylib.UnloadRenderTexture"/>
+    public static void UnloadRenderTexture(RenderTexture2D target) => Raylib.UnloadRenderTexture(target);
+    
+    
+    /// <inheritdoc cref="Raylib.IsTextureReady"/>
+    public static bool IsReady(Texture2D texture) => Raylib.IsTextureReady(texture);
+    
+    /// <inheritdoc cref="Raylib.IsRenderTextureReady"/>
+    public static bool IsRenderTextureReady(RenderTexture2D target) => Raylib.IsRenderTextureReady(target);
+    
+    /// <inheritdoc cref="Raylib.UpdateTexture"/>
+    public static void Update<T>(Texture2D texture, ReadOnlySpan<T> pixels) where T : unmanaged => Raylib.UpdateTexture(texture, pixels);
+    
+    /// <inheritdoc cref="Raylib.UpdateTexture"/>
+    public static void Update<T>(Texture2D texture, T[] pixels) where T : unmanaged => Raylib.UpdateTexture(texture, pixels);
+    
+    /// <inheritdoc cref="Raylib.UpdateTextureRec"/>
+    public static void UpdateRec<T>(Texture2D texture, Rectangle rec, ReadOnlySpan<T> pixels) where T : unmanaged => Raylib.UpdateTextureRec(texture, rec, pixels);
+    
+    /// <inheritdoc cref="Raylib.UpdateTextureRec"/>
+    public static void UpdateRec<T>(Texture2D texture, Rectangle rec, T[] pixels) where T : unmanaged => Raylib.UpdateTextureRec(texture, rec, pixels);
 
-    public static unsafe void Update<T>(Texture texture, T* pixels) where T : unmanaged => Raylib.UpdateTexture(texture, pixels);
-    public static void Update<T>(Texture texture, ref T pixels) where T : unmanaged
-    {
-        unsafe
-        {
-            fixed (T* pixelsPtr = &pixels)
-                Raylib.UpdateTexture(texture, pixelsPtr);
-        }
-    }
+    
+    /// <inheritdoc cref="Raylib.GenTextureMipmaps(ref Texture2D)"/>
+    public static void GenMipmaps(ref Texture2D texture) => Raylib.GenTextureMipmaps(ref texture);
+    
+    /// <inheritdoc cref="Raylib.SetTextureFilter"/>
+    public static void SetFilter(Texture2D texture, TextureFilter filter) => Raylib.SetTextureFilter(texture, filter);
+    
+    /// <inheritdoc cref="Raylib.SetTextureWrap"/>
+    public static void SetWrap(Texture2D texture, TextureWrap wrap) => Raylib.SetTextureWrap(texture, wrap);
 
-    public static unsafe void UpdateRec<T>(Texture texture, Rectangle rec, void* pixels) where T : unmanaged => Raylib.UpdateTextureRec(texture, rec, pixels);
-    public static void UpdateRec<T>(Texture texture, Rectangle rec, ref object pixels) where T : unmanaged
-    {
-        unsafe
-        {
-            fixed (void* pixelsPtr = &pixels)
-                Raylib.UpdateTextureRec(texture, rec, pixelsPtr);
-        }
-    }
-
-    public static unsafe void GenMipmaps(Texture* texture) => Raylib.GenTextureMipmaps(texture);
-    public static void GenMipmaps(ref Texture texture)
-    {
-        unsafe
-        {
-            fixed (Texture* texturePtr = &texture)
-                Raylib.GenTextureMipmaps(texturePtr);
-        }
-    }
-
-    public static void SetFilter(Texture texture, TextureFilter filter) => Raylib.SetTextureFilter(texture, filter);
-    public static void SetWrap(Texture texture, TextureWrap wrap) => Raylib.SetTextureWrap(texture, wrap);
-    public static void Draw(Texture texture, int posX, int posY, Color color) => Raylib.DrawTexture(texture, posX, posY, color);
-    public static void Draw(Texture texture, Vector2 pos, Color color) => Raylib.DrawTextureV(texture, pos, color);
-    public static void Draw(Texture texture, Vector2 pos, float rotation, float scale, Color color) => Raylib.DrawTextureEx(texture, pos, rotation, scale, color);
-    public static void DrawRec(Texture texture, Rectangle source, Vector2 pos, Color color) => Raylib.DrawTextureRec(texture, source, pos, color);
-    public static void DrawPro(Texture texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color color) => Raylib.DrawTexturePro(texture, source, dest, origin, rotation, color);
-    public static void DrawNPatch(Texture texture, NPatchInfo nPatchInfo, Rectangle dest, Vector2 origin, float rotation, Color color) => Raylib.DrawTextureNPatch(texture, nPatchInfo, dest, origin, rotation, color);
-
+    
+    /// <inheritdoc cref="Raylib.DrawTexture"/>
+    public static void Draw(Texture2D texture, int posX, int posY, Color color) => Raylib.DrawTexture(texture, posX, posY, color);
+    
+    /// <inheritdoc cref="Raylib.DrawTextureV"/>
+    public static void Draw(Texture2D texture, Vector2 pos, Color color) => Raylib.DrawTextureV(texture, pos, color);
+    
+    /// <inheritdoc cref="Raylib.DrawTextureEx"/>
+    public static void Draw(Texture2D texture, Vector2 pos, float rotation, float scale, Color color) => Raylib.DrawTextureEx(texture, pos, rotation, scale, color);
+    
+    /// <inheritdoc cref="Raylib.DrawTextureRec"/>
+    public static void DrawRec(Texture2D texture, Rectangle source, Vector2 pos, Color color) => Raylib.DrawTextureRec(texture, source, pos, color);
+    
+    /// <inheritdoc cref="Raylib.DrawTexturePro"/>
+    public static void DrawPro(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color color) => Raylib.DrawTexturePro(texture, source, dest, origin, rotation, color);
+    
+    /// <inheritdoc cref="Raylib.DrawTextureNPatch"/>
+    public static void DrawNPatch(Texture2D texture, NPatchInfo nPatchInfo, Rectangle dest, Vector2 origin, float rotation, Color color) => Raylib.DrawTextureNPatch(texture, nPatchInfo, dest, origin, rotation, color);
     
     private struct GridTextureData
     {
@@ -78,7 +87,7 @@ public static class TextureUtil
         }
     }
 
-    private static Texture GenerateGridTexture(GridTextureData data)
+    private static Texture2D GenerateGridTexture(GridTextureData data)
     {
         var img = ImageUtil.GenChecked(data.Width, data.Height, 1, 1, data.Color1, data.Color2);
         var gridTexture = TextureUtil.LoadFromImage(img);
@@ -89,14 +98,14 @@ public static class TextureUtil
         return gridTexture;
     }
 
-    public static Texture GridTexture(int width, int height, Color color1, Color color2)
+    public static Texture2D GridTexture(int width, int height, Color color1, Color color2)
     {
         var data = new GridTextureData(width, height, color1, color2);
 
         return GenerateGridTexture(data);
     }
 
-    public static Texture GridTexture(int width, int height)
+    public static Texture2D GridTexture(int width, int height)
     {
         return GridTexture(width, height, ColorUtil.Gray, ColorUtil.LightGray);
     }

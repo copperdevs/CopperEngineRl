@@ -135,9 +135,9 @@
               "target": "Package",
               "version": "[1.9.12, )"
             },
-            "Raylib-CsLo": {
+            "Raylib-cs": {
               "target": "Package",
-              "version": "[4.2.0.9, )"
+              "version": "[5.0.0, )"
             },
             "Twizzle.ImGui.NET": {
               "target": "Package",

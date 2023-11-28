@@ -3,8 +3,8 @@ using CopperEngine.Data;
 using CopperEngine.Info;
 using CopperEngine.Utility;
 using CopperEngine.Utils;
-using Raylib_CsLo;
-using MouseButton = Raylib_CsLo.MouseButton;
+using Raylib_cs;
+using MouseButton = Raylib_cs.MouseButton;
 
 namespace CopperEngine.Editor.Components;
 
@@ -32,7 +32,7 @@ internal static class EditorCameraController
     internal static void Start()
     {
         var camera = Camera;
-        Raylib.SetCameraMode(Camera, CameraMode.CAMERA_CUSTOM);
+        Raylib.UpdateCamera(ref camera, CameraMode.CAMERA_CUSTOM);
 
         pitch = -0.6f;
         yaw = -2.45f;
@@ -40,11 +40,11 @@ internal static class EditorCameraController
         direction.Y = MathF.Sin(pitch);
         direction.Z = MathF.Sin(yaw) * MathF.Cos(pitch);
         cameraFront = Vector3.Normalize(direction);
-        cameraRight = Vector3.Normalize(Vector3.Cross(camera.up, cameraFront));
+        cameraRight = Vector3.Normalize(Vector3.Cross(camera.Up, cameraFront));
         cameraUp = Vector3.Cross(direction, cameraRight);
 
-        camera.target = Vector3.Add(camera.position, cameraFront);
-        camera.position = new Vector3(10, 10, 10);
+        camera.Target = Vector3.Add(camera.Position, cameraFront);
+        camera.Position = new Vector3(10, 10, 10);
         
         Camera = camera;
     }
@@ -58,7 +58,7 @@ internal static class EditorCameraController
         
         MoveInput(ref camera);
         
-        // IsMoving = Input.IsMouseButtonDown(MouseButton.MOUSE_BUTTON_RIGHT);
+        IsMoving = Input.IsMouseButtonDown(MouseButton.MOUSE_BUTTON_RIGHT);
 
         // if (!IsMoving)
         // {
@@ -95,44 +95,45 @@ internal static class EditorCameraController
     {
         if (Input.IsKeyDown(KeyboardKey.KEY_W))
         {
-            camera.position = Vector3.Add(camera.position, MathUtil.Scale(cameraFront, moveSpeed));
+            camera.Position = Vector3.Add(camera.Position, MathUtil.Scale(cameraFront, moveSpeed));
         }
 
         if (Input.IsKeyDown(KeyboardKey.KEY_S))
         {
-            camera.position = Vector3.Subtract(camera.position, MathUtil.Scale(cameraFront, moveSpeed));
+            camera.Position = Vector3.Subtract(camera.Position, MathUtil.Scale(cameraFront, moveSpeed));
         }
 
         if (Input.IsKeyDown(KeyboardKey.KEY_A))
         {
-            camera.position = Vector3.Subtract(camera.position,
+            camera.Position = Vector3.Subtract(camera.Position,
                 MathUtil.Scale(Vector3.Cross(cameraFront, cameraUp), moveSpeed));
         }
 
         if (Input.IsKeyDown(KeyboardKey.KEY_D))
         {
-            camera.position = Vector3.Add(camera.position,
+            camera.Position = Vector3.Add(camera.Position,
                 MathUtil.Scale(Vector3.Cross(cameraFront, cameraUp), moveSpeed));
         }
 
         if (Input.IsKeyDown(KeyboardKey.KEY_SPACE))
         {
-            camera.position = Vector3.Add(camera.position, MathUtil.Scale(cameraUp, moveSpeed));
+            camera.Position = Vector3.Add(camera.Position, MathUtil.Scale(cameraUp, moveSpeed));
         }
 
         if (Input.IsKeyDown(KeyboardKey.KEY_LEFT_CONTROL))
         {
-            camera.position = Vector3.Subtract(camera.position, MathUtil.Scale(cameraUp, moveSpeed));
+            camera.Position = Vector3.Subtract(camera.Position, MathUtil.Scale(cameraUp, moveSpeed));
         }
     }
 
+    // TODO: Bug - cursor is being weird
     private static void LookInput(ref Camera3D camera)
     {
         var deltaTime = Time.DeltaTime;
         
         if (Input.IsMouseButtonDown(MouseButton.MOUSE_BUTTON_RIGHT))
         {
-            Input.DisableCursor();
+            // Input.DisableCursor();
             var mouseDelta = Input.GetMouseDelta();
             yaw += (mouseDelta.X * 0.75f) * deltaTime;
             pitch += -(mouseDelta.Y * 0.75f) * deltaTime;
@@ -144,16 +145,16 @@ internal static class EditorCameraController
         }
         else
         {
-            Input.EnableCursor();
+            // Input.EnableCursor();
         }
 
         direction.X = MathF.Cos(yaw) * MathF.Cos(pitch);
         direction.Y = MathF.Sin(pitch);
         direction.Z = MathF.Sin(yaw) * MathF.Cos(pitch);
         cameraFront = Vector3.Normalize(direction);
-        cameraRight = Vector3.Normalize(Vector3.Cross(camera.up, cameraFront));
+        cameraRight = Vector3.Normalize(Vector3.Cross(camera.Up, cameraFront));
         cameraUp = Vector3.Cross(direction, cameraRight);
 
-        camera.target = Vector3.Add(camera.position, cameraFront);
+        camera.Target = Vector3.Add(camera.Position, cameraFront);
     }
 }

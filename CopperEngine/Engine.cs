@@ -1,6 +1,6 @@
 ﻿using CopperEngine.Info;
 using CopperEngine.Logs;
-using Raylib_CsLo;
+using Raylib_cs;
 
 namespace CopperEngine;
 
@@ -9,7 +9,7 @@ public static class Engine
     private static bool initialized;
     internal static DateTime StartTime = DateTime.Now;
 
-    internal static EngineState State = EngineState.Game;
+    internal static EngineState State = EngineState.Editor;
 
     private static EngineApplication? engineApplication;
 

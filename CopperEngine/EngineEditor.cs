@@ -2,7 +2,7 @@
 using CopperEngine.Editor;
 using CopperEngine.Editor.DearImGui;
 using ImGuiNET;
-using Raylib_CsLo;
+using Raylib_cs;
 
 namespace CopperEngine;
 

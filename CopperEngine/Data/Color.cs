@@ -1,5 +1,8 @@
 ﻿using System.Numerics;
 
+using Color = CopperEngine.Data.Color;
+using rlColor = Raylib_cs.Color;
+
 namespace CopperEngine.Data;
 
 public struct Color
@@ -69,14 +72,14 @@ public struct Color
         return new Color(color.R * value, color.G * value, color.B * value, color.A * value);
     }
 
-    public static implicit operator Raylib_CsLo.Color(Color color)
+    public static implicit operator rlColor(Color color)
     {
-        return new Raylib_CsLo.Color((int)color.R, (int)color.G, (int)color.B, (int)color.A);
+        return new rlColor((int)color.R, (int)color.G, (int)color.B, (int)color.A);
     }
 
-    public static implicit operator Color(Raylib_CsLo.Color color)
+    public static implicit operator Color(rlColor color)
     {
-        return new Color(color.r, color.g, color.b, color.a);
+        return new Color(color.R, color.G, color.B, color.A);
     }
     
     

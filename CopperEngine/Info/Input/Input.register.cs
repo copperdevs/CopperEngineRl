@@ -1,5 +1,8 @@
 ﻿using System.Numerics;
-using Raylib_CsLo;
+using Raylib_cs;
+
+using rlMouseButton = Raylib_cs.MouseButton;
+using rlGamepadButton = Raylib_cs.GamepadButton;
 
 namespace CopperEngine.Info;
 
@@ -51,16 +54,16 @@ public static partial class Input
         foreach (var button in KeyboardButtonActions)
         {
             var mainDown = true;
-
+            
             foreach (var keyButton in button.Item1)
             {
                 var buttonDown = button.Item2 switch
                 {
-                    ButtonPressType.Down => Raylib.IsKeyDown((int)keyButton),
-                    ButtonPressType.Pressed => Raylib.IsKeyPressed((int)keyButton),
-                    ButtonPressType.Released => Raylib.IsKeyReleased((int)keyButton),
-                    ButtonPressType.Up => Raylib.IsKeyUp((int)keyButton),
-                    _ => false
+                    ButtonPressType.Down => Raylib.IsKeyDown((KeyboardKey)keyButton),
+                    ButtonPressType.Pressed => Raylib.IsKeyPressed((KeyboardKey)keyButton),
+                    ButtonPressType.Released => Raylib.IsKeyReleased((KeyboardKey)keyButton),
+                    ButtonPressType.Up => Raylib.IsKeyUp((KeyboardKey)keyButton),
+                    _ => throw new ArgumentOutOfRangeException()
                 };
 
                 if (mainDown && buttonDown)
@@ -81,11 +84,11 @@ public static partial class Input
             {
                 var buttonDown = button.Item2 switch
                 {
-                    ButtonPressType.Down => Raylib.IsMouseButtonDown((int)keyButton),
-                    ButtonPressType.Pressed => Raylib.IsMouseButtonPressed((int)keyButton),
-                    ButtonPressType.Released => Raylib.IsMouseButtonReleased((int)keyButton),
-                    ButtonPressType.Up => Raylib.IsMouseButtonUp((int)keyButton),
-                    _ => false
+                    ButtonPressType.Down => Raylib.IsMouseButtonDown((rlMouseButton)keyButton),
+                    ButtonPressType.Pressed => Raylib.IsMouseButtonPressed((rlMouseButton)keyButton),
+                    ButtonPressType.Released => Raylib.IsMouseButtonReleased((rlMouseButton)keyButton),
+                    ButtonPressType.Up => Raylib.IsMouseButtonUp((rlMouseButton)keyButton),
+                    _ => throw new ArgumentOutOfRangeException()
                 };
 
                 if (mainDown && buttonDown)
@@ -106,11 +109,11 @@ public static partial class Input
             {
                 var buttonDown = button.Item2 switch
                 {
-                    ButtonPressType.Down => Raylib.IsGamepadButtonDown(0, (int)keyButton),
-                    ButtonPressType.Pressed => Raylib.IsGamepadButtonPressed(0, (int)keyButton),
-                    ButtonPressType.Released => Raylib.IsGamepadButtonReleased(0, (int)keyButton),
-                    ButtonPressType.Up => Raylib.IsGamepadButtonUp(0, (int)keyButton),
-                    _ => false
+                    ButtonPressType.Down => Raylib.IsGamepadButtonDown(0, (rlGamepadButton)keyButton),
+                    ButtonPressType.Pressed => Raylib.IsGamepadButtonPressed(0, (rlGamepadButton)keyButton),
+                    ButtonPressType.Released => Raylib.IsGamepadButtonReleased(0, (rlGamepadButton)keyButton),
+                    ButtonPressType.Up => Raylib.IsGamepadButtonUp(0, (rlGamepadButton)keyButton),
+                    _ => throw new ArgumentOutOfRangeException()
                 };
 
                 if (mainDown && buttonDown)

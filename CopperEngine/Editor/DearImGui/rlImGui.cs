@@ -13,11 +13,9 @@
 
 using System.Numerics;
 using System.Runtime.InteropServices;
-// using CopperEngine.Editor.DearImGui.ImGuizmoNET;
 using ImGuiNET;
-using Raylib_CsLo;
-
 using ImGuizmoNET;
+using Raylib_cs;
 
 namespace CopperEngine.Editor.DearImGui;
 
@@ -27,7 +25,7 @@ public static class rlImGui
 
     private static ImGuiMouseCursor CurrentMouseCursor = ImGuiMouseCursor.COUNT;
     private static Dictionary<ImGuiMouseCursor, MouseCursor> MouseCursorMap = new Dictionary<ImGuiMouseCursor, MouseCursor>();
-    private static Texture FontTexture;
+    private static Texture2D FontTexture;
 
     static Dictionary<KeyboardKey, ImGuiKey> RaylibKeyMap = new Dictionary<KeyboardKey, ImGuiKey>();
 
@@ -66,7 +64,7 @@ public static class rlImGui
         LastAltPressed = false;
         LastSuperPressed = false;
 
-        FontTexture.id = 0;
+        FontTexture.Id = 0;
 
         BeginInitImGui();
 
@@ -231,21 +229,21 @@ public static class rlImGui
         int width, height, bytesPerPixel;
         io.Fonts.GetTexDataAsRGBA32(out byte* pixels, out width, out height, out bytesPerPixel);
 
-        var image = new Image
+        Raylib_cs.Image image = new Image
         {
-            data = pixels,
-            width = width,
-            height = height,
-            mipmaps = 1,
-            format = (int)PixelFormat.PIXELFORMAT_UNCOMPRESSED_R8G8B8A8,
+            Data = pixels,
+            Width = width,
+            Height = height,
+            Mipmaps = 1,
+            Format = PixelFormat.PIXELFORMAT_UNCOMPRESSED_R8G8B8A8,
         };
 
-        // if (Raylib.IsTextureReady(FontTexture))
-            // Raylib.UnloadTexture(FontTexture);
+        if (Raylib.IsTextureReady(FontTexture))
+            Raylib.UnloadTexture(FontTexture);
 
         FontTexture = Raylib.LoadTextureFromImage(image);
 
-        io.Fonts.SetTexID(new IntPtr(FontTexture.id));
+        io.Fonts.SetTexID(new IntPtr(FontTexture.Id));
     }
 
     unsafe internal static sbyte* rImGuiGetClipText(IntPtr userData)
@@ -479,17 +477,17 @@ public static class rlImGui
 
     private static void EnableScissor(float x, float y, float width, float height)
     {
-        RlGl.rlEnableScissorTest();
-        RlGl.rlScissor((int)x, Raylib.GetScreenHeight() - (int)(y + height), (int)width, (int)height);
+        Rlgl.EnableScissorTest();
+        Rlgl.Scissor((int)x, Raylib.GetScreenHeight() - (int)(y + height), (int)width, (int)height);
     }
 
     private static void TriangleVert(ImDrawVertPtr idx_vert)
     {
         Vector4 color = ImGui.ColorConvertU32ToFloat4(idx_vert.col);
 
-        RlGl.rlColor4f(color.X, color.Y, color.Z, color.W);
-        RlGl.rlTexCoord2f(idx_vert.uv.X, idx_vert.uv.Y);
-        RlGl.rlVertex2f(idx_vert.pos.X, idx_vert.pos.Y);
+        Rlgl.Color4f(color.X, color.Y, color.Z, color.W);
+        Rlgl.TexCoord2f(idx_vert.uv.X, idx_vert.uv.Y);
+        Rlgl.Vertex2f(idx_vert.pos.X, idx_vert.pos.Y);
     }
 
     private static void RenderTriangles(uint count, uint indexStart, ImVector<ushort> indexBuffer, ImPtrVector<ImDrawVertPtr> vertBuffer, IntPtr texturePtr)
@@ -501,15 +499,15 @@ public static class rlImGui
         if (texturePtr != IntPtr.Zero)
             textureId = (uint)texturePtr.ToInt32();
 
-        RlGl.rlBegin((int)DrawMode.TRIANGLES);
-        RlGl.rlSetTexture(textureId);
+        Rlgl.Begin(DrawMode.TRIANGLES);
+        Rlgl.SetTexture(textureId);
 
         for (int i = 0; i <= (count - 3); i += 3)
         {
-            if (RlGl.rlCheckRenderBatchLimit(3))
+            if (Rlgl.CheckRenderBatchLimit(3))
             {
-                RlGl.rlBegin((int)DrawMode.TRIANGLES);
-                RlGl.rlSetTexture(textureId);
+                Rlgl.Begin(DrawMode.TRIANGLES);
+                Rlgl.SetTexture(textureId);
             }
 
             ushort indexA = indexBuffer[(int)indexStart + i];
@@ -524,15 +522,15 @@ public static class rlImGui
             TriangleVert(vertexB);
             TriangleVert(vertexC);
         }
-        RlGl.rlEnd();
+        Rlgl.End();
     }
 
     private delegate void Callback(ImDrawListPtr list, ImDrawCmdPtr cmd);
 
     private static void RenderData()
     {
-        RlGl.rlDrawRenderBatchActive();
-        RlGl.rlDisableBackfaceCulling();
+        Rlgl.DrawRenderBatchActive();
+        Rlgl.DisableBackfaceCulling();
 
         var data = ImGui.GetDrawData();
 
@@ -554,12 +552,12 @@ public static class rlImGui
 
                 RenderTriangles(cmd.ElemCount, cmd.IdxOffset, commandList.IdxBuffer, commandList.VtxBuffer, cmd.TextureId);
 
-                RlGl.rlDrawRenderBatchActive();
+                Rlgl.DrawRenderBatchActive();
             }
         }
-        RlGl.rlSetTexture(0);
-        RlGl.rlDisableScissorTest();
-        RlGl.rlEnableBackfaceCulling();
+        Rlgl.SetTexture(0);
+        Rlgl.DisableScissorTest();
+        Rlgl.EnableBackfaceCulling();
     }
 
     /// <summary>
@@ -595,9 +593,9 @@ public static class rlImGui
     /// Uses the current ImGui Cursor position and the full texture size.
     /// </summary>
     /// <param name="image">The raylib texture to draw</param>
-    public static void Image(Texture image)
+    public static void Image(Texture2D image)
     {
-        ImGui.Image(new IntPtr(image.id), new Vector2(image.width, image.height));
+        ImGui.Image(new IntPtr(image.Id), new Vector2(image.Width, image.Height));
     }
 
     /// <summary>
@@ -608,9 +606,9 @@ public static class rlImGui
     /// <param name="image">The raylib texture to draw</param>
     /// <param name="width">The width of the drawn image</param>
     /// <param name="height">The height of the drawn image</param>
-    public static void ImageSize(Texture image, int width, int height)
+    public static void ImageSize(Texture2D image, int width, int height)
     {
-        ImGui.Image(new IntPtr(image.id), new Vector2(width, height));
+        ImGui.Image(new IntPtr(image.Id), new Vector2(width, height));
     }
 
     /// <summary>
@@ -620,9 +618,9 @@ public static class rlImGui
     /// </summary>
     /// <param name="image">The raylib texture to draw</param>
     /// <param name="size">The size of drawn image</param>
-    public static void ImageSize(Texture image, Vector2 size)
+    public static void ImageSize(Texture2D image, Vector2 size)
     {
-        ImGui.Image(new IntPtr(image.id), size);
+        ImGui.Image(new IntPtr(image.Id), size);
     }
 
     /// <summary>
@@ -634,43 +632,43 @@ public static class rlImGui
     /// <param name="destWidth">The width of the drawn image</param>
     /// <param name="destHeight">The height of the drawn image</param>
     /// <param name="sourceRect">The portion of the texture to draw as an image. Negative values for the width and height will flip the image</param>
-    public static void ImageRect(Texture image, int destWidth, int destHeight, Rectangle sourceRect)
+    public static void ImageRect(Texture2D image, int destWidth, int destHeight, Rectangle sourceRect)
     {
         Vector2 uv0 = new Vector2();
         Vector2 uv1 = new Vector2();
 
-        if (sourceRect.width < 0)
+        if (sourceRect.Width < 0)
         {
-            uv0.X = -((float)sourceRect.X / image.width);
-            uv1.X = (uv0.X - (float)(Math.Abs(sourceRect.width) / image.width));
+            uv0.X = -((float)sourceRect.X / image.Width);
+            uv1.X = (uv0.X - (float)(Math.Abs(sourceRect.Width) / image.Width));
         }
         else
         {
-            uv0.X = (float)sourceRect.X / image.width;
-            uv1.X = uv0.X + (float)(sourceRect.width / image.width);
+            uv0.X = (float)sourceRect.X / image.Width;
+            uv1.X = uv0.X + (float)(sourceRect.Width / image.Width);
         }
 
-        if (sourceRect.height < 0)
+        if (sourceRect.Height < 0)
         {
-            uv0.Y = -((float)sourceRect.Y / image.height);
-            uv1.Y = (uv0.Y - (float)(Math.Abs(sourceRect.height) / image.height));
+            uv0.Y = -((float)sourceRect.Y / image.Height);
+            uv1.Y = (uv0.Y - (float)(Math.Abs(sourceRect.Height) / image.Height));
         }
         else
         {
-            uv0.Y = (float)sourceRect.Y / image.height;
-            uv1.Y = uv0.Y + (float)(sourceRect.height / image.height);
+            uv0.Y = (float)sourceRect.Y / image.Height;
+            uv1.Y = uv0.Y + (float)(sourceRect.Height / image.Height);
         }
 
-        ImGui.Image(new IntPtr(image.id), new Vector2(destWidth, destHeight), uv0, uv1);
+        ImGui.Image(new IntPtr(image.Id), new Vector2(destWidth, destHeight), uv0, uv1);
     }
 
     /// <summary>
     /// Draws a render texture as an image an ImGui Context, automatically flipping the Y axis so it will show correctly on screen
     /// </summary>
     /// <param name="image">The render texture to draw</param>
-    public static void ImageRenderTexture(RenderTexture image)
+    public static void ImageRenderTexture(RenderTexture2D image)
     {
-        ImageRect(image.texture, image.texture.width, image.texture.height, new Rectangle(0, 0, image.texture.width, -image.texture.height));
+        ImageRect(image.Texture, image.Texture.Width, image.Texture.Height, new Rectangle(0, 0, image.Texture.Width, -image.Texture.Height));
     }
 
     /// <summary>
@@ -679,20 +677,20 @@ public static class rlImGui
     /// </summary>
     /// <param name="image">The render texture to draw</param>
     /// <param name="center">When true the texture will be centered in the content area. When false the image will be left and top justified</param>
-    public static void ImageRenderTextureFit(RenderTexture image, bool center = true)
+    public static void ImageRenderTextureFit(RenderTexture2D image, bool center = true)
     {
         Vector2 area = ImGui.GetContentRegionAvail();
 
-        float scale = area.X / image.texture.width;
+        float scale = area.X / image.Texture.Width;
 
-        float y = image.texture.height * scale;
+        float y = image.Texture.Height * scale;
         if (y > area.Y)
         {
-            scale = area.Y / image.texture.height;
+            scale = area.Y / image.Texture.Height;
         }
 
-        int sizeX = (int)(image.texture.width * scale);
-        int sizeY = (int)(image.texture.height * scale);
+        int sizeX = (int)(image.Texture.Width * scale);
+        int sizeY = (int)(image.Texture.Height * scale);
 
         if (center)
         {
@@ -701,7 +699,7 @@ public static class rlImGui
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() + (area.Y / 2 - sizeY / 2));
         }
 
-        ImageRect(image.texture, sizeX, sizeY, new Rectangle(0,0, (image.texture.width), -(image.texture.height) ));
+        ImageRect(image.Texture, sizeX, sizeY, new Rectangle(0,0, (image.Texture.Width), -(image.Texture.Height) ));
     }
 
     /// <summary>
@@ -710,9 +708,9 @@ public static class rlImGui
     /// <param name="name">The display name and ImGui ID for the button</param>
     /// <param name="image">The texture to draw</param>
     /// <returns>True if the button was clicked</returns>
-    public static bool ImageButton(System.String name, Texture image)
+    public static bool ImageButton(System.String name, Texture2D image)
     {
-        return ImageButtonSize(name, image, new Vector2(image.width, image.height));
+        return ImageButtonSize(name, image, new Vector2(image.Width, image.Height));
     }
 
     /// <summary>
@@ -722,26 +720,9 @@ public static class rlImGui
     /// <param name="image">The texture to draw</param>
     /// <param name="size">The size of the button/param>
     /// <returns>True if the button was clicked</returns>
-    public static bool ImageButtonSize(System.String name, Texture image, Vector2 size)
+    public static bool ImageButtonSize(System.String name, Texture2D image, Vector2 size)
     {
-        return ImGui.ImageButton(name, new IntPtr(image.id), size);
+        return ImGui.ImageButton(name, new IntPtr(image.Id), size);
     }
 
-    public enum DrawMode
-    {
-        /// <summary>
-        /// GL_LINES
-        /// </summary>
-        LINES = 0x0001,
-
-        /// <summary>
-        /// GL_TRIANGLES
-        /// </summary>
-        TRIANGLES = 0x0004,
-
-        /// <summary>
-        /// GL_QUADS
-        /// </summary>
-        QUADS = 0x0007
-    }
 }

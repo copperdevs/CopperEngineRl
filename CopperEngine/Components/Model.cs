@@ -3,9 +3,9 @@ using CopperEngine.Logs;
 using CopperEngine.Utility;
 using CopperEngine.Utils;
 using ImGuiNET;
-using Raylib_CsLo;
+using Raylib_cs;
 using Color = CopperEngine.Data.Color;
-using rlModel = Raylib_CsLo.Model;
+using rlModel = Raylib_cs.Model;
 
 namespace CopperEngine.Components;
 
@@ -27,7 +27,7 @@ public class Model : GameComponent
 
         unsafe
         {
-            model.materials[0] = MaterialUtil.LoadDefault();
+            model.Materials[0] = MaterialUtil.LoadDefault();
         }
     }
 
@@ -43,11 +43,11 @@ public class Model : GameComponent
         if (ImGui.CollapsingHeader("rlModel Info"))
         {
             ImGui.Indent();
-            EditorUtil.DragMatrix4X4("Model Transform", model.transform);
+            EditorUtil.DragMatrix4X4("Model Transform", model.Transform);
             ImGui.Unindent();
-            var meshCount = model.meshCount;
+            var meshCount = model.MeshCount;
             ImGui.DragInt("Mesh Count", ref meshCount);
-            var materialCount = model.materialCount;
+            var materialCount = model.MaterialCount;
             ImGui.DragInt("Material Count", ref materialCount);
         }
     }

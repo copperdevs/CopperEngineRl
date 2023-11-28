@@ -1,7 +1,6 @@
 ﻿using CopperEngine.Editor.DearImGui;
-using CopperEngine.Utility;
+using CopperEngine.Utils;
 using ImGuiNET;
-using Raylib_CsLo;
 
 namespace CopperEngine.Editor.Windows;
 
@@ -26,12 +25,9 @@ public class InspectorWindow : BaseEditorWindow
             ImGui.DragFloat3("Scale", ref transformScale, 0.1f);
             HierarchyWindow.CurrentTarget.Transform.Scale = transformScale;
 
-            var transformRotation = RayMath.QuaternionToEuler(HierarchyWindow.CurrentTarget.Transform.Rotation);
-            // var transformRotation = HierarchyWindow.CurrentTarget.Transform.Rotation.ToEulerAngles();
+            var transformRotation = MathUtil.ToEulerAngles(HierarchyWindow.CurrentTarget.Transform.Rotation);
             ImGui.DragFloat3("Rotation", ref transformRotation);
-            // HierarchyWindow.CurrentTarget.Transform.Rotation = transformRotation.FromEulerAngles();
-            HierarchyWindow.CurrentTarget.Transform.Rotation =
-                RayMath.QuaternionFromEuler(transformRotation.X, transformRotation.Y, transformRotation.Z);
+            HierarchyWindow.CurrentTarget.Transform.Rotation = MathUtil.FromEulerAngles(transformRotation);
         }
 
         for (var index = 0; index < HierarchyWindow.CurrentTarget.GameComponents.Count; index++)

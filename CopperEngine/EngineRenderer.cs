@@ -1,25 +1,21 @@
 ﻿using System.Numerics;
 using CopperEngine.Data;
-using CopperEngine.Editor;
-using CopperEngine.Editor.DearImGui;
-using CopperEngine.Editor.Windows;
 using CopperEngine.Scenes;
 using CopperEngine.Utility;
-using ImGuizmoNET;
-using Raylib_CsLo;
+using Raylib_cs;
 
 namespace CopperEngine;
 
 public static class EngineRenderer
 {
-    internal static RenderTexture GameTexture;
+    internal static RenderTexture2D GameTexture;
     internal static readonly Camera GameCamera = new()
     {
         Position = new Vector3(10, 10, 10),
         Target = Vector3.Zero
     };
 
-    internal static RenderTexture EditorTexture;
+    internal static RenderTexture2D EditorTexture;
     internal static readonly Camera EditorCamera = new()
     {
         Position = new Vector3(-10, 10, -10),
@@ -80,7 +76,7 @@ public static class EngineRenderer
         {
             PostProcessingRender(() =>
             {
-                Raylib.DrawTextureRec(GameTexture.texture, new Rectangle(0, 0, GameTexture.texture.width, -GameTexture.texture.height), Vector2.Zero, ColorUtil.White);
+                Raylib.DrawTextureRec(GameTexture.Texture, new Rectangle(0, 0, GameTexture.Texture.Width, -GameTexture.Texture.Height), Vector2.Zero, ColorUtil.White);
             });
         }
     }

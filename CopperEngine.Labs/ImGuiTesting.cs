@@ -3,21 +3,22 @@ using CopperEngine.Data;
 using CopperEngine.Editor.DearImGui;
 using CopperEngine.Utility;
 using ImGuiNET;
-using Raylib_CsLo;
+using Raylib_cs;
+using Color = Raylib_cs.Color;
 
 namespace CopperEngine.Labs;
 
 public class ImGuiTesting
 {
 
-    private static RenderTexture gameTexture;
+    private static RenderTexture2D gameTexture;
     private static Camera gameCamera = new()
     {
         Position = new Vector3(10, 10, 10),
         Target = Vector3.Zero
     };
     
-    private static RenderTexture editorTexture;
+    private static RenderTexture2D editorTexture;
     private static Camera editorCamera = new()
     {
         Position = new Vector3(-10, 10, -10),
@@ -64,7 +65,7 @@ public class ImGuiTesting
             Raylib.EndTextureMode();
             
             // ui
-            Raylib.ClearBackground(Raylib.DARKGRAY);
+            Raylib.ClearBackground(Color.DARKGRAY);
             
             rlImGui.Begin();
             ImGui.ShowDemoWindow();

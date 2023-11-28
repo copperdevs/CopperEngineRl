@@ -1,8 +1,8 @@
 ﻿using System.Numerics;
 using CopperEngine.Editor;
 using CopperEngine.Logs;
-using Raylib_CsLo;
-using static Raylib_CsLo.Raylib;
+using Raylib_cs;
+using static Raylib_cs.Raylib;
 
 namespace CopperEngine.Labs;
 
@@ -10,11 +10,11 @@ public static class GizmosLab
 {
     private static Camera3D camera = new()
     {
-        fovy = 45,
-        position = Vector3.One*10,
-        target = Vector3.Zero,
-        up = Vector3.UnitY,
-        projection_ = CameraProjection.CAMERA_PERSPECTIVE
+        FovY = 45,
+        Position = Vector3.One*10,
+        Target = Vector3.Zero,
+        Up = Vector3.UnitY,
+        Projection = CameraProjection.CAMERA_PERSPECTIVE
     };
 
     private static Vector3 cubePosition = new();
@@ -25,23 +25,22 @@ public static class GizmosLab
         InitWindow(650, 400, "gizmos");
         SetTargetFPS(144);
 
-        SetCameraMode(camera, CameraMode.CAMERA_FREE);
         
 		while (!WindowShouldClose())
 		{
-			UpdateCamera(ref camera);
+			UpdateCamera(ref camera, CameraMode.CAMERA_FREE);
 			
 			BeginDrawing();
 
-			ClearBackground(RAYWHITE);
+			ClearBackground(Color.RAYWHITE);
 
 			BeginMode3D(camera);
 			
 			Gizmo.DrawTranslationGizmo(ref cubePosition, camera);
 			Log.Info(GetMouseDelta());
 			
-			DrawCube(cubePosition, 1, 1, 1, GREEN);
-			DrawCubeWires(cubePosition, 1, 1, 1, DARKGREEN);
+			DrawCube(cubePosition, 1, 1, 1, Color.GREEN);
+			DrawCubeWires(cubePosition, 1, 1, 1, Color.DARKGREEN);
 
 			DrawGrid(10, 1.0f);
 
