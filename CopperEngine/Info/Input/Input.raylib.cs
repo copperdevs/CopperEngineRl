@@ -8,17 +8,17 @@ namespace CopperEngine.Info;
 
 public static partial class Input
 {
-    public static bool IsKeyPressed(KeyboardKey key) => Raylib.IsKeyPressed(key);
-    public static bool IsKeyDown(KeyboardKey key) => Raylib.IsKeyDown(key);
-    public static bool IsKeyReleased(KeyboardKey key) => Raylib.IsKeyReleased(key);
-    public static bool IsKeyUp(KeyboardKey key) => Raylib.IsKeyUp(key);
+    public static bool IsKeyPressed(KeyboardButton key) => Raylib.IsKeyPressed((KeyboardKey)key);
+    public static bool IsKeyDown(KeyboardButton key) => Raylib.IsKeyDown((KeyboardKey)key);
+    public static bool IsKeyReleased(KeyboardButton key) => Raylib.IsKeyReleased((KeyboardKey)key);
+    public static bool IsKeyUp(KeyboardButton key) => Raylib.IsKeyUp((KeyboardKey)key);
     public static int GetKeyPressed() => Raylib.GetKeyPressed();
     public static int GetCharPressed() => Raylib.GetCharPressed();
-    public static void SetExitKey(KeyboardKey key) => Raylib.SetExitKey(key);
-    public static bool IsMouseButtonPressed(rlMouseButton button) => Raylib.IsMouseButtonPressed(button);
-    public static bool IsMouseButtonDown(rlMouseButton button) => Raylib.IsMouseButtonDown(button);
-    public static bool IsMouseButtonReleased(rlMouseButton button) => Raylib.IsMouseButtonReleased(button);
-    public static bool IsMouseButtonUp(rlMouseButton button) => Raylib.IsMouseButtonUp(button);
+    public static void SetExitKey(KeyboardButton key) => Raylib.SetExitKey((KeyboardKey)key);
+    public static bool IsMouseButtonPressed(MouseButton button) => Raylib.IsMouseButtonPressed((rlMouseButton)button);
+    public static bool IsMouseButtonDown(MouseButton button) => Raylib.IsMouseButtonDown((rlMouseButton)button);
+    public static bool IsMouseButtonReleased(MouseButton button) => Raylib.IsMouseButtonReleased((rlMouseButton)button);
+    public static bool IsMouseButtonUp(MouseButton button) => Raylib.IsMouseButtonUp((rlMouseButton)button);
     public static int GetMouseX() => Raylib.GetMouseX();
     public static int GetMouseY() => Raylib.GetMouseY();
     public static Vector2 GetMousePosition() => Raylib.GetMousePosition();
@@ -31,10 +31,10 @@ public static partial class Input
     public static void SetMouseScale(float scaleX, float scaleY) => Raylib.SetMouseScale(scaleX, scaleY);
     public static bool IsGamepadAvailable(int gamepad) => Raylib.IsGamepadAvailable(gamepad);
     public static string GetGamepadName(int gamepad) => Raylib.GetGamepadName_(gamepad);
-    public static bool IsGamepadButtonPressed(int gamepad, rlGamepadButton button) => Raylib.IsGamepadButtonPressed(gamepad, button);
-    public static bool IsGamepadButtonDown(int gamepad, rlGamepadButton button) => Raylib.IsGamepadButtonDown(gamepad, button);
-    public static bool IsGamepadButtonReleased(int gamepad, rlGamepadButton button) => Raylib.IsGamepadButtonReleased(gamepad, button);
-    public static bool IsGamepadButtonUp(int gamepad, rlGamepadButton button) => Raylib.IsGamepadButtonUp(gamepad, button);
+    public static bool IsGamepadButtonPressed(int gamepad, GamepadButton button) => Raylib.IsGamepadButtonPressed(gamepad, (rlGamepadButton)button);
+    public static bool IsGamepadButtonDown(int gamepad, GamepadButton button) => Raylib.IsGamepadButtonDown(gamepad, (rlGamepadButton)button);
+    public static bool IsGamepadButtonReleased(int gamepad, GamepadButton button) => Raylib.IsGamepadButtonReleased(gamepad, (rlGamepadButton)button);
+    public static bool IsGamepadButtonUp(int gamepad, GamepadButton button) => Raylib.IsGamepadButtonUp(gamepad, (rlGamepadButton)button);
     public static int GetGamepadButtonPressed() => Raylib.GetGamepadButtonPressed();
     public static int GetGamepadAxisCount(int gamepad) => Raylib.GetGamepadAxisCount(gamepad);
     public static float GetGamepadAxisMovement(int gamepad, GamepadAxis axis) => Raylib.GetGamepadAxisMovement(gamepad, axis);
