@@ -1,5 +1,7 @@
 ﻿using System.Numerics;
+using CopperEngine.Data;
 using CopperEngine.Info;
+using CopperEngine.Utility;
 using CopperEngine.Utils;
 using Raylib_cs;
 using MouseButton = CopperEngine.Info.MouseButton;
@@ -11,10 +13,11 @@ internal static class EditorCameraController
 {
     private static Camera3D Camera
     {
-        get => EngineRenderer.EditorCamera.Camera3D;
+        get => EngineRenderer.EditorCamera;
         set => EngineRenderer.EditorCamera.Camera3D = value;
     }
-    
+
+    private static bool fastMove = false;
     private const float FastMoveModifier = 3;
     private static float moveSpeed = 0.15f;
 
@@ -26,6 +29,7 @@ internal static class EditorCameraController
     private static float yaw;
 
     internal static bool IsMoving;
+    internal static bool LastFrameIsMoving;
 
     internal static void Start()
     {
@@ -45,36 +49,114 @@ internal static class EditorCameraController
         camera.Position = new Vector3(10, 10, 10);
         
         Camera = camera;
-        
-        Input.RegisterInput(KeyboardButton.W, ButtonPressType.Down, () => {EngineRenderer.EditorCamera.Position += cameraFront * moveSpeed;});
-        Input.RegisterInput(KeyboardButton.S, ButtonPressType.Down, () => {EngineRenderer.EditorCamera.Position -= cameraFront * moveSpeed;});
-        Input.RegisterInput(KeyboardButton.A, ButtonPressType.Down, () => {EngineRenderer.EditorCamera.Position -= Vector3.Cross(cameraFront, cameraUp) * moveSpeed;});
-        Input.RegisterInput(KeyboardButton.D, ButtonPressType.Down, () => {EngineRenderer.EditorCamera.Position += Vector3.Cross(cameraFront, cameraUp) * moveSpeed;});
-        Input.RegisterInput(KeyboardButton.Space, ButtonPressType.Down, () => {EngineRenderer.EditorCamera.Position += cameraUp * moveSpeed;});
-        Input.RegisterInput(KeyboardButton.LeftControl, ButtonPressType.Down, () => {EngineRenderer.EditorCamera.Position -= cameraUp * moveSpeed;});
     }
     
     internal static void Update()
     {
         var camera = Camera;
+        // Raylib.UpdateCamera(ref camera, CameraMode.CAMERA_CUSTOM);
         
-        moveSpeed = Input.IsKeyDown(KeyboardButton.RightShift) switch
+        
+        SpeedControls();
+
+        LastFrameIsMoving = IsMoving;
+        IsMoving = MoveInput(ref camera) || LookInput(ref camera);
+        
+        if (LastFrameIsMoving && IsMoving)
         {
-            true => 0.15f * FastMoveModifier,
-            false => 0.15f
-        };
+            // Raylib.DisableCursor();
+            Raylib.HideCursor();
+        }
+
+        if (LastFrameIsMoving && !IsMoving)
+        {
+            // Raylib.EnableCursor();
+            Raylib.ShowCursor();
+        }
+
+        // if (!IsMoving)
+        // {
+            // Raylib.EnableCursor();
+            // return;
+        // }
         
-        LookInput(ref camera);
         
         Camera = camera;
     }
 
+    private static void SpeedControls()
+    {
+        var targetMoveSpeed = 0f;
+        
+        var mouseWheelMovement = Input.GetMouseWheelMove();
+        if (mouseWheelMovement != 0)
+            targetMoveSpeed += mouseWheelMovement / 25f;
+
+        if (targetMoveSpeed < 0.15f)
+            targetMoveSpeed = 0.15f;
+        if (targetMoveSpeed > 1)
+            targetMoveSpeed = 1;
+
+        fastMove = Input.IsKeyDown(KeyboardButton.LeftShift);
+        if (fastMove)
+            targetMoveSpeed *= FastMoveModifier;
+
+        moveSpeed = targetMoveSpeed;
+    }
+
+    private static bool MoveInput(ref Camera3D camera)
+    {
+        var moved = false;
+        
+        if (Input.IsKeyDown(KeyboardButton.W))
+        {
+            camera.Position += cameraFront * moveSpeed;
+            moved = true;
+        }
+
+        if (Input.IsKeyDown(KeyboardButton.S))
+        {
+            camera.Position -= cameraFront * moveSpeed;
+            moved = true;
+        }
+
+        if (Input.IsKeyDown(KeyboardButton.A))
+        {
+            camera.Position -= Vector3.Cross(cameraFront, cameraUp) * moveSpeed;
+            moved = true;
+        }
+
+        if (Input.IsKeyDown(KeyboardButton.D))
+        {
+            camera.Position += Vector3.Cross(cameraFront, cameraUp) * moveSpeed;
+            moved = true;
+        }
+
+        if (Input.IsKeyDown(KeyboardButton.Space))
+        {
+            camera.Position += cameraUp * moveSpeed;
+            moved = true;
+        }
+
+        if (Input.IsKeyDown(KeyboardButton.LeftControl))
+        {
+            camera.Position += cameraUp * moveSpeed;
+            moved = true;
+        }
+
+        return moved;
+    }
+
     // BUG: cursor is being weird
-    private static void LookInput(ref Camera3D camera)
+    private static bool LookInput(ref Camera3D camera)
     {
         var deltaTime = Time.DeltaTime;
+        var isMoving = Input.IsMouseButtonDown(MouseButton.Right);
+
+        if (isMoving is false)
+            return false;
         
-        if (Input.IsMouseButtonDown(MouseButton.Right))
+        if (isMoving)
         {
             // Input.DisableCursor();
             var mouseDelta = Input.GetMouseDelta();
@@ -99,5 +181,7 @@ internal static class EditorCameraController
         cameraUp = Vector3.Cross(direction, cameraRight);
 
         camera.Target = Vector3.Add(camera.Position, cameraFront);
+
+        return isMoving;
     }
 }

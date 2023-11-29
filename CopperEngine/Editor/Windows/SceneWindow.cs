@@ -2,6 +2,7 @@
 using CopperEngine.Editor.Components;
 using CopperEngine.Editor.DearImGui;
 using ImGuiNET;
+using Raylib_cs;
 
 namespace CopperEngine.Editor.Windows;
 
@@ -36,12 +37,9 @@ public class SceneWindow : BaseEditorWindow
         
         // Gizmo.ViewManipulate();
         
-        if(ImGui.IsWindowFocused() && ImGui.IsWindowHovered())
+        if((ImGui.IsWindowFocused() && ImGui.IsWindowHovered()) || EditorCameraController.IsMoving)
         // if(ImGui.IsWindowFocused())
             EditorCameraController.Update();
-            
-        // if(ImGui.IsWindowFocused() && ImGui.IsWindowHovered())
-            // Raylib.UpdateCamera(ref EngineRenderer.EditorCamera.Camera3D, CameraMode.CAMERA_FREE);
     }
 
     internal override void PostRender()
