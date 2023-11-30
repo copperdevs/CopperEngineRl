@@ -14,6 +14,7 @@ public class SceneWindowCameraInfo : BaseEditorWindow
             ImGui.Checkbox("Fast Move##cameracontrollervalues", ref EditorCameraController.FastMove);
             ImGui.DragFloat("Fast Move Modifier##cameracontrollervalues", ref EditorCameraController.FastMoveModifier);
             ImGui.DragFloat("Move Speed##cameracontrollervalues", ref EditorCameraController.MoveSpeed);
+            ImGui.DragFloat("Current Move Speed##cameracontrollervalues", ref EditorCameraController.CurrentMoveSpeed);
             ImGui.Separator();
             ImGui.DragFloat3("Direction##cameracontrollervalues", ref EditorCameraController.Direction);
             ImGui.DragFloat3("Camera Front##cameracontrollervalues", ref EditorCameraController.CameraFront);

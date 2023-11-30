@@ -21,6 +21,7 @@ internal static class EditorCameraController
     internal static bool FastMove = false;
     internal static float FastMoveModifier = 3;
     internal static float MoveSpeed = 0.15f;
+    internal static float CurrentMoveSpeed;
 
     internal static Vector3 Direction;
     internal static Vector3 CameraFront;
@@ -68,54 +69,47 @@ internal static class EditorCameraController
 
     private static void SpeedControls()
     {
-        var targetMoveSpeed = 0f;
-        
-        var mouseWheelMovement = Input.GetMouseWheelMove();
-        if (mouseWheelMovement != 0)
-            targetMoveSpeed += mouseWheelMovement / 25f;
-
-        if (targetMoveSpeed < 0.15f)
-            targetMoveSpeed = 0.15f;
-        if (targetMoveSpeed > 1)
-            targetMoveSpeed = 1;
-
         FastMove = Input.IsKeyDown(KeyboardButton.LeftShift);
-        if (FastMove)
-            targetMoveSpeed *= FastMoveModifier;
 
-        MoveSpeed = targetMoveSpeed;
+        var targetMoveSpeed = FastMove switch
+        {
+            true => MoveSpeed * FastMoveModifier,
+            false => MoveSpeed
+        };
+
+        CurrentMoveSpeed = targetMoveSpeed;
     }
     
     private static void MoveInput(ref Camera3D camera)
     {
         if (Input.IsKeyDown(KeyboardButton.W))
         {
-            camera.Position += CameraFront * MoveSpeed;
+            camera.Position += CameraFront * CurrentMoveSpeed;
         }
 
         if (Input.IsKeyDown(KeyboardButton.S))
         {
-            camera.Position -= CameraFront * MoveSpeed;
+            camera.Position -= CameraFront * CurrentMoveSpeed;
         }
 
         if (Input.IsKeyDown(KeyboardButton.A))
         {
-            camera.Position -= Vector3.Cross(CameraFront, CameraUp) * MoveSpeed;
+            camera.Position -= Vector3.Cross(CameraFront, CameraUp) * CurrentMoveSpeed;
         }
 
         if (Input.IsKeyDown(KeyboardButton.D))
         {
-            camera.Position += Vector3.Cross(CameraFront, CameraUp) * MoveSpeed;
+            camera.Position += Vector3.Cross(CameraFront, CameraUp) * CurrentMoveSpeed;
         }
 
         if (Input.IsKeyDown(KeyboardButton.Space))
         {
-            camera.Position += CameraUp * MoveSpeed;
+            camera.Position += CameraUp * CurrentMoveSpeed;
         }
 
         if (Input.IsKeyDown(KeyboardButton.LeftControl))
         {
-            camera.Position += CameraUp * MoveSpeed;
+            camera.Position += -CameraUp * CurrentMoveSpeed;
         }
     }
     private static bool LookInput()
