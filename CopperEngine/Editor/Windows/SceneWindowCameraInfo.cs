@@ -8,18 +8,32 @@ public class SceneWindowCameraInfo : BaseEditorWindow
 {
     internal override void Render()
     {
-        ImGui.Checkbox("Fast Move", ref EditorCameraController.fastMove);
-        ImGui.DragFloat("Fast Move Modifier", ref EditorCameraController.FastMoveModifier);
-        ImGui.DragFloat("Move Speed", ref EditorCameraController.moveSpeed);
-        
-        ImGui.DragFloat3("Direction", ref EditorCameraController.direction);
-        ImGui.DragFloat3("Camera Front", ref EditorCameraController.cameraFront);
-        ImGui.DragFloat3("Camera Right", ref EditorCameraController.cameraRight);
-        ImGui.DragFloat3("Camera Up", ref EditorCameraController.cameraUp);
-        ImGui.DragFloat("Pitch", ref EditorCameraController.pitch);
-        ImGui.DragFloat("Yaw", ref EditorCameraController.yaw);
+        if (ImGui.CollapsingHeader("Camera Controller Values"))
+        {
+            ImGui.Indent();
+            ImGui.Checkbox("Fast Move##cameracontrollervalues", ref EditorCameraController.FastMove);
+            ImGui.DragFloat("Fast Move Modifier##cameracontrollervalues", ref EditorCameraController.FastMoveModifier);
+            ImGui.DragFloat("Move Speed##cameracontrollervalues", ref EditorCameraController.MoveSpeed);
+            ImGui.Separator();
+            ImGui.DragFloat3("Direction##cameracontrollervalues", ref EditorCameraController.Direction);
+            ImGui.DragFloat3("Camera Front##cameracontrollervalues", ref EditorCameraController.CameraFront);
+            ImGui.DragFloat3("Camera Right##cameracontrollervalues", ref EditorCameraController.CameraRight);
+            ImGui.DragFloat3("Camera Up##cameracontrollervalues", ref EditorCameraController.CameraUp);
+            ImGui.DragFloat("Pitch##cameracontrollervalues", ref EditorCameraController.Pitch);
+            ImGui.DragFloat("Yaw##cameracontrollervalues", ref EditorCameraController.Yaw);
+            ImGui.Separator();
+            ImGui.Checkbox("Is Looking##cameracontrollervalues", ref EditorCameraController.IsLooking);  
+            ImGui.Unindent();
+        }
 
-        ImGui.Checkbox("Is Moving", ref EditorCameraController.IsMoving);
-        ImGui.Checkbox("Last Frame Is Moving", ref EditorCameraController.LastFrameIsMoving);
+        if (ImGui.CollapsingHeader("Camera Values"))
+        {
+            ImGui.Indent();
+            ImGui.DragFloat3("Position##cameravalues", ref EngineRenderer.EditorCamera.Camera3D.Position);
+            ImGui.DragFloat3("Target##cameravalues", ref EngineRenderer.EditorCamera.Camera3D.Target);
+            ImGui.DragFloat3("Up##cameravalues", ref EngineRenderer.EditorCamera.Camera3D.Up);
+            ImGui.DragFloat("FovY##cameravalues", ref EngineRenderer.EditorCamera.Camera3D.FovY);
+            ImGui.Unindent();
+        }
     }
 }

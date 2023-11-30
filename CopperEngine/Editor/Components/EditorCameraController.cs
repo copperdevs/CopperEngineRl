@@ -18,35 +18,35 @@ internal static class EditorCameraController
         set => EngineRenderer.EditorCamera.Camera3D = value;
     }
 
-    internal static bool fastMove = false;
+    internal static bool FastMove = false;
     internal static float FastMoveModifier = 3;
-    internal static float moveSpeed = 0.15f;
+    internal static float MoveSpeed = 0.15f;
 
-    internal static Vector3 direction;
-    internal static Vector3 cameraFront;
-    internal static Vector3 cameraRight;
-    internal static Vector3 cameraUp;
-    internal static float pitch;
-    internal static float yaw;
+    internal static Vector3 Direction;
+    internal static Vector3 CameraFront;
+    internal static Vector3 CameraRight;
+    internal static Vector3 CameraUp;
+    internal static float Pitch;
+    internal static float Yaw;
 
-    internal static bool IsMoving;
-    internal static bool LastFrameIsMoving;
+    internal static bool IsLooking;
+
 
     internal static void Start()
     {
         var camera = Camera;
         Raylib.UpdateCamera(ref camera, CameraMode.CAMERA_CUSTOM);
 
-        pitch = -0.6f;
-        yaw = -2.45f;
-        direction.X = MathF.Cos(yaw) * MathF.Cos(pitch);
-        direction.Y = MathF.Sin(pitch);
-        direction.Z = MathF.Sin(yaw) * MathF.Cos(pitch);
-        cameraFront = Vector3.Normalize(direction);
-        cameraRight = Vector3.Normalize(Vector3.Cross(camera.Up, cameraFront));
-        cameraUp = Vector3.Cross(direction, cameraRight);
+        Pitch = -0.6f;
+        Yaw = -2.45f;
+        Direction.X = MathF.Cos(Yaw) * MathF.Cos(Pitch);
+        Direction.Y = MathF.Sin(Pitch);
+        Direction.Z = MathF.Sin(Yaw) * MathF.Cos(Pitch);
+        CameraFront = Vector3.Normalize(Direction);
+        CameraRight = Vector3.Normalize(Vector3.Cross(camera.Up, CameraFront));
+        CameraUp = Vector3.Cross(Direction, CameraRight);
 
-        camera.Target = Vector3.Add(camera.Position, cameraFront);
+        camera.Target = Vector3.Add(camera.Position, CameraFront);
         camera.Position = new Vector3(10, 10, 10);
         
         Camera = camera;
@@ -55,32 +55,13 @@ internal static class EditorCameraController
     internal static void Update()
     {
         var camera = Camera;
-        // Raylib.UpdateCamera(ref camera, CameraMode.CAMERA_CUSTOM);
-        
+        Raylib.UpdateCamera(ref camera, CameraMode.CAMERA_CUSTOM);
         
         SpeedControls();
 
-        LastFrameIsMoving = IsMoving;
-        IsMoving = MoveInput(ref camera) || LookInput(ref camera);
-        
-        if (LastFrameIsMoving && IsMoving)
-        {
-            // Raylib.DisableCursor();
-            Raylib.HideCursor();
-        }
-
-        if (LastFrameIsMoving && !IsMoving)
-        {
-            // Raylib.EnableCursor();
-            Raylib.ShowCursor();
-        }
-
-        // if (!IsMoving)
-        // {
-            // Raylib.EnableCursor();
-            // return;
-        // }
-        
+        MoveInput(ref camera); 
+        IsLooking = LookInput();
+        UpdateValues(ref camera);
         
         Camera = camera;
     }
@@ -98,92 +79,72 @@ internal static class EditorCameraController
         if (targetMoveSpeed > 1)
             targetMoveSpeed = 1;
 
-        fastMove = Input.IsKeyDown(KeyboardButton.LeftShift);
-        if (fastMove)
+        FastMove = Input.IsKeyDown(KeyboardButton.LeftShift);
+        if (FastMove)
             targetMoveSpeed *= FastMoveModifier;
 
-        moveSpeed = targetMoveSpeed;
+        MoveSpeed = targetMoveSpeed;
     }
-
     
-    // BUG: what the fuck
-    private static bool MoveInput(ref Camera3D camera)
+    private static void MoveInput(ref Camera3D camera)
     {
-        var moved = false;
-        
         if (Input.IsKeyDown(KeyboardButton.W))
         {
-            camera.Position += cameraFront * moveSpeed;
-            moved = true;
+            camera.Position += CameraFront * MoveSpeed;
         }
 
         if (Input.IsKeyDown(KeyboardButton.S))
         {
-            camera.Position -= cameraFront * moveSpeed;
-            moved = true;
+            camera.Position -= CameraFront * MoveSpeed;
         }
 
         if (Input.IsKeyDown(KeyboardButton.A))
         {
-            camera.Position -= Vector3.Cross(cameraFront, cameraUp) * moveSpeed;
-            moved = true;
+            camera.Position -= Vector3.Cross(CameraFront, CameraUp) * MoveSpeed;
         }
 
         if (Input.IsKeyDown(KeyboardButton.D))
         {
-            camera.Position += Vector3.Cross(cameraFront, cameraUp) * moveSpeed;
-            moved = true;
+            camera.Position += Vector3.Cross(CameraFront, CameraUp) * MoveSpeed;
         }
 
         if (Input.IsKeyDown(KeyboardButton.Space))
         {
-            camera.Position += cameraUp * moveSpeed;
-            moved = true;
+            camera.Position += CameraUp * MoveSpeed;
         }
 
         if (Input.IsKeyDown(KeyboardButton.LeftControl))
         {
-            camera.Position += cameraUp * moveSpeed;
-            moved = true;
+            camera.Position += CameraUp * MoveSpeed;
         }
+    }
+    private static bool LookInput()
+    {
+        var isLooking = Input.IsMouseButtonDown(MouseButton.Right);
 
-        return moved;
+        if (!isLooking) 
+            return false;
+        
+        var deltaTime = Time.DeltaTime;
+        var mouseDelta = Input.GetMouseDelta();
+        
+        Yaw += (mouseDelta.X * 0.75f) * deltaTime;
+        Pitch += -(mouseDelta.Y * 0.75f) * deltaTime;
+
+        Pitch = MathUtil.Clamp(Pitch, -1.5f, 1.5f);
+
+        return true;
     }
 
-    private static bool LookInput(ref Camera3D camera)
+    private static void UpdateValues(ref Camera3D camera)
     {
-        var deltaTime = Time.DeltaTime;
-        var isMoving = Input.IsMouseButtonDown(MouseButton.Right);
-
-        // if (isMoving is false)
-            // return false;
         
-        if (isMoving)
-        {
-            // Input.DisableCursor();
-            var mouseDelta = Input.GetMouseDelta();
-            yaw += (mouseDelta.X * 0.75f) * deltaTime;
-            pitch += -(mouseDelta.Y * 0.75f) * deltaTime;
-
-            if (pitch > 1.5)
-                pitch = 1.5f;
-            else if (pitch < -1.5)
-                pitch = -1.5f;
-        }
-        else
-        {
-            // Input.EnableCursor();
-        }
-
-        direction.X = MathF.Cos(yaw) * MathF.Cos(pitch);
-        direction.Y = MathF.Sin(pitch);
-        direction.Z = MathF.Sin(yaw) * MathF.Cos(pitch);
-        cameraFront = Vector3.Normalize(direction);
-        cameraRight = Vector3.Normalize(Vector3.Cross(camera.Up, cameraFront));
-        cameraUp = Vector3.Cross(direction, cameraRight);
-
-        camera.Target = Vector3.Add(camera.Position, cameraFront);
-
-        return isMoving;
+        Direction.X = MathF.Cos(Yaw) * MathF.Cos(Pitch);
+        Direction.Y = MathF.Sin(Pitch);
+        Direction.Z = MathF.Sin(Yaw) * MathF.Cos(Pitch);
+        CameraFront = Vector3.Normalize(Direction);
+        CameraRight = Vector3.Normalize(Vector3.Cross(camera.Up, CameraFront));
+        CameraUp = Vector3.Cross(Direction, CameraRight);
+        camera.Target = Vector3.Add(camera.Position, CameraFront);
     }
 }

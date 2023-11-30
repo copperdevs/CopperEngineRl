@@ -37,7 +37,7 @@ public class SceneWindow : BaseEditorWindow
         
         // Gizmo.ViewManipulate();
         
-        if((ImGui.IsWindowFocused() && ImGui.IsWindowHovered()) || EditorCameraController.IsMoving)
+        if((ImGui.IsWindowFocused() && ImGui.IsWindowHovered()) || EditorCameraController.IsLooking)
         // if(ImGui.IsWindowFocused())
             EditorCameraController.Update();
     }
