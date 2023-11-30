@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using CopperEngine.Data;
 using CopperEngine.Info;
+using CopperEngine.Logs;
 using CopperEngine.Utility;
 using CopperEngine.Utils;
 using Raylib_cs;
@@ -17,16 +18,16 @@ internal static class EditorCameraController
         set => EngineRenderer.EditorCamera.Camera3D = value;
     }
 
-    private static bool fastMove = false;
-    private const float FastMoveModifier = 3;
-    private static float moveSpeed = 0.15f;
+    internal static bool fastMove = false;
+    internal static float FastMoveModifier = 3;
+    internal static float moveSpeed = 0.15f;
 
-    private static Vector3 direction;
-    private static Vector3 cameraFront;
-    private static Vector3 cameraRight;
-    private static Vector3 cameraUp;
-    private static float pitch;
-    private static float yaw;
+    internal static Vector3 direction;
+    internal static Vector3 cameraFront;
+    internal static Vector3 cameraRight;
+    internal static Vector3 cameraUp;
+    internal static float pitch;
+    internal static float yaw;
 
     internal static bool IsMoving;
     internal static bool LastFrameIsMoving;
@@ -104,6 +105,8 @@ internal static class EditorCameraController
         moveSpeed = targetMoveSpeed;
     }
 
+    
+    // BUG: what the fuck
     private static bool MoveInput(ref Camera3D camera)
     {
         var moved = false;
@@ -147,14 +150,13 @@ internal static class EditorCameraController
         return moved;
     }
 
-    // BUG: cursor is being weird
     private static bool LookInput(ref Camera3D camera)
     {
         var deltaTime = Time.DeltaTime;
         var isMoving = Input.IsMouseButtonDown(MouseButton.Right);
 
-        if (isMoving is false)
-            return false;
+        // if (isMoving is false)
+            // return false;
         
         if (isMoving)
         {
