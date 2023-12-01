@@ -65,10 +65,10 @@
     - [ ] Custom
 - [ ] Audio Updates
   - [ ] OpenAL?
-  - [ ] Play, pause, resume, mute, stop, repeat, fade
+  - [X] Play
+  - [ ] Stop
   - [ ] Stereo playback based on position of sound
   - [ ] Volume adjustment based on obstacles
-  - [ ] FMOD?
 - [ ] Raylib Updates
   - [ ] Update to Raylib 5
   - [ ] Convert from using Raylib-CsLo to Raylib-cs
