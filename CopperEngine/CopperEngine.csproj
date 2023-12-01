@@ -21,7 +21,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Physics\" />
       <Folder Include="Rendering\" />
       <Folder Include="Resources\Fonts\Inter\" />
       <None Remove="Resources\Fonts\Inter\static\Inter-Light.ttf" />

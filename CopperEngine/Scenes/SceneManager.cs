@@ -50,7 +50,13 @@ public static class SceneManager
     
     internal static void UpdateScene(Scene scene)
     {
-        UpdateGameComponents(scene, gm =>
+        UpdateGameComponents(scene, gm => { TransformGameComponentsValues(gm, gm.PreUpdate); });
+        UpdateGameComponents(scene, gm => { TransformGameComponentsValues(gm, gm.Update); });
+        UpdateGameComponents(scene, gm => { TransformGameComponentsValues(gm, gm.PostUpdate); });
+
+        return;
+
+        void TransformGameComponentsValues(GameComponent gm, Action updateAction)
         {
             Rlgl.PushMatrix();
             
@@ -58,12 +64,10 @@ public static class SceneManager
             Rlgl.Scalef(gm.Transform.Scale.X, gm.Transform.Scale.Y, gm.Transform.Scale.Z);
             Rlgl.Rotatef(gm.Transform.Rotation.W, gm.Transform.Rotation.X, gm.Transform.Rotation.Y, gm.Transform.Rotation.Z);
             
-            gm.PreUpdate();
-            gm.Update();
-            gm.PostUpdate();
+            updateAction.Invoke();
             
             Rlgl.PopMatrix();
-        });
+        }
     }
 
     internal static void UpdateGameComponents(Scene scene, Action<GameComponent> element)
