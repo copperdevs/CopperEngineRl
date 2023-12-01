@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Runtime.CompilerServices;
 using CopperEngine.Data;
 using CopperEngine.Scenes;
 
@@ -24,4 +25,9 @@ public class GameObject
         GameComponents.Add(component);
         component.Start();
     }
+
+    public T? GetFirstComponentOfType<T>() where T : GameComponent
+    {
+        return GameComponents.Where(gameComponent => gameComponent.GetType() == typeof(T)).Cast<T>().FirstOrDefault();
+    }   
 }

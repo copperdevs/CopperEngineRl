@@ -21,4 +21,6 @@ public class GameComponent
     protected internal virtual void EditorUpdate() { }
     protected internal virtual void Sleep() { }
     protected internal virtual void Stop() { }
+
+    public T GetFirstComponentOfType<T>() where T : GameComponent => Parent.GetFirstComponentOfType<T>()!;
 }

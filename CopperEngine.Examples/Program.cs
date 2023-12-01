@@ -2,5 +2,5 @@
 using CopperEngine;
 using CopperEngine.Examples;
 
-Engine.Initialize<InputExample>();
+Engine.Initialize<EmptyApplication>();
 Engine.Run();
