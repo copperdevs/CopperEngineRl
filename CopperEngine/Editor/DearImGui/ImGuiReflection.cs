@@ -14,12 +14,17 @@ public static class ImGuiReflection
     private static ReadOnlyAttribute? currentReadOnlyAttribute;
     private static TooltipAttribute? currentTooltipAttribute;
     private static HideInInspectorAttribute? currentHideInInspectorAttribute;
+    private static SpaceAttribute? currentSpaceAttribute;
+    private static SeperatorAttribute? currentSeperatorAttribute;
     
     public static void RenderValues(object component)
     {
         var fields = component.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public).ToList();
         foreach (var info in fields)
         {
+            SpaceAttributeRenderer(info);
+            SeperatorAttributeRenderer(info);
+            
             currentHideInInspectorAttribute = (HideInInspectorAttribute?)Attribute.GetCustomAttribute(info, typeof(HideInInspectorAttribute))!;
             
             if(currentHideInInspectorAttribute is not null)
@@ -52,6 +57,18 @@ public static class ImGuiReflection
             }
 
         }
+    }
+
+    private static void SpaceAttributeRenderer(FieldInfo info)
+    {
+        currentSpaceAttribute = (SpaceAttribute?)Attribute.GetCustomAttribute(info, typeof(SpaceAttribute))!;
+        if(currentSpaceAttribute is not null) currentSpaceAttribute.Render();
+    }
+
+    private static void SeperatorAttributeRenderer(FieldInfo info)
+    {
+        currentSeperatorAttribute = (SeperatorAttribute?)Attribute.GetCustomAttribute(info, typeof(SeperatorAttribute))!;
+        if(currentSeperatorAttribute is not null) currentSeperatorAttribute.Render();
     }
     
     private static readonly Dictionary<Type, Action<FieldInfo, object>> ImGuiRenderers = new()
