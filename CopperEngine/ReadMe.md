@@ -45,24 +45,7 @@
     - [ ] Hexa.NET.ImNodes
     - [ ] Hexa.NET.Plot
 - [ ] Implement Physics
-  - [ ] Linear velocity, angular velocity
-  - [ ] Forces, acceleration
-  - [ ] Center of mass
-  - [ ] Collision detection
-  - [ ] Velocity constraints, position constraints
-  - [ ] Joints (e.g., spherical, cylindrical, revolute)
-  - [ ] Friction
-  - [ ] Rolling resistance
-  - [ ] Buoyancy
-  - [ ] Rigidbodies
-  - [ ] Softbodies
-  - [ ] Engines
-    - Different branches with different physics engines before deciding in which to use.
-    - [ ] BepuPhysics
-    - [ ] JoltPhysics
-    - [ ] JitterPhysics 2
-    - [ ] PhysX
-    - [ ] Custom
+  - [ ] JoltPhysics
 - [ ] Audio Updates
   - [ ] OpenAL?
   - [X] Play
@@ -169,3 +152,15 @@
   - [ ] Steam Input
   - [ ] Steam Sockets
   - [ ] Steamworks SDK
+- [ ] Custom Physics Engine
+  - [ ] Linear velocity, angular velocity
+  - [ ] Forces, acceleration
+  - [ ] Center of mass
+  - [ ] Collision detection
+  - [ ] Velocity constraints, position constraints
+  - [ ] Joints (e.g., spherical, cylindrical, revolute)
+  - [ ] Friction
+  - [ ] Rolling resistance
+  - [ ] Buoyancy
+  - [ ] Rigidbodies
+  - [ ] Softbodies

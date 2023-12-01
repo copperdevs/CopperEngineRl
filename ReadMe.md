@@ -7,14 +7,11 @@ Engine todo is located in [here](CopperEngine/ReadMe.md)
 
 ## Libraries Used
 - ImGui.Net
-- BepuPhysics
-- BepuUtilites
 - DeepCloner
 - Hexa.NET.ImGui
 - Hexa.NET.ImGuizmo
 - Hexa.NET.ImNodes
 - Hexa.NET.ImPlot
-- Jitter2
 - JoltPhysicsSharp
 - Raylib-CsLo
 - Twizzle.ImGui.NET

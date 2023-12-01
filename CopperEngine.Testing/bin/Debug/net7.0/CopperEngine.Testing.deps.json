@@ -14,25 +14,6 @@
           "CopperEngine.Testing.dll": {}
         }
       },
-      "BepuPhysics/2.5.0-beta.14": {
-        "dependencies": {
-          "BepuUtilities": "2.5.0-beta.14"
-        },
-        "runtime": {
-          "lib/net7.0/BepuPhysics.dll": {
-            "assemblyVersion": "2.5.0.0",
-            "fileVersion": "2.5.0.0"
-          }
-        }
-      },
-      "BepuUtilities/2.5.0-beta.14": {
-        "runtime": {
-          "lib/net7.0/BepuUtilities.dll": {
-            "assemblyVersion": "2.5.0.0",
-            "fileVersion": "2.5.0.0"
-          }
-        }
-      },
       "DeepCloner/0.10.4": {
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -295,14 +276,6 @@
             "rid": "osx",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
-          }
-        }
-      },
-      "Jitter2/2.0.1": {
-        "runtime": {
-          "lib/net7.0/Jitter2.dll": {
-            "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.0.1.0"
           }
         }
       },
@@ -1096,15 +1069,12 @@
       },
       "CopperEngine/1.0.0": {
         "dependencies": {
-          "BepuPhysics": "2.5.0-beta.14",
-          "BepuUtilities": "2.5.0-beta.14",
           "DeepCloner": "0.10.4",
           "Hexa.NET.ImGui": "1.0.0",
           "Hexa.NET.ImGuizmo": "1.0.0",
           "Hexa.NET.ImNodes": "1.0.0",
           "Hexa.NET.ImPlot": "1.0.0",
           "ImGui.NET": "1.89.9.4",
-          "Jitter2": "2.0.1",
           "JoltPhysicsSharp": "1.9.12",
           "Raylib-cs": "5.0.0",
           "Twizzle.ImGui.NET": "1.89.4",
@@ -1121,20 +1091,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "BepuPhysics/2.5.0-beta.14": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-bpcArsUlCPAv1+vNqOOAQqCsFlMdWtt+yA5168+hoc+2GNEaYP0J/sihlOgheKCgGO1LCK9GelcDpBgPdopX+w==",
-      "path": "bepuphysics/2.5.0-beta.14",
-      "hashPath": "bepuphysics.2.5.0-beta.14.nupkg.sha512"
-    },
-    "BepuUtilities/2.5.0-beta.14": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/yzTEVDyhApGvs1yb7EfGG4jpDO/1HAxi0ASHzQM7z4zQOtCPZJAtQqNY4omRxqN/bblIWSl0Q8Z4s0VaxErdQ==",
-      "path": "bepuutilities/2.5.0-beta.14",
-      "hashPath": "bepuutilities.2.5.0-beta.14.nupkg.sha512"
     },
     "DeepCloner/0.10.4": {
       "type": "package",
@@ -1177,13 +1133,6 @@
       "sha512": "sha512-9dkya/rigoasxmjprRy8D/bxHgpe3OnY7V6hDB8dN4Cnf0h2GoFtn+vizMdsvJOLlP/NNIkuAbMgNFm2dKalwQ==",
       "path": "imgui.net/1.89.9.4",
       "hashPath": "imgui.net.1.89.9.4.nupkg.sha512"
-    },
-    "Jitter2/2.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-EySYsxh0wjz4PTh/2hJBNW/gC+THBbnMNuJ/VF+NKO0X1KsVkxiHTwgA7dHfF57LLI3A6t49tdKAJ5riOaskNg==",
-      "path": "jitter2/2.0.1",
-      "hashPath": "jitter2.2.0.1.nupkg.sha512"
     },
     "JoltPhysicsSharp/1.9.12": {
       "type": "package",

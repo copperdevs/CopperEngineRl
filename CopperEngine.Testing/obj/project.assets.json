@@ -2,35 +2,6 @@
   "version": 3,
   "targets": {
     "net7.0": {
-      "BepuPhysics/2.5.0-beta.14": {
-        "type": "package",
-        "dependencies": {
-          "BepuUtilities": "2.5.0-beta.14"
-        },
-        "compile": {
-          "lib/net7.0/BepuPhysics.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/BepuPhysics.dll": {
-            "related": ".xml"
-          }
-        }
-      },
-      "BepuUtilities/2.5.0-beta.14": {
-        "type": "package",
-        "compile": {
-          "lib/net7.0/BepuUtilities.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/BepuUtilities.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "DeepCloner/0.10.4": {
         "type": "package",
         "dependencies": {
@@ -281,19 +252,6 @@
           "runtimes/win-x86/native/cimgui.dll": {
             "assetType": "native",
             "rid": "win-x86"
-          }
-        }
-      },
-      "Jitter2/2.0.1": {
-        "type": "package",
-        "compile": {
-          "lib/net7.0/Jitter2.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/Jitter2.dll": {
-            "related": ".xml"
           }
         }
       },
@@ -1760,15 +1718,12 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "BepuPhysics": "2.5.0-beta.14",
-          "BepuUtilities": "2.5.0-beta.14",
           "DeepCloner": "0.10.4",
           "Hexa.NET.ImGui": "1.0.0",
           "Hexa.NET.ImGuizmo": "1.0.0",
           "Hexa.NET.ImNodes": "1.0.0",
           "Hexa.NET.ImPlot": "1.0.0",
           "ImGui.NET": "1.89.9.4",
-          "Jitter2": "2.0.1",
           "JoltPhysicsSharp": "1.9.12",
           "Raylib-cs": "5.0.0",
           "Twizzle.ImGui.NET": "1.89.4",
@@ -1784,34 +1739,6 @@
     }
   },
   "libraries": {
-    "BepuPhysics/2.5.0-beta.14": {
-      "sha512": "bpcArsUlCPAv1+vNqOOAQqCsFlMdWtt+yA5168+hoc+2GNEaYP0J/sihlOgheKCgGO1LCK9GelcDpBgPdopX+w==",
-      "type": "package",
-      "path": "bepuphysics/2.5.0-beta.14",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "bepuphysics.2.5.0-beta.14.nupkg.sha512",
-        "bepuphysics.nuspec",
-        "bepuphysicslogo256.png",
-        "lib/net7.0/BepuPhysics.dll",
-        "lib/net7.0/BepuPhysics.xml"
-      ]
-    },
-    "BepuUtilities/2.5.0-beta.14": {
-      "sha512": "/yzTEVDyhApGvs1yb7EfGG4jpDO/1HAxi0ASHzQM7z4zQOtCPZJAtQqNY4omRxqN/bblIWSl0Q8Z4s0VaxErdQ==",
-      "type": "package",
-      "path": "bepuutilities/2.5.0-beta.14",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "bepuphysicslogo256.png",
-        "bepuutilities.2.5.0-beta.14.nupkg.sha512",
-        "bepuutilities.nuspec",
-        "lib/net7.0/BepuUtilities.dll",
-        "lib/net7.0/BepuUtilities.xml"
-      ]
-    },
     "DeepCloner/0.10.4": {
       "sha512": "z8ASd9bjXkVjcnIrwUKrxb/bPi/gvG5NX3nv7MHK/5QrlYwbK7N5ZTDNaYXQ5qunaUCMGN0UHdgkNARIEBTEyA==",
       "type": "package",
@@ -1939,23 +1866,6 @@
         "runtimes/win-arm64/native/cimgui.dll",
         "runtimes/win-x64/native/cimgui.dll",
         "runtimes/win-x86/native/cimgui.dll"
-      ]
-    },
-    "Jitter2/2.0.1": {
-      "sha512": "EySYsxh0wjz4PTh/2hJBNW/gC+THBbnMNuJ/VF+NKO0X1KsVkxiHTwgA7dHfF57LLI3A6t49tdKAJ5riOaskNg==",
-      "type": "package",
-      "path": "jitter2/2.0.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "icon.png",
-        "jitter2.2.0.1.nupkg.sha512",
-        "jitter2.nuspec",
-        "lib/net6.0/Jitter2.dll",
-        "lib/net6.0/Jitter2.xml",
-        "lib/net7.0/Jitter2.dll",
-        "lib/net7.0/Jitter2.xml",
-        "readme.md"
       ]
     },
     "JoltPhysicsSharp/1.9.12": {
