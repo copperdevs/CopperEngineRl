@@ -13,12 +13,18 @@ public static class ImGuiReflection
     private static RangeAttribute? currentRangeAttribute;
     private static ReadOnlyAttribute? currentReadOnlyAttribute;
     private static TooltipAttribute? currentTooltipAttribute;
+    private static HideInInspectorAttribute? currentHideInInspectorAttribute;
     
     public static void RenderValues(object component)
     {
         var fields = component.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public).ToList();
         foreach (var info in fields)
         {
+            currentHideInInspectorAttribute = (HideInInspectorAttribute?)Attribute.GetCustomAttribute(info, typeof(HideInInspectorAttribute))!;
+            
+            if(currentHideInInspectorAttribute is not null)
+                continue;
+            
             currentReadOnlyAttribute = (ReadOnlyAttribute?)Attribute.GetCustomAttribute(info, typeof(ReadOnlyAttribute))!;
 
             if (currentReadOnlyAttribute is not null)

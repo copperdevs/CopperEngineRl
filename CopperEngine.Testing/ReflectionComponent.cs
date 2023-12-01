@@ -22,4 +22,5 @@ public class ReflectionComponent : GameComponent
 
     [ReadOnly] public float ReadOnlyTest;
     [Tooltip("test tooltip")] public float TooltipTest;
+    [HideInInspector] public float HiddenValueTest;
 }
