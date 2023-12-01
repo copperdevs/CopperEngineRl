@@ -12,6 +12,7 @@ public static class ImGuiReflection
 {
     private static RangeAttribute? currentRangeAttribute;
     private static ReadOnlyAttribute? currentReadOnlyAttribute;
+    private static TooltipAttribute? currentTooltipAttribute;
     
     public static void RenderValues(object component)
     {
@@ -30,6 +31,20 @@ public static class ImGuiReflection
             {
                 ImGuiRenderers[info.FieldType].Invoke(info, component);
             }
+
+            currentTooltipAttribute = (TooltipAttribute)Attribute.GetCustomAttribute(info, typeof(TooltipAttribute))!;
+
+            if (currentTooltipAttribute is not null)
+            {
+                if (ImGui.BeginItemTooltip())
+                {
+                    ImGui.PushTextWrapPos(ImGui.GetFontSize() * 35.0f);
+                    ImGui.TextUnformatted(currentTooltipAttribute.Message);
+                    ImGui.PopTextWrapPos();
+                    ImGui.EndTooltip();
+                }
+            }
+
         }
     }
     

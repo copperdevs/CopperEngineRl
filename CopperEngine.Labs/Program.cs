@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using System.Text.Json;
 using CopperEngine.Logs;
+using ImGuiNET;
 using Transform = CopperEngine.Data.Transform;
 
 namespace CopperEngine.Labs;
@@ -16,7 +17,6 @@ public static class Program
             Rotation = new Quaternion(2, 3, 4, 5), 
             Scale = Vector3.One
         };
-        
 
         var json = JsonSerializer.Serialize(transform);
         Log.Info(json);

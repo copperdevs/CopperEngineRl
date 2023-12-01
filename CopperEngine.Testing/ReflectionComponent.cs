@@ -21,4 +21,5 @@ public class ReflectionComponent : GameComponent
     public Color ColorField = Color.Red;
 
     [ReadOnly] public float ReadOnlyTest;
+    [Tooltip("test tooltip")] public float TooltipTest;
 }
