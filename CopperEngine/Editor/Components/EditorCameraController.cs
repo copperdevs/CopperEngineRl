@@ -56,7 +56,7 @@ internal static class EditorCameraController
     internal static void Update()
     {
         var camera = Camera;
-        Raylib.UpdateCamera(ref camera, CameraMode.CAMERA_CUSTOM);
+        // Raylib.UpdateCamera(ref camera, CameraMode.CAMERA_CUSTOM);
         
         SpeedControls();
 

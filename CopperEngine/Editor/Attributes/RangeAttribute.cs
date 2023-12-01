@@ -3,8 +3,8 @@
 [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
 public class RangeAttribute : Attribute
 {
-    public float Min;
-    public float Max;
+    public readonly float Min;
+    public readonly float Max;
 
     public RangeAttribute(float min, float max)
     {

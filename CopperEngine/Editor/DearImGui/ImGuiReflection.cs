@@ -10,10 +10,27 @@ namespace CopperEngine.Editor.DearImGui;
 
 public static class ImGuiReflection
 {
+    private static RangeAttribute? currentRangeAttribute;
+    private static ReadOnlyAttribute? currentReadOnlyAttribute;
+    
     public static void RenderValues(object component)
     {
         var fields = component.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public).ToList();
-        fields.ForEach(info => ImGuiRenderers[info.FieldType].Invoke(info, component));
+        foreach (var info in fields)
+        {
+            currentReadOnlyAttribute = (ReadOnlyAttribute?)Attribute.GetCustomAttribute(info, typeof(ReadOnlyAttribute))!;
+
+            if (currentReadOnlyAttribute is not null)
+            {
+                ImGui.BeginDisabled();
+                ImGuiRenderers[info.FieldType].Invoke(info, component);
+                ImGui.EndDisabled();
+            }
+            else
+            {
+                ImGuiRenderers[info.FieldType].Invoke(info, component);
+            }
+        }
     }
     
     private static readonly Dictionary<Type, Action<FieldInfo, object>> ImGuiRenderers = new()
@@ -30,8 +47,6 @@ public static class ImGuiReflection
         { typeof(Transform), TransformFieldRenderer },
         { typeof(Color), ColorFieldRenderer }
     };
-
-    private static RangeAttribute? currentRangeAttribute;
     
     private static void FloatFieldRenderer(FieldInfo fieldInfo, object component)
     {

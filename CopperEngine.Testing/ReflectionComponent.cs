@@ -19,4 +19,6 @@ public class ReflectionComponent : GameComponent
 
     public Guid GuidField = Guid.NewGuid();
     public Color ColorField = Color.Red;
+
+    [ReadOnly] public float ReadOnlyTest;
 }
