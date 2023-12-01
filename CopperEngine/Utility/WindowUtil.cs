@@ -3,9 +3,9 @@ using Raylib_cs;
 
 namespace CopperEngine.Utility;
 
-public class WindowUtil
+public static class WindowUtil
 {
-        /// <inheritdoc cref="Raylib.InitWindow(int, int, string)"/>
+    /// <inheritdoc cref="Raylib.InitWindow(int, int, string)"/>
     public static void Init(int width, int height, string title) => Raylib.InitWindow(width, height, title);
     
     /// <inheritdoc cref="Raylib.WindowShouldClose"/>
