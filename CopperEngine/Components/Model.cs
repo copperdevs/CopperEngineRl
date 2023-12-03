@@ -7,9 +7,11 @@ using rlModel = Raylib_cs.Model;
 
 namespace CopperEngine.Components;
 
-public class Model : GameComponent
+public class Model : Component, IDisposable
 {
     private rlModel model;
+    private bool modelLoaded;
+    
     private readonly string modelPath;
 
     public Color ModelTint = Color.White;
@@ -17,11 +19,16 @@ public class Model : GameComponent
     public Model(string path)
     {
         modelPath = path;
+        modelLoaded = false;
     }
 
     protected internal override void Awake()
     {
+        if (modelLoaded)
+            return;
+        
         model = ModelUtil.Load(modelPath);
+        modelLoaded = true;
 
         unsafe
         {
@@ -31,7 +38,8 @@ public class Model : GameComponent
 
     protected internal override void Update()
     {
-        ModelUtil.DrawModel(model, Vector3.Zero, 1, ModelTint);
+        if(modelLoaded)
+            ModelUtil.DrawModel(model, Vector3.Zero, 1, ModelTint);
     }
 
     protected internal override void EditorUpdate()
@@ -52,6 +60,16 @@ public class Model : GameComponent
 
     protected internal override void Sleep()
     {
-        ModelUtil.Unload(model); 
+        if (!modelLoaded)
+            return;
+        
+        ModelUtil.Unload(model);
+        modelLoaded = false;
+    }
+
+    public void Dispose()
+    {
+        if(modelLoaded)
+            ModelUtil.Unload(model);
     }
 }

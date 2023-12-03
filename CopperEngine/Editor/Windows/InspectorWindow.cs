@@ -17,6 +17,7 @@ public class InspectorWindow : BaseEditorWindow
         transformOpen = ImGui.CollapsingHeader("Transform");
         if (transformOpen)
         {
+            ImGui.Indent();
             var transformPosition = HierarchyWindow.CurrentTarget.Transform.Position;
             ImGui.DragFloat3("Position", ref transformPosition);
             HierarchyWindow.CurrentTarget.Transform.Position = transformPosition;
@@ -27,7 +28,8 @@ public class InspectorWindow : BaseEditorWindow
 
             var transformRotation = MathUtil.ToEulerAngles(HierarchyWindow.CurrentTarget.Transform.Rotation);
             ImGui.DragFloat3("Rotation", ref transformRotation);
-            HierarchyWindow.CurrentTarget.Transform.Rotation = MathUtil.FromEulerAngles(transformRotation);
+            // HierarchyWindow.CurrentTarget.Transform.Rotation = MathUtil.FromEulerAngles(transformRotation);
+            ImGui.Unindent();
         }
 
         for (var index = 0; index < HierarchyWindow.CurrentTarget.GameComponents.Count; index++)

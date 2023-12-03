@@ -5,7 +5,7 @@ using CopperEngine.Editor.Attributes;
 
 namespace CopperEngine.Testing;
 
-public class ReflectionComponent : GameComponent
+public class ReflectionComponent : Component
 {
     [Seperator("Single Values")]
     public float NormalFloatField;

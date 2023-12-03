@@ -7,7 +7,7 @@ namespace CopperEngine.Components;
 
 public class GameObject
 {
-    internal List<GameComponent> GameComponents = new();
+    internal List<Component> GameComponents = new();
 
     internal Scene ParentScene;
     
@@ -18,15 +18,15 @@ public class GameObject
         Scale = Vector3.One
     };
 
-    public void AddComponent<T>() where T : GameComponent, new() => AddComponent(new T());
-    public void AddComponent(GameComponent component)
+    public void AddComponent<T>() where T : Component, new() => AddComponent(new T());
+    public void AddComponent(Component component)
     {
         component.Parent = this;
         GameComponents.Add(component);
         component.Start();
     }
 
-    public T? GetFirstComponentOfType<T>() where T : GameComponent
+    public T? GetFirstComponentOfType<T>() where T : Component
     {
         return GameComponents.Where(gameComponent => gameComponent.GetType() == typeof(T)).Cast<T>().FirstOrDefault();
     }   

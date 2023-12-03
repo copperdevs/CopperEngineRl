@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "nstTBTm17zffCGXTCyS/vsH7402MHjdmCf5ptm591n3GH2VTPr9NfTTXOHGmTtqU+ynjvhE2r9RCWBH+yaOUHA==",
+  "dgSpecHash": "yzmY5VUiy+UsYSqJcbqY8grfDye95Eb3WDwUx4/zRLeZtiT+SFRJxPX0y3y22FLCUANB+NwuGFWY0PT/rUuf+Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\715263\\Desktop\\School-Work\\Dev\\Projects\\Rider\\CopperEngineRl\\CopperEngine.Testing\\CopperEngine.Testing.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\715263\\.nuget\\packages\\hexa.net.imnodes\\1.0.0\\hexa.net.imnodes.1.0.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\hexa.net.implot\\1.0.0\\hexa.net.implot.1.0.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\imgui.net\\1.89.9.4\\imgui.net.1.89.9.4.nupkg.sha512",
+    "C:\\Users\\715263\\.nuget\\packages\\jitter2\\2.0.1\\jitter2.2.0.1.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\joltphysicssharp\\1.9.12\\joltphysicssharp.1.9.12.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\715263\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

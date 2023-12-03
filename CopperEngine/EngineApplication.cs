@@ -9,6 +9,7 @@ public class EngineApplication
     protected internal virtual void PreUpdate() { }
     protected internal virtual void Update() { }
     protected internal virtual void PostUpdate() { }
+    protected internal virtual void FixedUpdate() { }
     
     protected internal virtual void WindowResize(Vector2 newSize) { }
     

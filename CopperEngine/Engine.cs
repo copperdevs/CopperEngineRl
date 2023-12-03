@@ -11,7 +11,7 @@ public static class Engine
 
     internal static EngineState State = EngineState.Editor;
 
-    private static EngineApplication? engineApplication;
+    internal static EngineApplication? EngineApplication;
 
     internal enum EngineState
     {
@@ -28,10 +28,10 @@ public static class Engine
     {
         Initialize(() =>
         {
-            engineApplication = application;
+            EngineApplication = application;
             
-            engineApplication.Load();
-            EngineWindow.WindowResized += engineApplication.WindowResize;
+            EngineApplication.Load();
+            EngineWindow.WindowResized += EngineApplication.WindowResize;
         });
     }
 
@@ -51,6 +51,7 @@ public static class Engine
         InitializeElement(EngineWindow.Initialize, "Engine Window");
         InitializeElement(EngineRenderer.Initialize, "Engine Renderer");
         InitializeElement(EngineEditor.Initialize, "Engine Editor");
+        InitializeElement(EnginePhysics.Initialize, "Engine Physics");
         
         InitializeElement(loadAction, "Engine Load Action");
         
@@ -68,18 +69,19 @@ public static class Engine
     {
         while (!Raylib.WindowShouldClose())
         {
+            EnginePhysics.Update();
             Input.CheckInput();
             
             EngineWindow.Update();
             
             Raylib.BeginDrawing();
             
-            engineApplication?.PreUpdate();
-            engineApplication?.Update();
-            engineApplication?.PostUpdate();
-            
             EngineRenderer.Render();
             EngineEditor.Render();
+            
+            EngineApplication?.PreUpdate();
+            EngineApplication?.Update();
+            EngineApplication?.PostUpdate();
             
             Raylib.EndDrawing();
         }
@@ -89,7 +91,7 @@ public static class Engine
 
     private static void Stop()
     {
-        engineApplication?.Stop();
+        EngineApplication?.Stop();
         EngineEditor.Stop();
         EngineRenderer.Stop();
         EngineWindow.Stop();

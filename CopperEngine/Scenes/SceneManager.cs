@@ -53,10 +53,13 @@ public static class SceneManager
         UpdateGameComponents(scene, gm => { TransformGameComponentsValues(gm, gm.PreUpdate); });
         UpdateGameComponents(scene, gm => { TransformGameComponentsValues(gm, gm.Update); });
         UpdateGameComponents(scene, gm => { TransformGameComponentsValues(gm, gm.PostUpdate); });
+        
+        
+        UpdateGameComponents(scene, gm => gm.GizmosDraw() );
 
         return;
 
-        void TransformGameComponentsValues(GameComponent gm, Action updateAction)
+        void TransformGameComponentsValues(Component gm, Action updateAction)
         {
             Rlgl.PushMatrix();
             
@@ -70,7 +73,7 @@ public static class SceneManager
         }
     }
 
-    internal static void UpdateGameComponents(Scene scene, Action<GameComponent> element)
+    internal static void UpdateGameComponents(Scene scene, Action<Component> element)
     {
         scene.GameObjects.ForEach(gm => gm.GameComponents.ForEach(element));
     }

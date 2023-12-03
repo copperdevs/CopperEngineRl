@@ -1,4 +1,6 @@
-﻿using CopperEngine.Components;
+﻿using System.Numerics;
+using CopperEngine.Components;
+using CopperEngine.Physics;
 
 namespace CopperEngine.Scenes;
 
@@ -10,7 +12,7 @@ public class Scene
     internal List<GameObject> GameObjects = new();
     
     public Scene(string displayName) : this (displayName, Guid.NewGuid()) {}
-
+    
     internal Scene(string displayName, Guid sceneId, bool register)
     {
         DisplayName = displayName;
@@ -19,8 +21,8 @@ public class Scene
         if(register)
             SceneManager.RegisterScene(this);
     }
-    
-    public Scene(string displayName, Guid sceneId)
+
+    internal Scene(string displayName, Guid sceneId)
     {
         DisplayName = displayName;
         SceneId = sceneId;
@@ -28,44 +30,18 @@ public class Scene
         SceneManager.RegisterScene(this);
     }
 
-    public GameObject CreateGameObject()
+    public GameObject CreateGameObject() => CreateGameObject(Vector3.Zero);    
+    
+    public GameObject CreateGameObject(Vector3 startPosition)
     {
         var gameObject = new GameObject();
         GameObjects.Add(gameObject);
 
         gameObject.ParentScene = this;
+        gameObject.Transform.Position = startPosition;
         
         return gameObject;
     }
 
     public static implicit operator Guid(Scene scene) => scene.SceneId;
-}
-
-internal static class SceneExtensions
-{
-    public static Scene Deserialize(this SerializedScene scene)
-    {
-        return new Scene(scene.DisplayName!, scene.SceneId, false)
-        {
-            GameObjects = scene.GameObjects
-        };
-    }
-
-    public static SerializedScene Serialize(this Scene scene)
-    {
-        return new SerializedScene()
-        {
-            DisplayName = scene.DisplayName,
-            GameObjects = scene.GameObjects,
-            SceneId = scene.SceneId
-        };
-    }
-}
-
-internal class SerializedScene
-{
-    public string? DisplayName;
-    public Guid SceneId;
-
-    public List<GameObject> GameObjects = new();
 }

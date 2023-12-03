@@ -255,6 +255,19 @@
           }
         }
       },
+      "Jitter2/2.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net7.0/Jitter2.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Jitter2.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "JoltPhysicsSharp/1.9.12": {
         "type": "package",
         "compile": {
@@ -1844,6 +1857,23 @@
         "runtimes/win-arm64/native/cimgui.dll",
         "runtimes/win-x64/native/cimgui.dll",
         "runtimes/win-x86/native/cimgui.dll"
+      ]
+    },
+    "Jitter2/2.0.1": {
+      "sha512": "EySYsxh0wjz4PTh/2hJBNW/gC+THBbnMNuJ/VF+NKO0X1KsVkxiHTwgA7dHfF57LLI3A6t49tdKAJ5riOaskNg==",
+      "type": "package",
+      "path": "jitter2/2.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "jitter2.2.0.1.nupkg.sha512",
+        "jitter2.nuspec",
+        "lib/net6.0/Jitter2.dll",
+        "lib/net6.0/Jitter2.xml",
+        "lib/net7.0/Jitter2.dll",
+        "lib/net7.0/Jitter2.xml",
+        "readme.md"
       ]
     },
     "JoltPhysicsSharp/1.9.12": {
@@ -5298,6 +5328,7 @@
       "Hexa.NET.ImNodes >= 1.0.0",
       "Hexa.NET.ImPlot >= 1.0.0",
       "ImGui.NET >= 1.89.9.4",
+      "Jitter2 >= 2.0.1",
       "JoltPhysicsSharp >= 1.9.12",
       "Raylib-cs >= 5.0.0",
       "Twizzle.ImGui.NET >= 1.89.4",
@@ -5364,6 +5395,10 @@
           "ImGui.NET": {
             "target": "Package",
             "version": "[1.89.9.4, )"
+          },
+          "Jitter2": {
+            "target": "Package",
+            "version": "[2.0.1, )"
           },
           "JoltPhysicsSharp": {
             "target": "Package",

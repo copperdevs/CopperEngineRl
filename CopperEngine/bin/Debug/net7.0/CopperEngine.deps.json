@@ -14,6 +14,7 @@
           "Hexa.NET.ImNodes": "1.0.0",
           "Hexa.NET.ImPlot": "1.0.0",
           "ImGui.NET": "1.89.9.4",
+          "Jitter2": "2.0.1",
           "JoltPhysicsSharp": "1.9.12",
           "Raylib-cs": "5.0.0",
           "Twizzle.ImGui.NET": "1.89.4",
@@ -300,6 +301,14 @@
             "rid": "win-x86",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Jitter2/2.0.1": {
+        "runtime": {
+          "lib/net7.0/Jitter2.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.1.0"
           }
         }
       },
@@ -1170,6 +1179,13 @@
       "sha512": "sha512-9dkya/rigoasxmjprRy8D/bxHgpe3OnY7V6hDB8dN4Cnf0h2GoFtn+vizMdsvJOLlP/NNIkuAbMgNFm2dKalwQ==",
       "path": "imgui.net/1.89.9.4",
       "hashPath": "imgui.net.1.89.9.4.nupkg.sha512"
+    },
+    "Jitter2/2.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EySYsxh0wjz4PTh/2hJBNW/gC+THBbnMNuJ/VF+NKO0X1KsVkxiHTwgA7dHfF57LLI3A6t49tdKAJ5riOaskNg==",
+      "path": "jitter2/2.0.1",
+      "hashPath": "jitter2.2.0.1.nupkg.sha512"
     },
     "JoltPhysicsSharp/1.9.12": {
       "type": "package",

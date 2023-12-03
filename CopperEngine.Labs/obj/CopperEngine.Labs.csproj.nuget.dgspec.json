@@ -119,6 +119,10 @@
               "target": "Package",
               "version": "[1.89.9.4, )"
             },
+            "Jitter2": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
             "JoltPhysicsSharp": {
               "target": "Package",
               "version": "[1.9.12, )"

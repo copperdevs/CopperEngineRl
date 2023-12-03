@@ -5,7 +5,7 @@ using Color = CopperEngine.Data.Color;
 
 namespace CopperEngine.Testing;
 
-public class TestComponent : GameComponent
+public class TestComponent : Component
 {
     public Color CubeColor = Color.Red;
     public Color CubeOutlineColor = Color.Maroon;

@@ -1,6 +1,6 @@
 ﻿namespace CopperEngine.Components;
 
-public class Light : GameComponent
+public class Light : Component
 {
     public Light()
     {

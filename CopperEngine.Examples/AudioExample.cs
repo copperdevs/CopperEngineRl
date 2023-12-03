@@ -15,7 +15,7 @@ public class AudioExample : EngineApplication
     }
 }
 
-public class AudioComponent : GameComponent
+public class AudioComponent : Component
 {
     private AudioPlayer player;
     private Audio audio;
