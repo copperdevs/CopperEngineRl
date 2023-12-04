@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 using CopperEngine.Components;
-using CopperEngine.Physics;
+using Jitter2;
 
 namespace CopperEngine.Scenes;
 
@@ -10,6 +10,8 @@ public class Scene
     public readonly Guid SceneId;
 
     internal List<GameObject> GameObjects = new();
+
+    internal World PhysicsWorld = new();
     
     public Scene(string displayName) : this (displayName, Guid.NewGuid()) {}
     

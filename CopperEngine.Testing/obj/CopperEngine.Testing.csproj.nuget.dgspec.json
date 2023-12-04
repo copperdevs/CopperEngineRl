@@ -123,10 +123,6 @@
               "target": "Package",
               "version": "[2.0.1, )"
             },
-            "JoltPhysicsSharp": {
-              "target": "Package",
-              "version": "[1.9.12, )"
-            },
             "Raylib-cs": {
               "target": "Package",
               "version": "[5.0.0, )"

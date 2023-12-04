@@ -15,7 +15,6 @@
       <PackageReference Include="Hexa.NET.ImPlot" Version="1.0.0" />
       <PackageReference Include="ImGui.NET" Version="1.89.9.4" />
       <PackageReference Include="Jitter2" Version="2.0.1" />
-      <PackageReference Include="JoltPhysicsSharp" Version="1.9.12" />
       <PackageReference Include="Raylib-cs" Version="5.0.0" />
       <PackageReference Include="Twizzle.ImGui.NET" Version="1.89.4" />
       <PackageReference Include="Twizzle.ImGuizmo.NET" Version="1.89.4.1" />

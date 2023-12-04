@@ -1,7 +1,8 @@
 ﻿using System.Numerics;
 using CopperEngine.Components;
 using CopperEngine.Scenes;
-using JoltPhysicsSharp;
+using CopperEngine.Utility;
+using Jitter2.Collision.Shapes;
 
 namespace CopperEngine.Testing;
 
@@ -32,13 +33,13 @@ public static class Program
             var ground = physicsScene.CreateGameObject(-(Vector3.UnitY * 2));
         
             var groundSize = new Vector3(100, 1, 100)/2;
-            ground.AddComponent(new Rigidbody(new BoxShape(groundSize), MotionType.Static));
+            ground.AddComponent(new Rigidbody(new BoxShape(groundSize.ToJVector()), true));
             ground.AddComponent<TestComponent>();
 
             var cube = physicsScene.CreateGameObject();
         
             var cubeSize = Vector3.One/2;
-            cube.AddComponent(new Rigidbody(new BoxShape(cubeSize), MotionType.Dynamic, 1, 1));
+            cube.AddComponent(new Rigidbody(new BoxShape(cubeSize.ToJVector())));
             cube.AddComponent<TestComponent>();
             
             

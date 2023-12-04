@@ -2,12 +2,9 @@
 using System.Reflection;
 using CopperEngine.Data;
 using CopperEngine.Editor.Attributes;
-using CopperEngine.Physics;
 using CopperEngine.Scenes;
 using CopperEngine.Utility;
-using CopperEngine.Utils;
 using ImGuiNET;
-using JoltPhysicsSharp;
 
 namespace CopperEngine.Editor.DearImGui;
 
@@ -93,10 +90,6 @@ public static class ImGuiReflection
         { typeof(Scene), SceneFieldRenderer },
         { typeof(Transform), TransformFieldRenderer },
         { typeof(Color), ColorFieldRenderer },
-        { typeof(BodyID), JoltPhysicsBodyIdRenderer },
-        { typeof(ObjectLayer), JoltPhysicsObjectLayerRenderer },
-        { typeof(MotionType), JoltPhysicsMotionTypeLayerRenderer },
-        { typeof(Body), JoltPhysicsBodyRenderer }
     };
     
     private static void FloatFieldRenderer(FieldInfo fieldInfo, object component)
@@ -231,92 +224,6 @@ public static class ImGuiReflection
         if (ImGui.ColorEdit4($"{fieldInfo.Name}##{fieldInfo.Name}", ref vecColor))
         {
             fieldInfo.SetValue(component, new Color(vecColor * 255));
-        }
-    }
-
-    private static void JoltPhysicsBodyIdRenderer(FieldInfo fieldInfo, object component)
-    {
-        var value = (int)((BodyID)(fieldInfo.GetValue(component) ?? 0)).ID;
-        ImGui.DragInt($"{fieldInfo.Name}##{fieldInfo.Name}", ref value);
-    }
-
-    private static void JoltPhysicsObjectLayerRenderer(FieldInfo fieldInfo, object component)
-    {
-        var value = (int)((ObjectLayer)(fieldInfo.GetValue(component) ?? 0)).Value;
-
-        switch (value)
-        {
-            case Layers.NonMoving:
-                ImGui.LabelText("Layer", "Non Moving");
-                break;
-            case Layers.Moving:
-                ImGui.LabelText("Layer", "Moving");
-                break;
-        }
-    }
-
-    private static void JoltPhysicsMotionTypeLayerRenderer(FieldInfo fieldInfo, object component)
-    {
-        var value = ((MotionType)(fieldInfo.GetValue(component) ?? 0));
-        
-        switch (value)
-        {
-            case MotionType.Static:
-                ImGui.LabelText("Motion Type", "Static");
-                break;
-            case MotionType.Kinematic:
-                ImGui.LabelText("Motion Type", "Kinematic");
-                break;
-            case MotionType.Dynamic:
-                ImGui.LabelText("Motion Type", "Dynamic");
-                break;
-            default:
-                ImGui.LabelText("Motion Type", "???");
-                break;
-        }
-    }
-
-    private static void JoltPhysicsBodyRenderer(FieldInfo fieldInfo, object component)
-    {
-        var value = (Body)(fieldInfo.GetValue(component) ?? 0);
-        
-        if (ImGui.CollapsingHeader($"{fieldInfo.Name}##name"))
-        {
-            ImGui.Indent();
-            
-            switch (value.MotionType)
-            {
-                case MotionType.Static:
-                    ImGui.LabelText("Motion Type", "Static");
-                    break;
-                case MotionType.Kinematic:
-                    ImGui.LabelText("Motion Type", "Kinematic");
-                    break;
-                case MotionType.Dynamic:
-                    ImGui.LabelText("Motion Type", "Dynamic");
-                    break;
-                default:
-                    ImGui.LabelText("Motion Type", "???");
-                    break;
-            }
-            var allowSleeping = value.AllowSleeping;
-            ImGui.Checkbox("Allow Sleeping", ref allowSleeping);
-            var friction = value.Friction;
-            ImGui.DragFloat("Friction", ref friction);
-            var restitution = value.Restitution;
-            ImGui.DragFloat("Restitution", ref restitution);
-            var position = (Vector3)value.Position;
-            ImGui.DragFloat3("Position", ref position);
-            var rotation = new Vector4(value.Rotation.X, value.Rotation.Y, value.Rotation.Z, value.Rotation.W);
-            ImGui.DragFloat4("Rotation", ref rotation);
-            var centerOfMassPosition = (Vector3)value.CenterOfMassPosition;
-            ImGui.DragFloat3("Center of Mass Position", ref centerOfMassPosition);
-            // var worldTransform = value.WorldTransform;
-            // EditorUtil.DragMatrix4X4("World Transform", ref worldTransform);
-            // var centerOfMassTransform = value.CenterOfMassTransform;
-            // EditorUtil.DragMatrix4X4("Center of Mass Transform", ref centerOfMassTransform);
-            
-            ImGui.Unindent();
         }
     }
 }

@@ -268,45 +268,6 @@
           }
         }
       },
-      "JoltPhysicsSharp/1.9.12": {
-        "type": "package",
-        "compile": {
-          "lib/net7.0/JoltPhysicsSharp.dll": {
-            "related": ".pdb"
-          }
-        },
-        "runtime": {
-          "lib/net7.0/JoltPhysicsSharp.dll": {
-            "related": ".pdb"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/linux-x64/native/libjoltc.so": {
-            "assetType": "native",
-            "rid": "linux-x64"
-          },
-          "runtimes/osx-universal/native/libjoltc.dylib": {
-            "assetType": "native",
-            "rid": "osx-universal"
-          },
-          "runtimes/win-arm64/native/joltc.dll": {
-            "assetType": "native",
-            "rid": "win-arm64"
-          },
-          "runtimes/win-arm64/native/joltc_double.dll": {
-            "assetType": "native",
-            "rid": "win-arm64"
-          },
-          "runtimes/win-x64/native/joltc.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          },
-          "runtimes/win-x64/native/joltc_double.dll": {
-            "assetType": "native",
-            "rid": "win-x64"
-          }
-        }
-      },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
         "compile": {
@@ -1738,7 +1699,6 @@
           "Hexa.NET.ImPlot": "1.0.0",
           "ImGui.NET": "1.89.9.4",
           "Jitter2": "2.0.1",
-          "JoltPhysicsSharp": "1.9.12",
           "Raylib-cs": "5.0.0",
           "Twizzle.ImGui.NET": "1.89.4",
           "Twizzle.ImGuizmo.NET": "1.89.4.1"
@@ -1897,28 +1857,6 @@
         "lib/net7.0/Jitter2.dll",
         "lib/net7.0/Jitter2.xml",
         "readme.md"
-      ]
-    },
-    "JoltPhysicsSharp/1.9.12": {
-      "sha512": "Edre9KsjBZP6Uhi0rnBjcrlbes3iAGvHlEfVhczTcDoSoXXnc2oQmXPq+x+0mULFIp6xlnFfL7HL8CkQxuG7yg==",
-      "type": "package",
-      "path": "joltphysicssharp/1.9.12",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "joltphysicssharp.1.9.12.nupkg.sha512",
-        "joltphysicssharp.nuspec",
-        "lib/net7.0/JoltPhysicsSharp.dll",
-        "lib/net7.0/JoltPhysicsSharp.pdb",
-        "lib/net8.0/JoltPhysicsSharp.dll",
-        "lib/net8.0/JoltPhysicsSharp.pdb",
-        "runtimes/linux-x64/native/libjoltc.so",
-        "runtimes/osx-universal/native/libjoltc.dylib",
-        "runtimes/win-arm64/native/joltc.dll",
-        "runtimes/win-arm64/native/joltc_double.dll",
-        "runtimes/win-x64/native/joltc.dll",
-        "runtimes/win-x64/native/joltc_double.dll"
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {

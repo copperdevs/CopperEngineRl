@@ -1,6 +1,5 @@
 ﻿using CopperEngine.Components;
 using CopperEngine.Info;
-using CopperEngine.Physics;
 using CopperEngine.Scenes;
 using Raylib_cs;
 
@@ -10,20 +9,16 @@ public static class EnginePhysics
 {
     private static bool initialized;
 
-    public static Simulation Simulation { get; private set; }
 
     public static float FixedTimeStep = 0.02f;
     internal static float FixedTimer;
 
-    internal static PhysicsSettings PhysicsSettings = new();
 
     internal static void Initialize()
     {
         if (initialized)
             return;
         initialized = true;
-
-        Simulation = new Simulation(PhysicsSettings);
     }
 
     internal static void Update()
@@ -38,7 +33,7 @@ public static class EnginePhysics
 
     private static void FixedUpdate()
     {
-        Simulation.Update(1.0F / FixedTimeStep, 1);
+        SceneManager.ActiveScene.PhysicsWorld.Step(1.0f / FixedTimeStep);
         Engine.EngineApplication?.FixedUpdate();
         UpdateGameComponents();
     }
