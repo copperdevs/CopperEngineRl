@@ -14,25 +14,6 @@
           "CopperEngine.Labs.dll": {}
         }
       },
-      "BepuPhysics/2.5.0-beta.14": {
-        "dependencies": {
-          "BepuUtilities": "2.5.0-beta.14"
-        },
-        "runtime": {
-          "lib/net7.0/BepuPhysics.dll": {
-            "assemblyVersion": "2.5.0.0",
-            "fileVersion": "2.5.0.0"
-          }
-        }
-      },
-      "BepuUtilities/2.5.0-beta.14": {
-        "runtime": {
-          "lib/net7.0/BepuUtilities.dll": {
-            "assemblyVersion": "2.5.0.0",
-            "fileVersion": "2.5.0.0"
-          }
-        }
-      },
       "DeepCloner/0.10.4": {
         "dependencies": {
           "NETStandard.Library": "1.6.1"
@@ -276,7 +257,7 @@
       "ImGui.NET/1.89.9.4": {
         "dependencies": {
           "System.Buffers": "4.4.0",
-          "System.Numerics.Vectors": "4.4.0",
+          "System.Numerics.Vectors": "4.5.0",
           "System.Runtime.CompilerServices.Unsafe": "4.4.0"
         },
         "runtime": {
@@ -306,56 +287,8 @@
           }
         }
       },
-      "JoltPhysicsSharp/1.9.12": {
-        "runtime": {
-          "lib/net7.0/JoltPhysicsSharp.dll": {
-            "assemblyVersion": "1.9.12.0",
-            "fileVersion": "1.9.12.0"
-          }
-        },
-        "runtimeTargets": {
-          "runtimes/linux-x64/native/libjoltc.so": {
-            "rid": "linux-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/osx-universal/native/libjoltc.dylib": {
-            "rid": "osx-universal",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win-arm64/native/joltc.dll": {
-            "rid": "win-arm64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win-arm64/native/joltc_double.dll": {
-            "rid": "win-arm64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win-x64/native/joltc.dll": {
-            "rid": "win-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win-x64/native/joltc_double.dll": {
-            "rid": "win-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          }
-        }
-      },
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
-      "Microsoft.Toolkit.HighPerformance/7.1.2": {
-        "runtime": {
-          "lib/net5.0/Microsoft.Toolkit.HighPerformance.dll": {
-            "assemblyVersion": "7.1.0.0",
-            "fileVersion": "7.1.2.1"
-          }
-        }
-      },
       "Microsoft.Win32.Primitives/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -411,13 +344,13 @@
           "System.Xml.XDocument": "4.3.0"
         }
       },
-      "Raylib-CsLo/4.2.0.9": {
+      "Raylib-cs/5.0.0": {
         "dependencies": {
-          "Microsoft.Toolkit.HighPerformance": "7.1.2"
+          "System.Numerics.Vectors": "4.5.0"
         },
         "runtime": {
-          "lib/netstandard2.1/Raylib-CsLo.dll": {
-            "assemblyVersion": "0.0.0.20128",
+          "lib/net6.0/Raylib-cs.dll": {
+            "assemblyVersion": "0.0.0.0",
             "fileVersion": "0.0.0.0"
           }
         },
@@ -427,17 +360,7 @@
             "assetType": "native",
             "fileVersion": "0.0.0.0"
           },
-          "runtimes/linux-x64/native/readme.md": {
-            "rid": "linux-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
           "runtimes/osx-arm64/native/libraylib.dylib": {
-            "rid": "osx-arm64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/osx-arm64/native/readme.md": {
             "rid": "osx-arm64",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
@@ -447,22 +370,12 @@
             "assetType": "native",
             "fileVersion": "0.0.0.0"
           },
-          "runtimes/osx-x64/native/readme.md": {
-            "rid": "osx-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
           "runtimes/win-x64/native/raylib.dll": {
             "rid": "win-x64",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
           },
-          "runtimes/win-x64/native/raylib.pdb": {
-            "rid": "win-x64",
-            "assetType": "native",
-            "fileVersion": "0.0.0.0"
-          },
-          "runtimes/win-x86/native/needs-pr.txt": {
+          "runtimes/win-x86/native/raylib.dll": {
             "rid": "win-x86",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
@@ -744,7 +657,7 @@
           "System.Threading.Tasks": "4.3.0"
         }
       },
-      "System.Numerics.Vectors/4.4.0": {},
+      "System.Numerics.Vectors/4.5.0": {},
       "System.ObjectModel/4.3.0": {
         "dependencies": {
           "System.Collections": "4.3.0",
@@ -1075,7 +988,7 @@
       "Twizzle.ImGui.NET/1.89.4": {
         "dependencies": {
           "System.Buffers": "4.4.0",
-          "System.Numerics.Vectors": "4.4.0",
+          "System.Numerics.Vectors": "4.5.0",
           "System.Runtime.CompilerServices.Unsafe": "4.4.0"
         },
         "runtimeTargets": {
@@ -1089,7 +1002,7 @@
       "Twizzle.ImGuizmo.NET/1.89.4.1": {
         "dependencies": {
           "System.Buffers": "4.4.0",
-          "System.Numerics.Vectors": "4.4.0",
+          "System.Numerics.Vectors": "4.5.0",
           "System.Runtime.CompilerServices.Unsafe": "4.4.0",
           "Twizzle.ImGui.NET": "1.89.4"
         },
@@ -1124,8 +1037,6 @@
       },
       "CopperEngine/1.0.0": {
         "dependencies": {
-          "BepuPhysics": "2.5.0-beta.14",
-          "BepuUtilities": "2.5.0-beta.14",
           "DeepCloner": "0.10.4",
           "Hexa.NET.ImGui": "1.0.0",
           "Hexa.NET.ImGuizmo": "1.0.0",
@@ -1133,8 +1044,7 @@
           "Hexa.NET.ImPlot": "1.0.0",
           "ImGui.NET": "1.89.9.4",
           "Jitter2": "2.0.1",
-          "JoltPhysicsSharp": "1.9.12",
-          "Raylib-CsLo": "4.2.0.9",
+          "Raylib-cs": "5.0.0",
           "Twizzle.ImGui.NET": "1.89.4",
           "Twizzle.ImGuizmo.NET": "1.89.4.1"
         },
@@ -1149,20 +1059,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "BepuPhysics/2.5.0-beta.14": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-bpcArsUlCPAv1+vNqOOAQqCsFlMdWtt+yA5168+hoc+2GNEaYP0J/sihlOgheKCgGO1LCK9GelcDpBgPdopX+w==",
-      "path": "bepuphysics/2.5.0-beta.14",
-      "hashPath": "bepuphysics.2.5.0-beta.14.nupkg.sha512"
-    },
-    "BepuUtilities/2.5.0-beta.14": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/yzTEVDyhApGvs1yb7EfGG4jpDO/1HAxi0ASHzQM7z4zQOtCPZJAtQqNY4omRxqN/bblIWSl0Q8Z4s0VaxErdQ==",
-      "path": "bepuutilities/2.5.0-beta.14",
-      "hashPath": "bepuutilities.2.5.0-beta.14.nupkg.sha512"
     },
     "DeepCloner/0.10.4": {
       "type": "package",
@@ -1213,13 +1109,6 @@
       "path": "jitter2/2.0.1",
       "hashPath": "jitter2.2.0.1.nupkg.sha512"
     },
-    "JoltPhysicsSharp/1.9.12": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Edre9KsjBZP6Uhi0rnBjcrlbes3iAGvHlEfVhczTcDoSoXXnc2oQmXPq+x+0mULFIp6xlnFfL7HL8CkQxuG7yg==",
-      "path": "joltphysicssharp/1.9.12",
-      "hashPath": "joltphysicssharp.1.9.12.nupkg.sha512"
-    },
     "Microsoft.NETCore.Platforms/1.1.0": {
       "type": "package",
       "serviceable": true,
@@ -1233,13 +1122,6 @@
       "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
-    },
-    "Microsoft.Toolkit.HighPerformance/7.1.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-cezzRky0BUJyYmSrcQUcX8qAv90JfUwCqWEbqfWZLHyeANo9/LWgW6y50pqbyc8r8SPXVsu2GNH98fB3VxrnvA==",
-      "path": "microsoft.toolkit.highperformance/7.1.2",
-      "hashPath": "microsoft.toolkit.highperformance.7.1.2.nupkg.sha512"
     },
     "Microsoft.Win32.Primitives/4.3.0": {
       "type": "package",
@@ -1255,12 +1137,12 @@
       "path": "netstandard.library/1.6.1",
       "hashPath": "netstandard.library.1.6.1.nupkg.sha512"
     },
-    "Raylib-CsLo/4.2.0.9": {
+    "Raylib-cs/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-s0KLEXCfylhCgMfc0elHJyC7I2ZdqylQzSA1GhHwp7pPJmoQx80kZh5OkTbiirOuHSIeQ87JojEA439MarGhWQ==",
-      "path": "raylib-cslo/4.2.0.9",
-      "hashPath": "raylib-cslo.4.2.0.9.nupkg.sha512"
+      "sha512": "sha512-eVpVxfejtkLXVtJgEmM63SuIS+Qw/ooLLqbhSKjKTaBxnE0NuSp6YJQU9W69AsZheXWFvK7ZPgC8WcJdG23/WA==",
+      "path": "raylib-cs/5.0.0",
+      "hashPath": "raylib-cs.5.0.0.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
@@ -1528,12 +1410,12 @@
       "path": "system.net.sockets/4.3.0",
       "hashPath": "system.net.sockets.4.3.0.nupkg.sha512"
     },
-    "System.Numerics.Vectors/4.4.0": {
+    "System.Numerics.Vectors/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UiLzLW+Lw6HLed1Hcg+8jSRttrbuXv7DANVj0DkL9g6EnnzbL75EB7EWsw5uRbhxd/4YdG8li5XizGWepmG3PQ==",
-      "path": "system.numerics.vectors/4.4.0",
-      "hashPath": "system.numerics.vectors.4.4.0.nupkg.sha512"
+      "sha512": "sha512-QQTlPTl06J/iiDbJCiepZ4H//BVraReU4O4EoRw1U02H5TLUIT7xn3GnDp9AXPSlJUDyFs4uWjWafNX6WrAojQ==",
+      "path": "system.numerics.vectors/4.5.0",
+      "hashPath": "system.numerics.vectors.4.5.0.nupkg.sha512"
     },
     "System.ObjectModel/4.3.0": {
       "type": "package",
