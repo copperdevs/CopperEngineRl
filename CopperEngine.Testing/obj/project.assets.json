@@ -1692,7 +1692,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "CopperMath": "1.0.0",
           "DeepCloner": "0.10.4",
           "Hexa.NET.ImGui": "1.0.0",
           "Hexa.NET.ImGuizmo": "1.0.0",
@@ -1709,16 +1708,6 @@
         },
         "runtime": {
           "bin/placeholder/CopperEngine.dll": {}
-        }
-      },
-      "CopperMath/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v7.0",
-        "compile": {
-          "bin/placeholder/CopperMath.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CopperMath.dll": {}
         }
       }
     }
@@ -5295,11 +5284,6 @@
       "type": "project",
       "path": "../CopperEngine/CopperEngine.csproj",
       "msbuildProject": "../CopperEngine/CopperEngine.csproj"
-    },
-    "CopperMath/1.0.0": {
-      "type": "project",
-      "path": "../CopperMath/CopperMath.csproj",
-      "msbuildProject": "../CopperMath/CopperMath.csproj"
     }
   },
   "projectFileDependencyGroups": {
