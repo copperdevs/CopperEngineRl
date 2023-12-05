@@ -2,7 +2,7 @@
 using CopperEngine.Utility;
 using Jitter2;
 using Jitter2.Collision.Shapes;
-using Raylib_cs;
+using Jitter2.Dynamics;
 using Color = CopperEngine.Data.Color;
 using JitterRigidbody = Jitter2.Dynamics.RigidBody;
 using Transform = CopperEngine.Data.Transform;
@@ -13,8 +13,8 @@ public class Rigidbody : Component
 {
     public World Simulation => ParentScene.PhysicsWorld;
 
-    private JitterRigidbody JitterRigidbody;
-    private Shape RigidbodyShape;
+    public JitterRigidbody JitterRigidbody;
+    public Shape RigidbodyShape;
 
     private bool isStatic = false;
 
@@ -42,7 +42,7 @@ public class Rigidbody : Component
 
     protected internal override void PreUpdate()
     {
-        Transform.Matrix = JitterRigidbody.GetTransformMatrix();
+        Transform.Matrix = JitterRigidbody.GetTransformMatrix().ToRowMajor();
     }
 
     protected internal override void PostUpdate()

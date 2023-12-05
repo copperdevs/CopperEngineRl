@@ -1037,6 +1037,7 @@
       },
       "CopperEngine/1.0.0": {
         "dependencies": {
+          "CopperMath": "1.0.0",
           "DeepCloner": "0.10.4",
           "Hexa.NET.ImGui": "1.0.0",
           "Hexa.NET.ImGuizmo": "1.0.0",
@@ -1050,6 +1051,11 @@
         },
         "runtime": {
           "CopperEngine.dll": {}
+        }
+      },
+      "CopperMath/1.0.0": {
+        "runtime": {
+          "CopperMath.dll": {}
         }
       }
     }
@@ -1656,6 +1662,11 @@
       "hashPath": "twizzle.imguizmo.net.1.89.4.1.nupkg.sha512"
     },
     "CopperEngine/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CopperMath/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

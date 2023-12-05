@@ -4,7 +4,9 @@ using CopperEngine.Data;
 using CopperEngine.Editor.Attributes;
 using CopperEngine.Scenes;
 using CopperEngine.Utility;
+using CopperEngine.Utils;
 using ImGuiNET;
+using Jitter2.Dynamics;
 
 namespace CopperEngine.Editor.DearImGui;
 
@@ -90,6 +92,7 @@ public static class ImGuiReflection
         { typeof(Scene), SceneFieldRenderer },
         { typeof(Transform), TransformFieldRenderer },
         { typeof(Color), ColorFieldRenderer },
+        { typeof(Jitter2.Dynamics.RigidBody), JitterRigidbodyRenderer },
     };
     
     private static void FloatFieldRenderer(FieldInfo fieldInfo, object component)
@@ -225,5 +228,46 @@ public static class ImGuiReflection
         {
             fieldInfo.SetValue(component, new Color(vecColor * 255));
         }
+    }
+
+    private static void JitterRigidbodyRenderer(FieldInfo fieldInfo, object component)
+    {
+        var value = ((RigidBody)(fieldInfo.GetValue(component) ?? null!)).Data;
+
+        var index = value._index;
+        ImGui.DragInt("Index", ref index);
+        
+        var lockFlag = value._lockFlag;
+        ImGui.DragInt("Lock Flag", ref lockFlag);
+        
+        var position = value.Position.ToVector3();
+        ImGui.DragFloat3("Position", ref position);
+        
+        var velocity = value.Velocity.ToVector3();
+        ImGui.DragFloat3("Velocity", ref velocity);
+        
+        var angularVelocity = value.AngularVelocity.ToVector3();
+        ImGui.DragFloat3("Angular Velocity", ref angularVelocity);
+        
+        var deltaVelocity = value.DeltaVelocity.ToVector3();
+        ImGui.DragFloat3("Delta Velocity", ref deltaVelocity);
+        
+        var deltaAngularVelocity = value.DeltaAngularVelocity.ToVector3();
+        ImGui.DragFloat3("Delta Angular Velocity", ref deltaAngularVelocity);
+        
+        var orientation = value.Orientation.ToMatrix4X4();
+        EditorUtil.DragMatrix4X4("Orientation", ref orientation);
+        
+        var inverseInertiaWorld = value.InverseInertiaWorld.ToMatrix4X4();
+        EditorUtil.DragMatrix4X4("Inverse Inertia World", ref inverseInertiaWorld);
+        
+        var inverseMass = value.InverseMass;
+        ImGui.DragFloat("Inverse Mass", ref inverseMass);
+        
+        var isActive = value.IsActive;
+        ImGui.Checkbox("Is Active", ref isActive);
+        
+        var isStatic = value.IsStatic;
+        ImGui.Checkbox("Is Static", ref isStatic);
     }
 }

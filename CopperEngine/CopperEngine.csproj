@@ -72,4 +72,8 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </EmbeddedResource>
     </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CopperMath\CopperMath.csproj" />
+    </ItemGroup>
 </Project>

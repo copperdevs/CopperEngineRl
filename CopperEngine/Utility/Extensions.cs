@@ -129,9 +129,18 @@ public static class Extensions
     {
         return new JVector(vector.X, vector.Y, vector.Z);
     }
-    
+
     public static Vector3 ToVector3(this JVector vector)
     {
         return new Vector3(vector.X, vector.Y, vector.Z);
+    }
+
+    public static Matrix4x4 ToMatrix4X4(this JMatrix matrix)
+    {
+        return new Matrix4x4(
+            matrix.M11, matrix.M12, matrix.M13, 0,
+            matrix.M21, matrix.M22, matrix.M23, 0,
+            matrix.M31, matrix.M32, matrix.M33, 0,
+            0, 0, 0, 0);
     }
 }

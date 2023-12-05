@@ -32,13 +32,13 @@ public static class Program
 
             var ground = physicsScene.CreateGameObject(-(Vector3.UnitY * 2));
         
-            var groundSize = new Vector3(100, 1, 100)/2;
+            var groundSize = new Vector3(100, 1, 100);
             ground.AddComponent(new Rigidbody(new BoxShape(groundSize.ToJVector()), true));
             ground.AddComponent<TestComponent>();
 
             var cube = physicsScene.CreateGameObject();
         
-            var cubeSize = Vector3.One/2;
+            var cubeSize = Vector3.One;
             cube.AddComponent(new Rigidbody(new BoxShape(cubeSize.ToJVector())));
             cube.AddComponent<TestComponent>();
             

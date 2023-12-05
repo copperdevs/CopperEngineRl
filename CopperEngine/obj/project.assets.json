@@ -1687,6 +1687,16 @@
             "rid": "win-x86"
           }
         }
+      },
+      "CopperMath/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/CopperMath.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CopperMath.dll": {}
+        }
       }
     }
   },
@@ -5257,10 +5267,16 @@
         "twizzle.imguizmo.net.1.89.4.1.nupkg.sha512",
         "twizzle.imguizmo.net.nuspec"
       ]
+    },
+    "CopperMath/1.0.0": {
+      "type": "project",
+      "path": "../CopperMath/CopperMath.csproj",
+      "msbuildProject": "../CopperMath/CopperMath.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "CopperMath >= 1.0.0",
       "DeepCloner >= 0.10.4",
       "Hexa.NET.ImGui >= 1.0.0",
       "Hexa.NET.ImGuizmo >= 1.0.0",
@@ -5297,7 +5313,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\715263\\Desktop\\School-Work\\Dev\\Projects\\Rider\\CopperEngineRl\\CopperMath\\CopperMath.csproj": {
+              "projectPath": "C:\\Users\\715263\\Desktop\\School-Work\\Dev\\Projects\\Rider\\CopperEngineRl\\CopperMath\\CopperMath.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

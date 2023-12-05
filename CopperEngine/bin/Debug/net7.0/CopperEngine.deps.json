@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "CopperEngine/1.0.0": {
         "dependencies": {
+          "CopperMath": "1.0.0",
           "DeepCloner": "0.10.4",
           "Hexa.NET.ImGui": "1.0.0",
           "Hexa.NET.ImGuizmo": "1.0.0",
@@ -1088,6 +1089,11 @@
             "fileVersion": "0.0.0.0"
           }
         }
+      },
+      "CopperMath/1.0.0": {
+        "runtime": {
+          "CopperMath.dll": {}
+        }
       }
     }
   },
@@ -1691,6 +1697,11 @@
       "sha512": "sha512-LUFkfUe9TB4Aoe5o0dYkTmkqRJMo8y441IjvnNNIbQM0YCqQFjkDgOWxKvMP7aq5guUqSO1jd4qxHQaeKm82sw==",
       "path": "twizzle.imguizmo.net/1.89.4.1",
       "hashPath": "twizzle.imguizmo.net.1.89.4.1.nupkg.sha512"
+    },
+    "CopperMath/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
