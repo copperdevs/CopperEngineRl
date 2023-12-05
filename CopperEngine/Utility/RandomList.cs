@@ -22,9 +22,14 @@ public class RandomList<T> : IEnumerable<T>
         this.list = new List<T>();
     }
 
+    public T GetRandomValue()
+    {
+        return list[listRandom.Next(list.Count-1)];
+    }
+
     public static implicit operator T(RandomList<T> value)
     {
-        return value.list[value.listRandom.Next(value.list.Count-1)];
+        return value.GetRandomValue();
     }
 
     public IEnumerator<T> GetEnumerator()

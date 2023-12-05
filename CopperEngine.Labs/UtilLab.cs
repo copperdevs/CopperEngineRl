@@ -10,7 +10,7 @@ public class UtilLab
         var randomFloatList = new RandomList<float>(new List<float> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
         var randomIntList = new RandomList<int>(1, 2, 3, 4, 5, 6, 7, 8, 9, 10) { 5, 5, 6 };
         var randomByteList = new RandomList<byte> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        
+
         for (var i = 0; i < 5; i++)
         {
             float randomFloatValue = randomFloatList;
