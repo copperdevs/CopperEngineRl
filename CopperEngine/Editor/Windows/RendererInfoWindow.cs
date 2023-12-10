@@ -1,14 +1,14 @@
-﻿using CopperEngine.Utils;
+﻿using CopperEngine.Utility;
 using ImGuiNET;
 
 namespace CopperEngine.Editor.Windows;
 
 [EditorWindow("Renderer Info", StartingState = false)]
-public class RendererInfoWindow : BaseEditorWindow
+internal sealed class RendererInfoWindow : BaseEditorWindow
 {
     internal override void Render()
     {
-        if(ImGui.CollapsingHeader("Cameras"))
+        if (ImGui.CollapsingHeader("Cameras"))
         {
             ImGui.Indent();
 
@@ -16,7 +16,8 @@ public class RendererInfoWindow : BaseEditorWindow
             {
                 ImGui.Indent();
                 EditorUtil.DragMatrix4X4("View Matrix##editor_camera", EngineRenderer.EditorCamera.ViewMatrix);
-                EditorUtil.DragMatrix4X4("Projection Matrix##editor_camera", EngineRenderer.EditorCamera.ProjectionMatrix);
+                EditorUtil.DragMatrix4X4("Projection Matrix##editor_camera",
+                    EngineRenderer.EditorCamera.ProjectionMatrix);
                 ImGui.Unindent();
             }
 
@@ -27,7 +28,7 @@ public class RendererInfoWindow : BaseEditorWindow
                 EditorUtil.DragMatrix4X4("Projection Matrix##game_camera", EngineRenderer.GameCamera.ProjectionMatrix);
                 ImGui.Unindent();
             }
-            
+
             ImGui.Unindent();
         }
     }

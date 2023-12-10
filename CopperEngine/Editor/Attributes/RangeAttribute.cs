@@ -1,7 +1,7 @@
 ﻿namespace CopperEngine.Editor.Attributes;
 
 [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
-public class RangeAttribute : Attribute
+public sealed class RangeAttribute : Attribute
 {
     public readonly float Min;
     public readonly float Max;
@@ -12,5 +12,7 @@ public class RangeAttribute : Attribute
         Max = max;
     }
 
-    public RangeAttribute(float max) : this(0, max) { }
+    public RangeAttribute(float max) : this(0, max)
+    {
+    }
 }

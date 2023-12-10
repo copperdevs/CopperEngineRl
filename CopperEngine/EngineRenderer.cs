@@ -9,6 +9,7 @@ namespace CopperEngine;
 public static class EngineRenderer
 {
     internal static RenderTexture2D GameTexture;
+
     internal static readonly Camera GameCamera = new()
     {
         Position = new Vector3(10, 10, 10),
@@ -16,6 +17,7 @@ public static class EngineRenderer
     };
 
     internal static RenderTexture2D EditorTexture;
+
     internal static readonly Camera EditorCamera = new()
     {
         Position = new Vector3(-10, 10, -10),
@@ -23,13 +25,13 @@ public static class EngineRenderer
     };
 
     private static bool initialized;
-    
+
     internal static void Initialize()
     {
         if (initialized)
             return;
         initialized = true;
-        
+
         GameTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
         EditorTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
     }
@@ -43,31 +45,31 @@ public static class EngineRenderer
             Raylib.UnloadRenderTexture(EditorTexture);
             EditorTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
         }
-            
+
         // game - always do this
         {
             Raylib.BeginTextureMode(GameTexture);
             Raylib.ClearBackground(ColorUtil.DarkGray);
             Raylib.BeginMode3D(GameCamera);
-            
+
             RenderScene();
-            
+
             Raylib.EndMode3D();
             Raylib.EndTextureMode();
         }
-            
+
         // editor - only do if editor
-        if(Engine.State is Engine.EngineState.Editor)
+        if (Engine.State is Engine.EngineState.Editor)
         {
             Raylib.BeginTextureMode(EditorTexture);
             Raylib.ClearBackground(ColorUtil.DarkGray);
             Raylib.BeginMode3D(EditorCamera);
-            
+
             RenderScene();
-            
+
             Raylib.DrawGrid(100, 1);
 
-            
+
             Raylib.EndMode3D();
             Raylib.EndTextureMode();
         }
@@ -76,7 +78,9 @@ public static class EngineRenderer
         {
             PostProcessingRender(() =>
             {
-                Raylib.DrawTextureRec(GameTexture.Texture, new Rectangle(0, 0, GameTexture.Texture.Width, -GameTexture.Texture.Height), Vector2.Zero, ColorUtil.White);
+                Raylib.DrawTextureRec(GameTexture.Texture,
+                    new Rectangle(0, 0, GameTexture.Texture.Width, -GameTexture.Texture.Height), Vector2.Zero,
+                    ColorUtil.White);
             });
         }
     }
@@ -85,7 +89,7 @@ public static class EngineRenderer
     {
         renderMethod.Invoke();
     }
-    
+
     private static void RenderScene()
     {
         // Raylib.DrawCube(Vector3.Zero, 1, 1, 1, ColorUtil.Red);

@@ -1,5 +1,4 @@
 ﻿using CopperEngine.Info;
-using CopperEngine.Logs;
 using Raylib_cs;
 
 namespace CopperEngine;
@@ -23,13 +22,13 @@ public static class Engine
     {
         Initialize(new T());
     }
-    
+
     public static void Initialize(EngineApplication application)
     {
         Initialize(() =>
         {
             EngineApplication = application;
-            
+
             EngineApplication.Load();
             EngineWindow.WindowResized += EngineApplication.WindowResize;
         });
@@ -37,9 +36,9 @@ public static class Engine
 
     public static void Initialize()
     {
-        Initialize(() => {});
+        Initialize(() => { });
     }
-    
+
     public static void Initialize(Action loadAction)
     {
         if (initialized)
@@ -52,9 +51,9 @@ public static class Engine
         InitializeElement(EngineRenderer.Initialize, "Engine Renderer");
         InitializeElement(EngineEditor.Initialize, "Engine Editor");
         InitializeElement(EnginePhysics.Initialize, "Engine Physics");
-        
+
         InitializeElement(loadAction, "Engine Load Action");
-        
+
         return;
 
         void InitializeElement(Action target, string name)
@@ -71,21 +70,21 @@ public static class Engine
         {
             EnginePhysics.Update();
             Input.CheckInput();
-            
+
             EngineWindow.Update();
-            
+
             Raylib.BeginDrawing();
-            
+
             EngineRenderer.Render();
             EngineEditor.Render();
-            
+
             EngineApplication?.PreUpdate();
             EngineApplication?.Update();
             EngineApplication?.PostUpdate();
-            
+
             Raylib.EndDrawing();
         }
-        
+
         Stop();
     }
 

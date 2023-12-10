@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace CopperEngine.Data;
 
-public class Transform
+public sealed class Transform
 {
     [JsonInclude]
     public Vector3 Position { get; set; } = Vector3.Zero;

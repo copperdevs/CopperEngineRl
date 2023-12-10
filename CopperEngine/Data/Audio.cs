@@ -1,9 +1,9 @@
 ﻿using Raylib_cs;
 using rlAudio = Raylib_cs.Sound;
 
-namespace CopperEngine.Components;
+namespace CopperEngine.Data;
 
-public class Audio : IDisposable
+public sealed class Audio : IDisposable
 {
     private readonly rlAudio audio;
 
@@ -11,7 +11,7 @@ public class Audio : IDisposable
     {
         audio = Raylib.LoadSound(path);
     }
-    
+
     public void Dispose()
     {
         Raylib.UnloadSound(audio);

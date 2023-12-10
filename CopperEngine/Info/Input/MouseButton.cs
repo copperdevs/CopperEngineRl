@@ -1,6 +1,4 @@
-﻿
-
-using rlMouseButton = Raylib_cs.MouseButton;
+﻿using rlMouseButton = Raylib_cs.MouseButton;
 
 namespace CopperEngine.Info;
 

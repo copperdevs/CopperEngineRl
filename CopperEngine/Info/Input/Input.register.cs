@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using Raylib_cs;
-
 using rlMouseButton = Raylib_cs.MouseButton;
 using rlGamepadButton = Raylib_cs.GamepadButton;
 
@@ -13,22 +12,22 @@ public static partial class Input
     private static readonly List<(GamepadButton[], ButtonPressType, Action)> GamepadButtonActions = new();
 
     private static readonly List<(AxisInput, Action<Vector2>)> AxisInputActions = new();
-    
+
     public static void RegisterInput(KeyboardButton button, ButtonPressType pressType, Action action)
     {
-        KeyboardButtonActions.Add((new[]{button}, pressType, action));
+        KeyboardButtonActions.Add((new[] { button }, pressType, action));
     }
 
     public static void RegisterInput(MouseButton button, ButtonPressType pressType, Action action)
     {
-        MouseButtonActions.Add((new[]{button}, pressType, action));
+        MouseButtonActions.Add((new[] { button }, pressType, action));
     }
 
     public static void RegisterInput(GamepadButton button, ButtonPressType pressType, Action action)
     {
-        GamepadButtonActions.Add((new[]{button}, pressType, action));
+        GamepadButtonActions.Add((new[] { button }, pressType, action));
     }
-    
+
     public static void RegisterInput(KeyboardButton[] button, ButtonPressType pressType, Action action)
     {
         KeyboardButtonActions.Add((button, pressType, action));
@@ -54,7 +53,7 @@ public static partial class Input
         foreach (var button in KeyboardButtonActions)
         {
             var mainDown = true;
-            
+
             foreach (var keyButton in button.Item1)
             {
                 var buttonDown = button.Item2 switch
@@ -71,11 +70,11 @@ public static partial class Input
                 else
                     mainDown = false;
             }
-            
-            if(mainDown)
+
+            if (mainDown)
                 button.Item3.Invoke();
         }
-        
+
         foreach (var button in MouseButtonActions)
         {
             var mainDown = true;
@@ -96,11 +95,11 @@ public static partial class Input
                 else
                     mainDown = false;
             }
-            
-            if(mainDown)
+
+            if (mainDown)
                 button.Item3.Invoke();
         }
-        
+
         foreach (var button in GamepadButtonActions)
         {
             var mainDown = true;
@@ -121,8 +120,8 @@ public static partial class Input
                 else
                     mainDown = false;
             }
-            
-            if(mainDown)
+
+            if (mainDown)
                 button.Item3.Invoke();
         }
 
@@ -131,23 +130,27 @@ public static partial class Input
             switch (axis.Item1)
             {
                 case AxisInput.GamepadLeftJoystick:
-                    axis.Item2.Invoke(new Vector2(Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_LEFT_X), Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_LEFT_Y)));
+                    axis.Item2.Invoke(new Vector2(Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_LEFT_X),
+                        Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_LEFT_Y)));
                     break;
                 case AxisInput.GamepadRightJoystick:
-                    axis.Item2.Invoke(new Vector2(Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_RIGHT_X), Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_RIGHT_Y)));
+                    axis.Item2.Invoke(new Vector2(Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_RIGHT_X),
+                        Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_RIGHT_Y)));
                     break;
                 case AxisInput.GamepadLeftTrigger:
-                    axis.Item2.Invoke(new Vector2(Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_LEFT_TRIGGER), 0));
+                    axis.Item2.Invoke(
+                        new Vector2(Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_LEFT_TRIGGER), 0));
                     break;
                 case AxisInput.GamepadRightTrigger:
-                    axis.Item2.Invoke(new Vector2(Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_RIGHT_TRIGGER), 0));
+                    axis.Item2.Invoke(
+                        new Vector2(Raylib.GetGamepadAxisMovement(0, GamepadAxis.GAMEPAD_AXIS_RIGHT_TRIGGER), 0));
                     break;
-                case AxisInput.MouseScroll: 
+                case AxisInput.MouseScroll:
                     axis.Item2.Invoke(Raylib.GetMouseWheelMoveV());
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
-            }   
+            }
         }
     }
 }

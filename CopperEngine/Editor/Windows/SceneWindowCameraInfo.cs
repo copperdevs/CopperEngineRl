@@ -4,7 +4,7 @@ using ImGuiNET;
 namespace CopperEngine.Editor.Windows;
 
 [EditorWindow("Scene Window Camera Info", StartingState = false)]
-public class SceneWindowCameraInfo : BaseEditorWindow
+internal sealed class SceneWindowCameraInfo : BaseEditorWindow
 {
     internal override void Render()
     {
@@ -23,7 +23,7 @@ public class SceneWindowCameraInfo : BaseEditorWindow
             ImGui.DragFloat("Pitch##cameracontrollervalues", ref EditorCameraController.Pitch);
             ImGui.DragFloat("Yaw##cameracontrollervalues", ref EditorCameraController.Yaw);
             ImGui.Separator();
-            ImGui.Checkbox("Is Looking##cameracontrollervalues", ref EditorCameraController.IsLooking);  
+            ImGui.Checkbox("Is Looking##cameracontrollervalues", ref EditorCameraController.IsLooking);
             ImGui.Unindent();
         }
 

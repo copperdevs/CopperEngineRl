@@ -1,4 +1,4 @@
-﻿using CopperEngine.Logs;
+﻿using CopperEngine.Info;
 using CopperEngine.Utility;
 
 namespace CopperEngine.Labs;

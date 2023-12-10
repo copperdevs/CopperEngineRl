@@ -1,5 +1,5 @@
 ﻿using System.Numerics;
-using CopperEngine.Logs;
+using CopperEngine.Info;
 
 namespace CopperEngine.Examples;
 

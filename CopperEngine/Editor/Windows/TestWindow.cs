@@ -3,7 +3,7 @@
 namespace CopperEngine.Editor.Windows;
 
 [EditorWindow("Test Window", StartingState = false)]
-public class TestWindow : BaseEditorWindow
+internal sealed class TestWindow : BaseEditorWindow
 {
     internal override void Render()
     {
@@ -15,7 +15,5 @@ public class TestWindow : BaseEditorWindow
             ImGui.PopTextWrapPos();
             ImGui.EndTooltip();
         }
-
-
     }
 }

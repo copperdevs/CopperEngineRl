@@ -1,21 +1,21 @@
 ﻿using CopperEngine.Editor.DearImGui;
-using CopperEngine.Utils;
+using CopperEngine.Utility;
 using ImGuiNET;
 
 namespace CopperEngine.Editor.Windows;
 
 [EditorWindow("Inspector", StartingState = true)]
-public class InspectorWindow : BaseEditorWindow
+internal sealed class InspectorWindow : BaseEditorWindow
 {
-    internal static bool transformOpen = true;
-    
+    internal static bool TransformOpen = true;
+
     internal override void Render()
     {
         if (HierarchyWindow.CurrentTarget is null)
             return;
 
-        transformOpen = ImGui.CollapsingHeader("Transform");
-        if (transformOpen)
+        TransformOpen = ImGui.CollapsingHeader("Transform");
+        if (TransformOpen)
         {
             ImGui.Indent();
             var transformPosition = HierarchyWindow.CurrentTarget.Transform.Position;
@@ -35,15 +35,15 @@ public class InspectorWindow : BaseEditorWindow
         for (var index = 0; index < HierarchyWindow.CurrentTarget.GameComponents.Count; index++)
         {
             var component = HierarchyWindow.CurrentTarget.GameComponents[index];
-            
+
             if (ImGui.CollapsingHeader($"{component.GetType().Name}##{index}"))
             {
                 ImGui.Indent();
-                
+
                 ImGuiReflection.RenderValues(component);
                 component.EditorUpdate();
                 HierarchyWindow.CurrentTarget.GameComponents[index] = component;
-                
+
                 ImGui.Unindent();
             }
         }

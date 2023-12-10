@@ -1,12 +1,11 @@
 ﻿using System.Numerics;
-using CopperEngine.Utils;
+using CopperEngine.Utility;
 using Raylib_cs;
-
 using rlCamera = Raylib_cs.Camera3D;
 
 namespace CopperEngine.Data;
 
-public class Camera
+public sealed class Camera
 {
     internal rlCamera Camera3D = new(Vector3.Zero, Vector3.One, Vector3.UnitY, 45, CameraProjection.CAMERA_PERSPECTIVE);
 
@@ -42,7 +41,7 @@ public class Camera
     public Vector2 ClippingPlane = new(0.1f, 100f);
 
     public static implicit operator rlCamera(Camera camera) => camera.Camera3D;
-    
+
     public Matrix4x4 ViewMatrix
     {
         get => Matrix4x4.CreateLookAt(Position, Camera3D.Target, Up);
@@ -57,7 +56,7 @@ public class Camera
 
 
     public Matrix4x4 ProjectionMatrix => Matrix4x4.CreatePerspectiveFieldOfView(
-        MathUtil.DegreesToRadians(Zoom), 
-        (float)Raylib.GetScreenWidth() / (float)Raylib.GetScreenHeight(), 
+        MathUtil.DegreesToRadians(Zoom),
+        (float)Raylib.GetScreenWidth() / (float)Raylib.GetScreenHeight(),
         ClippingPlane.X, ClippingPlane.Y);
 }

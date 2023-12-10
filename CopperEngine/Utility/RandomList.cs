@@ -11,7 +11,7 @@ public class RandomList<T> : IEnumerable<T>
     {
         this.list = list.ToList();
     }
-    
+
     public RandomList(params T[] list)
     {
         this.list = list.ToList();
@@ -24,7 +24,7 @@ public class RandomList<T> : IEnumerable<T>
 
     public T GetRandomValue()
     {
-        return list[listRandom.Next(list.Count-1)];
+        return list[listRandom.Next(list.Count - 1)];
     }
 
     public static implicit operator T(RandomList<T> value)

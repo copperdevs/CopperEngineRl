@@ -3,7 +3,7 @@ using ImGuizmoNET;
 
 namespace CopperEngine.Editor.DearImGui;
 
-public static class Guizmo
+internal static class Guizmo
 {
     public static unsafe void DrawGrid(
         ref Matrix4x4 view,

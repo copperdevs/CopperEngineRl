@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using Raylib_cs;
-
 using rlMouseButton = Raylib_cs.MouseButton;
 using rlGamepadButton = Raylib_cs.GamepadButton;
 
@@ -31,13 +30,25 @@ public static partial class Input
     public static void SetMouseScale(float scaleX, float scaleY) => Raylib.SetMouseScale(scaleX, scaleY);
     public static bool IsGamepadAvailable(int gamepad) => Raylib.IsGamepadAvailable(gamepad);
     public static string GetGamepadName(int gamepad) => Raylib.GetGamepadName_(gamepad);
-    public static bool IsGamepadButtonPressed(int gamepad, GamepadButton button) => Raylib.IsGamepadButtonPressed(gamepad, (rlGamepadButton)button);
-    public static bool IsGamepadButtonDown(int gamepad, GamepadButton button) => Raylib.IsGamepadButtonDown(gamepad, (rlGamepadButton)button);
-    public static bool IsGamepadButtonReleased(int gamepad, GamepadButton button) => Raylib.IsGamepadButtonReleased(gamepad, (rlGamepadButton)button);
-    public static bool IsGamepadButtonUp(int gamepad, GamepadButton button) => Raylib.IsGamepadButtonUp(gamepad, (rlGamepadButton)button);
+
+    public static bool IsGamepadButtonPressed(int gamepad, GamepadButton button) =>
+        Raylib.IsGamepadButtonPressed(gamepad, (rlGamepadButton)button);
+
+    public static bool IsGamepadButtonDown(int gamepad, GamepadButton button) =>
+        Raylib.IsGamepadButtonDown(gamepad, (rlGamepadButton)button);
+
+    public static bool IsGamepadButtonReleased(int gamepad, GamepadButton button) =>
+        Raylib.IsGamepadButtonReleased(gamepad, (rlGamepadButton)button);
+
+    public static bool IsGamepadButtonUp(int gamepad, GamepadButton button) =>
+        Raylib.IsGamepadButtonUp(gamepad, (rlGamepadButton)button);
+
     public static int GetGamepadButtonPressed() => Raylib.GetGamepadButtonPressed();
     public static int GetGamepadAxisCount(int gamepad) => Raylib.GetGamepadAxisCount(gamepad);
-    public static float GetGamepadAxisMovement(int gamepad, GamepadAxis axis) => Raylib.GetGamepadAxisMovement(gamepad, axis);
+
+    public static float GetGamepadAxisMovement(int gamepad, GamepadAxis axis) =>
+        Raylib.GetGamepadAxisMovement(gamepad, axis);
+
     public static void SetGamepadMappings(string mappings) => Raylib.SetGamepadMappings(mappings);
     public static int GetTouchX() => Raylib.GetTouchX();
     public static int GetTouchY() => Raylib.GetTouchY();

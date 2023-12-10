@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Numerics;
 
-namespace CopperEngine.Utils;
+namespace CopperEngine.Utility;
 
 public static class MathUtil
 {
@@ -55,13 +55,13 @@ public static class MathUtil
 
         return quaternion;
     }
-    
+
     [Pure]
     public static float Clamp(float value, float min, float max)
     {
         return value < min ? min : value > max ? max : value;
     }
-    
+
     public static Vector3 Clamp(Vector3 value, Vector3 min, Vector3 max)
     {
         value.X = Clamp(value.X, min.X, max.X);
@@ -89,8 +89,8 @@ public static class MathUtil
     {
         t = Clamp(t, 0, 1);
 
-        var distance = new Vector3(b.X - a.X, b.Y - a.Y,  b.Z - a.Z);
-        
+        var distance = new Vector3(b.X - a.X, b.Y - a.Y, b.Z - a.Z);
+
         var x = a.X + distance.X * t;
         var y = a.Y + distance.Y * t;
         var z = a.Z + distance.Z * t;
@@ -106,7 +106,7 @@ public static class MathUtil
             Remap(iMin.Y, iMax.Y, oMin.Y, oMax.Y, value.Y)
         );
     }
-    
+
     public static Vector3 Scale(Vector3 vector, float scale)
     {
         return Scale(vector, new Vector3(scale));

@@ -3,7 +3,7 @@ using rlColor = Raylib_cs.Color;
 
 namespace CopperEngine.Data;
 
-public struct Color
+public sealed class Color
 {
     public float R;
     public float G;
@@ -36,18 +36,15 @@ public struct Color
 
     public Color() : this(255)
     {
-        
     }
 
     public Color(Vector4 vector) : this(vector.X, vector.Y, vector.Z, vector.W)
-    
+
     {
-        
     }
 
     public Color(Vector3 vector) : this(vector.X, vector.Y, vector.Z)
     {
-        
     }
 
     public static implicit operator Vector3(Color color)
@@ -79,8 +76,8 @@ public struct Color
     {
         return new Color(color.R, color.G, color.B, color.A);
     }
-    
-    
+
+
     public static Color LightGray => new(200, 200, 200, 255);
     public static Color Gray => new(130, 130, 130, 255);
     public static Color DarkGray => new(80, 80, 80, 255);

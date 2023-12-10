@@ -2,7 +2,7 @@
 using System.Text;
 using Raylib_cs;
 
-namespace CopperEngine.Logs;
+namespace CopperEngine.Info;
 
 public static class Log
 {
@@ -19,25 +19,34 @@ public static unsafe partial class CopperLogger
 
     [DllImport("msvcrt.dll", CallingConvention = CallingConvention.Cdecl)]
     private static extern int _vscprintf(string format, IntPtr ptr);
-    
+
     [UnmanagedCallersOnly(CallConvs = new[] { typeof(System.Runtime.CompilerServices.CallConvCdecl) })]
     private static void RayLibLog(int msgType, sbyte* text, sbyte* args)
     {
-        var textStr = Marshal.PtrToStringUTF8((IntPtr)text)??"";
+        var textStr = Marshal.PtrToStringUTF8((IntPtr)text) ?? "";
 
         var sb = new StringBuilder(_vscprintf(textStr, (IntPtr)args) + 1);
         vsprintf(sb, textStr, (IntPtr)args);
 
         var messageLog = sb.ToString();
-        
+
         switch ((TraceLogLevel)msgType)
         {
-            case TraceLogLevel.LOG_INFO: WriteBaseLog("INFO", messageLog, ConsoleColor.DarkGray); break;
-            case TraceLogLevel.LOG_ERROR: WriteBaseLog("ERROR", messageLog, ConsoleColor.DarkRed); break;
-            case TraceLogLevel.LOG_WARNING: WriteBaseLog("WARN", messageLog, ConsoleColor.DarkYellow); break;
-            case TraceLogLevel.LOG_DEBUG: WriteBaseLog("DEBUG", messageLog, ConsoleColor.DarkGreen); break;
+            case TraceLogLevel.LOG_INFO:
+                WriteBaseLog("INFO", messageLog, ConsoleColor.DarkGray);
+                break;
+            case TraceLogLevel.LOG_ERROR:
+                WriteBaseLog("ERROR", messageLog, ConsoleColor.DarkRed);
+                break;
+            case TraceLogLevel.LOG_WARNING:
+                WriteBaseLog("WARN", messageLog, ConsoleColor.DarkYellow);
+                break;
+            case TraceLogLevel.LOG_DEBUG:
+                WriteBaseLog("DEBUG", messageLog, ConsoleColor.DarkGreen);
+                break;
             default:
-                WriteBaseLog("???", messageLog, ConsoleColor.DarkGray); break;
+                WriteBaseLog("???", messageLog, ConsoleColor.DarkGray);
+                break;
         }
     }
 
@@ -56,30 +65,30 @@ public static partial class CopperLogger
     public static BaseLog? Warning;
     public static BaseLog? Error;
 
-    private static bool Initialized = false;
+    private static bool initialized = false;
 
-    private static bool IncludeTimestamps = false;
+    private static bool includeTimestamps = false;
 
     internal static List<string> LogLines = new();
     private static readonly string LogsPath = $"Logs/{Engine.StartTime.ToShortDateString().Replace("/", "-")}/";
     private static readonly string LogsName = $"{Engine.StartTime.ToLongTimeString().Replace(":", "-")}.txt";
 
-    public static void Initialize(bool includeTimestamps = true)
+    public static void Initialize(bool timestamps = true)
     {
-        Initialize(LogInfo, LogWarning, LogError, includeTimestamps);
+        Initialize(LogInfo, LogWarning, LogError, timestamps);
     }
-    
-    public static void Initialize(BaseLog infoLog, BaseLog warningLog, BaseLog errorLog, bool includeTimestamps = true)
+
+    public static void Initialize(BaseLog infoLog, BaseLog warningLog, BaseLog errorLog, bool timestamps = true)
     {
-        if (Initialized)
+        if (initialized)
             return;
-        Initialized = true;
-        
+        initialized = true;
+
         Info = infoLog;
         Warning = warningLog;
         Error = errorLog;
 
-        IncludeTimestamps = includeTimestamps;
+        includeTimestamps = timestamps;
         RayLibInitialize();
     }
 
@@ -107,23 +116,23 @@ public static partial class CopperLogger
         Initialize(LogInfo, LogWarning, LogError);
         LogError(message);
     }
-    
+
     public static void LogInfo(object message) => WriteBaseLog("INFO", message, ConsoleColor.DarkGray);
     public static void LogWarning(object message) => WriteBaseLog("WARN", message, ConsoleColor.DarkYellow);
     public static void LogError(object message) => WriteBaseLog("ERROR", message, ConsoleColor.DarkRed);
-    
+
     internal static void WriteBaseLog(string prefix, object message, ConsoleColor color)
     {
         Console.ForegroundColor = color;
 
         var logString = "";
-        
-        if(IncludeTimestamps)
+
+        if (includeTimestamps)
             logString += $"[{DateTime.Now.ToShortTimeString()}] ";
         logString += $"[{prefix}] {message}";
-        
+
         LogLines.Add(logString);
-        
+
         Console.WriteLine(logString);
         Console.ResetColor();
     }

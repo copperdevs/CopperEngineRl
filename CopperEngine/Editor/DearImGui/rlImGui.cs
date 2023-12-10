@@ -19,12 +19,15 @@ using Raylib_cs;
 
 namespace CopperEngine.Editor.DearImGui;
 
-public static class rlImGui
+internal static class rlImGui
 {
     internal static IntPtr ImGuiContext = IntPtr.Zero;
 
     private static ImGuiMouseCursor CurrentMouseCursor = ImGuiMouseCursor.COUNT;
-    private static Dictionary<ImGuiMouseCursor, MouseCursor> MouseCursorMap = new Dictionary<ImGuiMouseCursor, MouseCursor>();
+
+    private static Dictionary<ImGuiMouseCursor, MouseCursor> MouseCursorMap =
+        new Dictionary<ImGuiMouseCursor, MouseCursor>();
+
     private static Texture2D FontTexture;
 
     static Dictionary<KeyboardKey, ImGuiKey> RaylibKeyMap = new Dictionary<KeyboardKey, ImGuiKey>();
@@ -36,10 +39,25 @@ public static class rlImGui
     internal static bool LastAltPressed = false;
     internal static bool LastSuperPressed = false;
 
-    internal static bool rlImGuiIsControlDown() { return Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_CONTROL) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_CONTROL); }
-    internal static bool rlImGuiIsShiftDown() { return Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_SHIFT) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_SHIFT); }
-    internal static bool rlImGuiIsAltDown() { return Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_ALT) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_ALT); }
-    internal static bool rlImGuiIsSuperDown() { return Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_SUPER) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_SUPER); }
+    internal static bool rlImGuiIsControlDown()
+    {
+        return Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_CONTROL) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_CONTROL);
+    }
+
+    internal static bool rlImGuiIsShiftDown()
+    {
+        return Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_SHIFT) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_SHIFT);
+    }
+
+    internal static bool rlImGuiIsAltDown()
+    {
+        return Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_ALT) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_ALT);
+    }
+
+    internal static bool rlImGuiIsSuperDown()
+    {
+        return Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_SUPER) || Raylib.IsKeyDown(KeyboardKey.KEY_LEFT_SUPER);
+    }
 
     public delegate void SetupUserFontsCallback(ImGuiIOPtr imGuiIo);
 
@@ -257,6 +275,7 @@ public static class rlImGui
     }
 
     private unsafe delegate sbyte* GetClipTextCallback(IntPtr userData);
+
     private unsafe delegate void SetClipTextCallback(IntPtr userData, sbyte* text);
 
     /// <summary>
@@ -277,9 +296,9 @@ public static class rlImGui
         unsafe
         {
             ImFontConfig icons_config = new ImFontConfig();
-            icons_config.MergeMode = 1;                      // merge the glyph ranges into the default font
-            icons_config.PixelSnapH = 1;                     // don't try to render on partial pixels
-            icons_config.FontDataOwnedByAtlas = 0;           // the font atlas does not own this font data
+            icons_config.MergeMode = 1; // merge the glyph ranges into the default font
+            icons_config.PixelSnapH = 1; // don't try to render on partial pixels
+            icons_config.FontDataOwnedByAtlas = 0; // the font atlas does not own this font data
 
             icons_config.GlyphMaxAdvanceX = float.MaxValue;
             icons_config.RasterizerMultiply = 1.0f;
@@ -302,7 +321,8 @@ public static class rlImGui
 
                 fixed (byte* buffer = fontDataBuffer)
                 {
-                    ImGui.GetIO().Fonts.AddFontFromMemoryTTF(new IntPtr(buffer), fontDataBuffer.Length, 11, &icons_config);
+                    ImGui.GetIO().Fonts
+                        .AddFontFromMemoryTTF(new IntPtr(buffer), fontDataBuffer.Length, 11, &icons_config);
                 }
             }
         }
@@ -390,7 +410,6 @@ public static class rlImGui
 
                     if ((io.ConfigFlags & ImGuiConfigFlags.NoMouseCursorChange) == 0)
                     {
-
                         if (!MouseCursorMap.ContainsKey(imgui_cursor))
                             Raylib.SetMouseCursor(MouseCursor.MOUSE_CURSOR_DEFAULT);
                         else
@@ -460,6 +479,7 @@ public static class rlImGui
             pressed = Raylib.GetCharPressed();
         }
     }
+
     /// <summary>
     /// Starts a new ImGui Frame
     /// </summary>
@@ -490,7 +510,8 @@ public static class rlImGui
         Rlgl.Vertex2f(idx_vert.pos.X, idx_vert.pos.Y);
     }
 
-    private static void RenderTriangles(uint count, uint indexStart, ImVector<ushort> indexBuffer, ImPtrVector<ImDrawVertPtr> vertBuffer, IntPtr texturePtr)
+    private static void RenderTriangles(uint count, uint indexStart, ImVector<ushort> indexBuffer,
+        ImPtrVector<ImDrawVertPtr> vertBuffer, IntPtr texturePtr)
     {
         if (count < 3)
             return;
@@ -522,6 +543,7 @@ public static class rlImGui
             TriangleVert(vertexB);
             TriangleVert(vertexC);
         }
+
         Rlgl.End();
     }
 
@@ -542,7 +564,9 @@ public static class rlImGui
             {
                 var cmd = commandList.CmdBuffer[cmdIndex];
 
-                EnableScissor(cmd.ClipRect.X - data.DisplayPos.X, cmd.ClipRect.Y - data.DisplayPos.Y, cmd.ClipRect.Z - (cmd.ClipRect.X - data.DisplayPos.X), cmd.ClipRect.W - (cmd.ClipRect.Y - data.DisplayPos.Y));
+                EnableScissor(cmd.ClipRect.X - data.DisplayPos.X, cmd.ClipRect.Y - data.DisplayPos.Y,
+                    cmd.ClipRect.Z - (cmd.ClipRect.X - data.DisplayPos.X),
+                    cmd.ClipRect.W - (cmd.ClipRect.Y - data.DisplayPos.Y));
                 if (cmd.UserCallback != IntPtr.Zero)
                 {
                     Callback cb = Marshal.GetDelegateForFunctionPointer<Callback>(cmd.UserCallback);
@@ -550,11 +574,13 @@ public static class rlImGui
                     continue;
                 }
 
-                RenderTriangles(cmd.ElemCount, cmd.IdxOffset, commandList.IdxBuffer, commandList.VtxBuffer, cmd.TextureId);
+                RenderTriangles(cmd.ElemCount, cmd.IdxOffset, commandList.IdxBuffer, commandList.VtxBuffer,
+                    cmd.TextureId);
 
                 Rlgl.DrawRenderBatchActive();
             }
         }
+
         Rlgl.SetTexture(0);
         Rlgl.DisableScissorTest();
         Rlgl.EnableBackfaceCulling();
@@ -587,6 +613,8 @@ public static class rlImGui
             FontAwesome6.IconFontRanges = IntPtr.Zero;
         }
     }
+
+    // TODO: Move all below methods to a common EditorGui class
 
     /// <summary>
     /// Draw a texture as an image in an ImGui Context
@@ -668,7 +696,8 @@ public static class rlImGui
     /// <param name="image">The render texture to draw</param>
     public static void ImageRenderTexture(RenderTexture2D image)
     {
-        ImageRect(image.Texture, image.Texture.Width, image.Texture.Height, new Rectangle(0, 0, image.Texture.Width, -image.Texture.Height));
+        ImageRect(image.Texture, image.Texture.Width, image.Texture.Height,
+            new Rectangle(0, 0, image.Texture.Width, -image.Texture.Height));
     }
 
     /// <summary>
@@ -699,7 +728,7 @@ public static class rlImGui
             ImGui.SetCursorPosY(ImGui.GetCursorPosY() + (area.Y / 2 - sizeY / 2));
         }
 
-        ImageRect(image.Texture, sizeX, sizeY, new Rectangle(0,0, (image.Texture.Width), -(image.Texture.Height) ));
+        ImageRect(image.Texture, sizeX, sizeY, new Rectangle(0, 0, (image.Texture.Width), -(image.Texture.Height)));
     }
 
     /// <summary>
@@ -724,5 +753,4 @@ public static class rlImGui
     {
         return ImGui.ImageButton(name, new IntPtr(image.Id), size);
     }
-
 }

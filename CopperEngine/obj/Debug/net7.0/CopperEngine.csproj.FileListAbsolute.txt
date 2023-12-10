@@ -22,6 +22,3 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngi
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\bin\Debug\net7.0\Resources\Fonts\Inter\static\Inter-Bold.ttf
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\bin\Debug\net7.0\Resources\Fonts\Inter\OFL.txt
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\bin\Debug\net7.0\Resources\Fonts\Inter\README.txt
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\bin\Debug\net7.0\CopperMath.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\bin\Debug\net7.0\CopperMath.pdb
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine\obj\Debug\net7.0\CopperEngine.csproj.CopyComplete

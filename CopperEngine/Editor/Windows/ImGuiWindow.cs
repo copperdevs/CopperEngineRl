@@ -3,14 +3,14 @@
 namespace CopperEngine.Editor.Windows;
 
 [EditorWindow("Style", StartingState = false)]
-public class ImGuiWindow : BaseEditorWindow
+internal sealed class ImGuiWindow : BaseEditorWindow
 {
     private static bool showAboutWindow;
     private static bool showDemoWindow;
     private static bool showMetricWindow;
     private static bool showDebugLogWindow;
     private static bool showStackToolWindow;
-    
+
     private static bool fontSelectorTabOpen;
     private static bool styleSelectorTabOpen;
     private static bool styleEditorTabOpen;
@@ -59,25 +59,25 @@ public class ImGuiWindow : BaseEditorWindow
                 ImGui.ShowFontSelector("Font Selector");
                 ImGui.EndTabItem();
             }
-        
+
             if (ImGui.BeginTabItem("Style Selector", ref styleSelectorTabOpen))
             {
                 ImGui.ShowStyleSelector("Style Selector");
                 ImGui.EndTabItem();
             }
-        
+
             if (ImGui.BeginTabItem("Style Editor", ref styleEditorTabOpen))
             {
                 ImGui.ShowStyleEditor();
                 ImGui.EndTabItem();
             }
-        
+
             if (ImGui.BeginTabItem("User Guide", ref userGuideTabOpen))
             {
                 ImGui.ShowUserGuide();
                 ImGui.EndTabItem();
             }
-        
+
             ImGui.EndTabBar();
         }
     }

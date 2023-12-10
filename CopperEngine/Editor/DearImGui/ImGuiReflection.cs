@@ -4,13 +4,12 @@ using CopperEngine.Data;
 using CopperEngine.Editor.Attributes;
 using CopperEngine.Scenes;
 using CopperEngine.Utility;
-using CopperEngine.Utils;
 using ImGuiNET;
 using Jitter2.Dynamics;
 
 namespace CopperEngine.Editor.DearImGui;
 
-public static class ImGuiReflection
+internal static class ImGuiReflection
 {
     private static RangeAttribute? currentRangeAttribute;
     private static ReadOnlyAttribute? currentReadOnlyAttribute;
@@ -18,21 +17,23 @@ public static class ImGuiReflection
     private static HideInInspectorAttribute? currentHideInInspectorAttribute;
     private static SpaceAttribute? currentSpaceAttribute;
     private static SeperatorAttribute? currentSeperatorAttribute;
-    
-    public static void RenderValues(object component)
+
+    internal static void RenderValues(object component)
     {
         var fields = component.GetType().GetFields(BindingFlags.Instance | BindingFlags.Public).ToList();
         foreach (var info in fields)
         {
             SpaceAttributeRenderer(info);
             SeperatorAttributeRenderer(info);
-            
-            currentHideInInspectorAttribute = (HideInInspectorAttribute?)Attribute.GetCustomAttribute(info, typeof(HideInInspectorAttribute))!;
-            
-            if(currentHideInInspectorAttribute is not null)
+
+            currentHideInInspectorAttribute =
+                (HideInInspectorAttribute?)Attribute.GetCustomAttribute(info, typeof(HideInInspectorAttribute))!;
+
+            if (currentHideInInspectorAttribute is not null)
                 continue;
-            
-            currentReadOnlyAttribute = (ReadOnlyAttribute?)Attribute.GetCustomAttribute(info, typeof(ReadOnlyAttribute))!;
+
+            currentReadOnlyAttribute =
+                (ReadOnlyAttribute?)Attribute.GetCustomAttribute(info, typeof(ReadOnlyAttribute))!;
 
             if (currentReadOnlyAttribute is not null)
             {
@@ -63,22 +64,22 @@ public static class ImGuiReflection
                     ImGui.EndTooltip();
                 }
             }
-
         }
     }
 
     private static void SpaceAttributeRenderer(FieldInfo info)
     {
         currentSpaceAttribute = (SpaceAttribute?)Attribute.GetCustomAttribute(info, typeof(SpaceAttribute))!;
-        if(currentSpaceAttribute is not null) currentSpaceAttribute.Render();
+        if (currentSpaceAttribute is not null) currentSpaceAttribute.Render();
     }
 
     private static void SeperatorAttributeRenderer(FieldInfo info)
     {
-        currentSeperatorAttribute = (SeperatorAttribute?)Attribute.GetCustomAttribute(info, typeof(SeperatorAttribute))!;
-        if(currentSeperatorAttribute is not null) currentSeperatorAttribute.Render();
+        currentSeperatorAttribute =
+            (SeperatorAttribute?)Attribute.GetCustomAttribute(info, typeof(SeperatorAttribute))!;
+        if (currentSeperatorAttribute is not null) currentSeperatorAttribute.Render();
     }
-    
+
     private static readonly Dictionary<Type, Action<FieldInfo, object>> ImGuiRenderers = new()
     {
         { typeof(float), FloatFieldRenderer },
@@ -94,7 +95,7 @@ public static class ImGuiReflection
         { typeof(Color), ColorFieldRenderer },
         { typeof(Jitter2.Dynamics.RigidBody), JitterRigidbodyRenderer },
     };
-    
+
     private static void FloatFieldRenderer(FieldInfo fieldInfo, object component)
     {
         currentRangeAttribute = (RangeAttribute?)Attribute.GetCustomAttribute(fieldInfo, typeof(RangeAttribute))!;
@@ -102,17 +103,18 @@ public static class ImGuiReflection
         if (currentRangeAttribute is not null)
         {
             var value = (float)(fieldInfo.GetValue(component) ?? 0);
-            if(ImGui.SliderFloat($"{fieldInfo.Name}##{fieldInfo.Name}", ref value, currentRangeAttribute.Min, currentRangeAttribute.Max))
-                fieldInfo.SetValue(component, value); 
+            if (ImGui.SliderFloat($"{fieldInfo.Name}##{fieldInfo.Name}", ref value, currentRangeAttribute.Min,
+                    currentRangeAttribute.Max))
+                fieldInfo.SetValue(component, value);
         }
         else
         {
             var value = (float)(fieldInfo.GetValue(component) ?? 0);
-            if(ImGui.DragFloat($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
-                fieldInfo.SetValue(component, value);   
+            if (ImGui.DragFloat($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
+                fieldInfo.SetValue(component, value);
         }
     }
-    
+
     private static void IntFieldRenderer(FieldInfo fieldInfo, object component)
     {
         currentRangeAttribute = (RangeAttribute?)Attribute.GetCustomAttribute(fieldInfo, typeof(RangeAttribute))!;
@@ -120,61 +122,62 @@ public static class ImGuiReflection
         if (currentRangeAttribute is not null)
         {
             var value = (int)(fieldInfo.GetValue(component) ?? 0);
-            if(ImGui.SliderInt($"{fieldInfo.Name}##{fieldInfo.Name}", ref value, (int)currentRangeAttribute.Min, (int)currentRangeAttribute.Max))
-                fieldInfo.SetValue(component, value); 
+            if (ImGui.SliderInt($"{fieldInfo.Name}##{fieldInfo.Name}", ref value, (int)currentRangeAttribute.Min,
+                    (int)currentRangeAttribute.Max))
+                fieldInfo.SetValue(component, value);
         }
         else
         {
             var value = (int)(fieldInfo.GetValue(component) ?? 0);
-            if(ImGui.DragInt($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
+            if (ImGui.DragInt($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
                 fieldInfo.SetValue(component, value);
         }
     }
-    
+
     private static void BoolFieldRenderer(FieldInfo fieldInfo, object component)
     {
         var value = (bool)(fieldInfo.GetValue(component) ?? false);
-        if(ImGui.Checkbox($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
+        if (ImGui.Checkbox($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
             fieldInfo.SetValue(component, value);
     }
-    
+
     private static void Vector2FieldRenderer(FieldInfo fieldInfo, object component)
     {
         var value = (Vector2)(fieldInfo.GetValue(component) ?? Vector2.Zero);
-        if(ImGui.DragFloat2($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
+        if (ImGui.DragFloat2($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
             fieldInfo.SetValue(component, value);
     }
-    
+
     private static void Vector3FieldRenderer(FieldInfo fieldInfo, object component)
     {
         var value = (Vector3)(fieldInfo.GetValue(component) ?? Vector3.Zero);
-        if(ImGui.DragFloat3($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
+        if (ImGui.DragFloat3($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
             fieldInfo.SetValue(component, value);
     }
-    
+
     private static void Vector4FieldRenderer(FieldInfo fieldInfo, object component)
     {
         var value = (Vector4)(fieldInfo.GetValue(component) ?? Vector4.Zero);
-        if(ImGui.DragFloat4($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
+        if (ImGui.DragFloat4($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
             fieldInfo.SetValue(component, value);
     }
-    
+
     private static void QuaternionFieldRenderer(FieldInfo fieldInfo, object component)
     {
         var value = ((Quaternion)(fieldInfo.GetValue(component) ?? Quaternion.Identity)).ToVector();
-        if(ImGui.DragFloat4($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
+        if (ImGui.DragFloat4($"{fieldInfo.Name}##{fieldInfo.Name}", ref value))
         {
             var result = value.ToQuaternion();
             fieldInfo.SetValue(component, result);
         }
     }
-    
+
     private static void GuidFieldRenderer(FieldInfo fieldInfo, object component)
     {
         var value = (Guid)(fieldInfo.GetValue(component) ?? new Guid());
         ImGui.LabelText($"{fieldInfo.Name}##{fieldInfo.Name}", value.ToString());
     }
-    
+
     private static void SceneFieldRenderer(FieldInfo fieldInfo, object component)
     {
         var value = (Scene)(fieldInfo.GetValue(component) ?? null)!;
@@ -185,31 +188,31 @@ public static class ImGuiReflection
             ImGui.LabelText("Scene Id", value.SceneId.ToString());
         }
     }
-    
+
     private static void TransformFieldRenderer(FieldInfo fieldInfo, object component)
     {
         var value = (Transform)(fieldInfo.GetValue(component) ?? 0);
-        
+
         if (ImGui.CollapsingHeader($"{fieldInfo.Name}##{fieldInfo.Name}"))
         {
             ImGui.Indent();
 
             var position = value.Position;
-            if(ImGui.DragFloat3("Position", ref position, 0.1f))
+            if (ImGui.DragFloat3("Position", ref position, 0.1f))
             {
                 value.Position = position;
                 fieldInfo.SetValue(component, value);
             }
 
             var scale = value.Scale;
-            if(ImGui.DragFloat3("Scale", ref scale, 0.1f))
+            if (ImGui.DragFloat3("Scale", ref scale, 0.1f))
             {
                 value.Scale = scale;
                 fieldInfo.SetValue(component, value);
             }
 
             var rotation = value.Rotation.ToEulerAngles();
-            if(ImGui.DragFloat3("Rotation", ref rotation, 0.1f))
+            if (ImGui.DragFloat3("Rotation", ref rotation, 0.1f))
             {
                 value.Rotation = rotation.FromEulerAngles();
                 fieldInfo.SetValue(component, value);
@@ -236,37 +239,37 @@ public static class ImGuiReflection
 
         var index = value._index;
         ImGui.DragInt("Index", ref index);
-        
+
         var lockFlag = value._lockFlag;
         ImGui.DragInt("Lock Flag", ref lockFlag);
-        
+
         var position = value.Position.ToVector3();
         ImGui.DragFloat3("Position", ref position);
-        
+
         var velocity = value.Velocity.ToVector3();
         ImGui.DragFloat3("Velocity", ref velocity);
-        
+
         var angularVelocity = value.AngularVelocity.ToVector3();
         ImGui.DragFloat3("Angular Velocity", ref angularVelocity);
-        
+
         var deltaVelocity = value.DeltaVelocity.ToVector3();
         ImGui.DragFloat3("Delta Velocity", ref deltaVelocity);
-        
+
         var deltaAngularVelocity = value.DeltaAngularVelocity.ToVector3();
         ImGui.DragFloat3("Delta Angular Velocity", ref deltaAngularVelocity);
-        
+
         var orientation = value.Orientation.ToMatrix4X4();
         EditorUtil.DragMatrix4X4("Orientation", ref orientation);
-        
+
         var inverseInertiaWorld = value.InverseInertiaWorld.ToMatrix4X4();
         EditorUtil.DragMatrix4X4("Inverse Inertia World", ref inverseInertiaWorld);
-        
+
         var inverseMass = value.InverseMass;
         ImGui.DragFloat("Inverse Mass", ref inverseMass);
-        
+
         var isActive = value.IsActive;
         ImGui.Checkbox("Is Active", ref isActive);
-        
+
         var isStatic = value.IsStatic;
         ImGui.Checkbox("Is Static", ref isStatic);
     }

@@ -7,7 +7,7 @@ using System;
 
 namespace CopperEngine.Editor.DearImGui;
 
-public partial class FontAwesome6
+internal partial class FontAwesome6
 {
     internal static IntPtr IconFontRanges = IntPtr.Zero;
 

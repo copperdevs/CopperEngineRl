@@ -34,7 +34,7 @@ public class ImGuiTesting
         gameTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
         editorTexture = Raylib.LoadRenderTexture(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
 
-        rlImGui.Setup();
+        // rlImGui.Setup();
 
         while (!Raylib.WindowShouldClose())
         {
@@ -67,7 +67,7 @@ public class ImGuiTesting
             // ui
             Raylib.ClearBackground(Color.DARKGRAY);
             
-            rlImGui.Begin();
+            // rlImGui.Begin();
             ImGui.ShowDemoWindow();
             
             
@@ -75,7 +75,7 @@ public class ImGuiTesting
 
             if (ImGui.Begin("Game"))
             {
-                rlImGui.ImageRenderTextureFit(gameTexture);
+                // rlImGui.ImageRenderTextureFit(gameTexture);
                 ImGui.End();
             }
             
@@ -85,18 +85,18 @@ public class ImGuiTesting
 
             if (ImGui.Begin("Editor"))
             {
-                rlImGui.ImageRenderTextureFit(editorTexture);
+                // rlImGui.ImageRenderTextureFit(editorTexture);
                 ImGui.End();
             }
             
             ImGui.PopStyleVar();
             
-            rlImGui.End();
+            // rlImGui.End();
 
             Raylib.EndDrawing();
         }
 
-        rlImGui.Shutdown();
+        // rlImGui.Shutdown();
         Raylib.CloseWindow();
     }
 

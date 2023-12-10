@@ -6,7 +6,7 @@ using System;
 
 namespace CopperEngine.Editor.DearImGui;
 
-public partial class FontAwesome6
+internal partial class FontAwesome6
 {
     public const string FontIconFileNameFAR = "fa-regular-400.ttf";
     public const string FontIconFileNameFAS = "fa-solid-900.ttf";

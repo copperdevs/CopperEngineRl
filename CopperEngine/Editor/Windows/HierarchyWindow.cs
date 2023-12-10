@@ -5,7 +5,7 @@ using ImGuiNET;
 namespace CopperEngine.Editor.Windows;
 
 [EditorWindow("Hierarchy", StartingState = true)]
-public class HierarchyWindow : BaseEditorWindow
+internal sealed class HierarchyWindow : BaseEditorWindow
 {
     internal static GameObject? CurrentTarget;
 

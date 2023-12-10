@@ -1,5 +1,4 @@
 ﻿using CopperEngine.Info;
-using CopperEngine.Logs;
 
 namespace CopperEngine.Examples;
 

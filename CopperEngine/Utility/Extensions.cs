@@ -1,9 +1,7 @@
 ﻿using System.Numerics;
-using CopperEngine.Utils;
 using Jitter2.Dynamics;
 using Jitter2.LinearMath;
 using Raylib_cs;
-using static Raylib_cs.Raylib;
 
 namespace CopperEngine.Utility;
 
@@ -87,7 +85,6 @@ public static class Extensions
             1 => char.ToUpper(message[0]).ToString(),
             _ => char.ToUpper(message[0]) + message[1..]
         };
-        ;
     }
 
     public static Vector2 Remap(this Vector2 value, Vector2 iMin, Vector2 iMax, Vector2 oMin, Vector2 oMax) =>

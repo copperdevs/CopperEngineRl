@@ -1,9 +1,9 @@
-﻿
+﻿using CopperEngine.Data;
 using Raylib_cs;
 
 namespace CopperEngine.Components;
 
-public class AudioPlayer : Component
+public sealed class AudioPlayer : Component
 {
     public void PlaySound(Audio audio)
     {

@@ -1,4 +1,4 @@
-﻿using CopperEngine.Logs;
+﻿using CopperEngine.Info;
 using Raylib_cs;
 
 namespace CopperEngine.Labs;

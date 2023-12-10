@@ -3,7 +3,7 @@
 namespace CopperEngine.Editor.Windows;
 
 [EditorWindow("Physics Info", StartingState = false)]
-public class PhysicsInfo : BaseEditorWindow
+internal sealed class PhysicsInfo : BaseEditorWindow
 {
     internal override void Render()
     {

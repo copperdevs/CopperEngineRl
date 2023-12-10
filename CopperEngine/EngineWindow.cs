@@ -15,8 +15,9 @@ public static class EngineWindow
         if (initialized)
             return;
         initialized = true;
-        
-        Raylib.SetConfigFlags(ConfigFlags.FLAG_MSAA_4X_HINT | ConfigFlags.FLAG_VSYNC_HINT | ConfigFlags.FLAG_WINDOW_RESIZABLE);
+
+        Raylib.SetConfigFlags(ConfigFlags.FLAG_MSAA_4X_HINT | ConfigFlags.FLAG_VSYNC_HINT |
+                              ConfigFlags.FLAG_WINDOW_RESIZABLE);
         Raylib.InitWindow(650, 400, "CopperEngineRl");
         Raylib.SetTargetFPS(144);
         Raylib.InitAudioDevice();
@@ -25,10 +26,10 @@ public static class EngineWindow
     internal static void Update()
     {
         var currentSize = new Vector2(Raylib.GetScreenWidth(), Raylib.GetScreenHeight());
-        
-        if (WindowSize == currentSize) 
+
+        if (WindowSize == currentSize)
             return;
-        
+
         WindowSize = currentSize;
         WindowResized?.Invoke(WindowSize);
     }
@@ -36,6 +37,6 @@ public static class EngineWindow
     internal static void Stop()
     {
         Raylib.CloseAudioDevice();
-        Raylib.CloseWindow();   
+        Raylib.CloseWindow();
     }
 }

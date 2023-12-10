@@ -3,7 +3,7 @@
 namespace CopperEngine.Editor.Attributes;
 
 [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
-public class SeperatorAttribute : Attribute
+public sealed class SeperatorAttribute : Attribute
 {
     private string? seperatorText;
 

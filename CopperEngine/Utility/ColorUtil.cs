@@ -33,59 +33,62 @@ public static class ColorUtil
     public static Color Blank => new(0, 0, 0, 0);
     public static Color Magenta => new(255, 0, 255, 255);
     public static Color RayWhite => new(245, 245, 245, 255);
-    
+
     public static Vector4 ToImGuiColor(this Color color)
     {
-        return color/255;
+        return color / 255;
     }
-    
+
     public static Vector4 FromImGuiColor(this Color color)
     {
-        return color*255;
+        return color * 255;
     }
-    
-     /// <inheritdoc cref="Raylib_cs.Raylib.Fade"/>
+
+    /// <inheritdoc cref="Raylib_cs.Raylib.Fade"/>
     public static rlColor Fade(rlColor color, float alpha) => Raylib.Fade(color, alpha);
-    
+
     /// <inheritdoc cref="Raylib.ColorToInt"/>
     public static int ToInt(rlColor color) => Raylib.ColorToInt(color);
-    
+
     /// <inheritdoc cref="Raylib.ColorNormalize"/>
     public static Vector4 Normalize(rlColor color) => Raylib.ColorNormalize(color);
-    
+
     /// <inheritdoc cref="Raylib.ColorFromNormalized"/>
     public static rlColor FromNormalized(Vector4 normalized) => Raylib.ColorFromNormalized(normalized);
-    
+
     /// <inheritdoc cref="Raylib.ColorToHSV"/>
-    public static Vector3 ToHSV(rlColor color) => Raylib.ColorToHSV(color);
-    
+    public static Vector3 ToHsv(rlColor color) => Raylib.ColorToHSV(color);
+
     /// <inheritdoc cref="Raylib.ColorFromHSV"/>
-    public static rlColor FromHSV(float hue, float saturation, float value) => Raylib.ColorFromHSV(hue, saturation, value);
-    
+    public static rlColor FromHsv(float hue, float saturation, float value) =>
+        Raylib.ColorFromHSV(hue, saturation, value);
+
     /// <inheritdoc cref="Raylib.ColorTint"/>
     public static rlColor Tint(rlColor color, rlColor tint) => Raylib.ColorTint(color, tint);
-    
+
     /// <inheritdoc cref="Raylib.ColorBrightness"/>
     public static rlColor Brightness(rlColor color, float factor) => Raylib.ColorBrightness(color, factor);
-    
+
     /// <inheritdoc cref="Raylib.ColorContrast"/>
     public static rlColor Contrast(rlColor color, float contrast) => Raylib.ColorContrast(color, contrast);
-    
+
     /// <inheritdoc cref="Raylib.ColorAlpha"/>
     public static rlColor Alpha(rlColor color, float alpha) => Raylib.ColorAlpha(color, alpha);
-    
+
     /// <inheritdoc cref="Raylib.ColorAlphaBlend"/>
     public static rlColor AlphaBlend(rlColor dst, rlColor src, rlColor tint) => Raylib.ColorAlphaBlend(dst, src, tint);
-    
+
     /// <inheritdoc cref="Raylib.GetColor"/>
     public static rlColor Get(uint hexValue) => Raylib.GetColor(hexValue);
-        
+
     /// <inheritdoc cref="Raylib.GetPixelDataSize"/>
-    public static int GetPixelDataSize(int width, int height, PixelFormat format) => Raylib.GetPixelDataSize(width, height, format);
-    
+    public static int GetPixelDataSize(int width, int height, PixelFormat format) =>
+        Raylib.GetPixelDataSize(width, height, format);
+
     /// <inheritdoc cref="Raylib.GetPixelColor"/>
-    public static unsafe rlColor GetPixel(void *srcPtr, PixelFormat format) => Raylib.GetPixelColor(srcPtr, format);
-    
+    public static unsafe rlColor GetPixel(void* srcPtr, PixelFormat format) => Raylib.GetPixelColor(srcPtr, format);
+
     /// <inheritdoc cref="Raylib.SetPixelColor"/>
-    public static unsafe void SetPixel(void *dstPtr, rlColor color, PixelFormat format) => Raylib.SetPixelColor(dstPtr, color, format);
+    public static unsafe void SetPixel(void* dstPtr, rlColor color, PixelFormat format) =>
+        Raylib.SetPixelColor(dstPtr, color, format);
 }

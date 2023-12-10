@@ -88,5 +88,3 @@ C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngi
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Raylib-cs.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\runtimes\win-x86\native\raylib.dll
 C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\Jitter2.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\CopperMath.dll
-C:\Users\715263\Desktop\School-Work\Dev\Projects\Rider\CopperEngineRl\CopperEngine.Testing\bin\Debug\net7.0\CopperMath.pdb

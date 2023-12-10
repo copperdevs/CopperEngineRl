@@ -4,7 +4,7 @@ using ImGuiNET;
 namespace CopperEngine.Editor.Attributes;
 
 [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
-public class SpaceAttribute : Attribute
+public sealed class SpaceAttribute : Attribute
 {
     private Vector2 spacing;
 

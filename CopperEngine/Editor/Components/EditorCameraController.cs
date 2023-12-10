@@ -1,16 +1,13 @@
 ﻿using System.Numerics;
-using CopperEngine.Data;
 using CopperEngine.Info;
-using CopperEngine.Logs;
 using CopperEngine.Utility;
-using CopperEngine.Utils;
 using Raylib_cs;
 using MouseButton = CopperEngine.Info.MouseButton;
 using rlMouseButton = Raylib_cs.MouseButton;
 
 namespace CopperEngine.Editor.Components;
 
-internal static class EditorCameraController 
+internal static class EditorCameraController
 {
     private static Camera3D Camera
     {
@@ -49,21 +46,21 @@ internal static class EditorCameraController
 
         camera.Target = Vector3.Add(camera.Position, CameraFront);
         camera.Position = new Vector3(10, 10, 10);
-        
+
         Camera = camera;
     }
-    
+
     internal static void Update()
     {
         var camera = Camera;
         // Raylib.UpdateCamera(ref camera, CameraMode.CAMERA_CUSTOM);
-        
+
         SpeedControls();
 
-        MoveInput(ref camera); 
+        MoveInput(ref camera);
         IsLooking = LookInput();
         UpdateValues(ref camera);
-        
+
         Camera = camera;
     }
 
@@ -79,7 +76,7 @@ internal static class EditorCameraController
 
         CurrentMoveSpeed = targetMoveSpeed;
     }
-    
+
     private static void MoveInput(ref Camera3D camera)
     {
         if (Input.IsKeyDown(KeyboardButton.W))
@@ -112,16 +109,17 @@ internal static class EditorCameraController
             camera.Position += -CameraUp * CurrentMoveSpeed;
         }
     }
+
     private static bool LookInput()
     {
         var isLooking = Input.IsMouseButtonDown(MouseButton.Right);
 
-        if (!isLooking) 
+        if (!isLooking)
             return false;
-        
+
         var deltaTime = Time.DeltaTime;
         var mouseDelta = Input.GetMouseDelta();
-        
+
         Yaw += (mouseDelta.X * 0.75f) * deltaTime;
         Pitch += -(mouseDelta.Y * 0.75f) * deltaTime;
 
@@ -132,7 +130,6 @@ internal static class EditorCameraController
 
     private static void UpdateValues(ref Camera3D camera)
     {
-        
         Direction.X = MathF.Cos(Yaw) * MathF.Cos(Pitch);
         Direction.Y = MathF.Sin(Pitch);
         Direction.Z = MathF.Sin(Yaw) * MathF.Cos(Pitch);

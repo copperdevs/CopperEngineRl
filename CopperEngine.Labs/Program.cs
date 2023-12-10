@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 using System.Text.Json;
-using CopperEngine.Logs;
+using CopperEngine.Info;
 using ImGuiNET;
 using Transform = CopperEngine.Data.Transform;
 

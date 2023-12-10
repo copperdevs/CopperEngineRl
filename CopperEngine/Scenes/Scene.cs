@@ -9,31 +9,33 @@ public class Scene
     public readonly string DisplayName;
     public readonly Guid SceneId;
 
-    internal List<GameObject> GameObjects = new();
+    internal readonly List<GameObject> GameObjects = new();
 
-    internal World PhysicsWorld = new();
-    
-    public Scene(string displayName) : this (displayName, Guid.NewGuid()) {}
-    
+    internal readonly World PhysicsWorld = new();
+
+    public Scene(string displayName) : this(displayName, Guid.NewGuid())
+    {
+    }
+
     internal Scene(string displayName, Guid sceneId, bool register)
     {
         DisplayName = displayName;
         SceneId = sceneId;
-        
-        if(register)
+
+        if (register)
             SceneManager.RegisterScene(this);
     }
 
-    internal Scene(string displayName, Guid sceneId)
+    public Scene(string displayName, Guid sceneId)
     {
         DisplayName = displayName;
         SceneId = sceneId;
-        
+
         SceneManager.RegisterScene(this);
     }
 
-    public GameObject CreateGameObject() => CreateGameObject(Vector3.Zero);    
-    
+    public GameObject CreateGameObject() => CreateGameObject(Vector3.Zero);
+
     public GameObject CreateGameObject(Vector3 startPosition)
     {
         var gameObject = new GameObject();
@@ -41,7 +43,7 @@ public class Scene
 
         gameObject.ParentScene = this;
         gameObject.Transform.Position = startPosition;
-        
+
         return gameObject;
     }
 

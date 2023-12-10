@@ -9,10 +9,8 @@ public static class EnginePhysics
 {
     private static bool initialized;
 
-
     public static float FixedTimeStep = 0.02f;
     internal static float FixedTimer;
-
 
     internal static void Initialize()
     {
@@ -24,7 +22,7 @@ public static class EnginePhysics
     internal static void Update()
     {
         FixedTimer += Time.DeltaTime;
-        while (FixedTimer >= FixedTimeStep) 
+        while (FixedTimer >= FixedTimeStep)
         {
             FixedUpdate();
             FixedTimer -= FixedTimeStep;
@@ -45,13 +43,14 @@ public static class EnginePhysics
             foreach (var component in gm.GameComponents)
             {
                 Rlgl.PushMatrix();
-            
+
                 Rlgl.Translatef(gm.Transform.Position.X, gm.Transform.Position.Y, gm.Transform.Position.Z);
                 Rlgl.Scalef(gm.Transform.Scale.X, gm.Transform.Scale.Y, gm.Transform.Scale.Z);
-                Rlgl.Rotatef(gm.Transform.Rotation.W, gm.Transform.Rotation.X, gm.Transform.Rotation.Y, gm.Transform.Rotation.Z);
-            
+                Rlgl.Rotatef(gm.Transform.Rotation.W, gm.Transform.Rotation.X, gm.Transform.Rotation.Y,
+                    gm.Transform.Rotation.Z);
+
                 component.FixedUpdate();
-            
+
                 Rlgl.PopMatrix();
             }
         }

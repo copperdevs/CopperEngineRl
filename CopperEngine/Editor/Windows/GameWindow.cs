@@ -5,7 +5,7 @@ using ImGuiNET;
 namespace CopperEngine.Editor.Windows;
 
 [EditorWindow("Game", StartingState = true)]
-public class GameWindow : BaseEditorWindow
+internal sealed class GameWindow : BaseEditorWindow
 {
     internal static Vector2 WindowSize;
     internal static Vector2 WindowPosition;

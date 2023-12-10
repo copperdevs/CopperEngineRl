@@ -1,21 +1,20 @@
 ﻿using System.Numerics;
 using CopperEngine.Utility;
-using CopperEngine.Utils;
 using ImGuiNET;
 using Color = CopperEngine.Data.Color;
 using rlModel = Raylib_cs.Model;
 
 namespace CopperEngine.Components;
 
-public class Model : Component, IDisposable
+public sealed class Model : Component, IDisposable
 {
     private rlModel model;
     private bool modelLoaded;
-    
+
     private readonly string modelPath;
 
     public Color ModelTint = Color.White;
-    
+
     public Model(string path)
     {
         modelPath = path;
@@ -26,7 +25,7 @@ public class Model : Component, IDisposable
     {
         if (modelLoaded)
             return;
-        
+
         model = ModelUtil.Load(modelPath);
         modelLoaded = true;
 
@@ -38,7 +37,7 @@ public class Model : Component, IDisposable
 
     protected internal override void Update()
     {
-        if(modelLoaded)
+        if (modelLoaded)
             ModelUtil.DrawModel(model, Vector3.Zero, 1, ModelTint);
     }
 
@@ -62,14 +61,14 @@ public class Model : Component, IDisposable
     {
         if (!modelLoaded)
             return;
-        
+
         ModelUtil.Unload(model);
         modelLoaded = false;
     }
 
     public void Dispose()
     {
-        if(modelLoaded)
+        if (modelLoaded)
             ModelUtil.Unload(model);
     }
 }

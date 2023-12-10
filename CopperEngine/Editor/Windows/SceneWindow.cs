@@ -7,14 +7,14 @@ using Raylib_cs;
 namespace CopperEngine.Editor.Windows;
 
 [EditorWindow("Scene", StartingState = true)]
-public class SceneWindow : BaseEditorWindow
+internal sealed class SceneWindow : BaseEditorWindow
 {
     internal static Vector2 WindowSize;
     internal static Vector2 WindowPosition;
 
     internal override void Start()
     {
-        EditorCameraController.Start(); 
+        EditorCameraController.Start();
     }
 
     internal override void PreRender()
@@ -25,20 +25,20 @@ public class SceneWindow : BaseEditorWindow
     internal override void Render()
     {
         EngineEditor.EditorWindowFocused = ImGui.IsWindowFocused();
-        
-        
+
+
         rlImGui.ImageRenderTextureFit(EngineRenderer.EditorTexture);
-        
+
         WindowSize = ImGui.GetWindowSize();
         WindowPosition = ImGui.GetWindowPos();
-        
-        if(InspectorWindow.transformOpen && HierarchyWindow.CurrentTarget is not null)
+
+        if (InspectorWindow.TransformOpen && HierarchyWindow.CurrentTarget is not null)
             Gizmo.Manipulate(ref HierarchyWindow.CurrentTarget.Transform);
-        
+
         // Gizmo.ViewManipulate();
-        
-        if((ImGui.IsWindowFocused() && ImGui.IsWindowHovered()) || EditorCameraController.IsLooking)
-        // if(ImGui.IsWindowFocused())
+
+        if ((ImGui.IsWindowFocused() && ImGui.IsWindowHovered()) || EditorCameraController.IsLooking)
+            // if(ImGui.IsWindowFocused())
             EditorCameraController.Update();
     }
 
@@ -46,4 +46,4 @@ public class SceneWindow : BaseEditorWindow
     {
         ImGui.PopStyleVar();
     }
-}   
+}
