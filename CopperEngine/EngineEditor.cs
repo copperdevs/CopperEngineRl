@@ -53,6 +53,12 @@ internal static class EngineEditor
 
         if (ImGui.BeginMainMenuBar())
         {
+            if (ImGui.BeginMenu("File"))
+            {
+                ImGui.MenuItem("New Project", null, ref EngineProjectManager.CreateProjectPopupOpen);
+                ImGui.EndMenu();
+            }
+
             if (ImGui.BeginMenu("Windows"))
             {
                 EditorWindows.ForEach(window => { ImGui.MenuItem(window.WindowName, null, ref window.IsOpen); });
@@ -63,6 +69,8 @@ internal static class EngineEditor
         }
 
         EditorWindows.ForEach(window => window.RenderWindow());
+        
+        EngineProjectManager.CreateProjectPopup();
 
         rlImGui.End();
     }
@@ -183,6 +191,11 @@ internal static class EngineEditor
             if (!IsOpen)
                 return;
 
+
+            ImGui.PushStyleVar(ImGuiStyleVar.WindowPadding, new Vector2(0, 0));
+            ImGui.SetNextWindowSizeConstraints(new Vector2(128, 128),
+                new Vector2(Raylib.GetScreenWidth(), Raylib.GetScreenHeight()));
+
             Window.PreRender();
             if (ImGui.Begin(WindowName, ref IsOpen, WindowFlags))
             {
@@ -191,6 +204,8 @@ internal static class EngineEditor
             }
 
             Window.PostRender();
+
+            ImGui.PopStyleVar();
         }
 
         public void StopWindow()

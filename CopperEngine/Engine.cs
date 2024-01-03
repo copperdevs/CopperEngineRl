@@ -10,36 +10,13 @@ public static class Engine
 
     internal static EngineState State = EngineState.Editor;
 
-    internal static EngineApplication? EngineApplication;
-
     internal enum EngineState
     {
         Game,
         Editor
     }
 
-    public static void Initialize<T>() where T : EngineApplication, new()
-    {
-        Initialize(new T());
-    }
-
-    public static void Initialize(EngineApplication application)
-    {
-        Initialize(() =>
-        {
-            EngineApplication = application;
-
-            EngineApplication.Load();
-            EngineWindow.WindowResized += EngineApplication.WindowResize;
-        });
-    }
-
     public static void Initialize()
-    {
-        Initialize(() => { });
-    }
-
-    public static void Initialize(Action loadAction)
     {
         if (initialized)
             return;
@@ -51,8 +28,6 @@ public static class Engine
         InitializeElement(EngineRenderer.Initialize, "Engine Renderer");
         InitializeElement(EngineEditor.Initialize, "Engine Editor");
         InitializeElement(EnginePhysics.Initialize, "Engine Physics");
-
-        InitializeElement(loadAction, "Engine Load Action");
 
         return;
 
@@ -78,10 +53,6 @@ public static class Engine
             EngineRenderer.Render();
             EngineEditor.Render();
 
-            EngineApplication?.PreUpdate();
-            EngineApplication?.Update();
-            EngineApplication?.PostUpdate();
-
             Raylib.EndDrawing();
         }
 
@@ -90,7 +61,6 @@ public static class Engine
 
     private static void Stop()
     {
-        EngineApplication?.Stop();
         EngineEditor.Stop();
         EngineRenderer.Stop();
         EngineWindow.Stop();

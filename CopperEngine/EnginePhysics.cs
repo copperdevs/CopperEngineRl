@@ -32,7 +32,6 @@ public static class EnginePhysics
     private static void FixedUpdate()
     {
         SceneManager.ActiveScene.PhysicsWorld.Step(1.0f / FixedTimeStep);
-        Engine.EngineApplication?.FixedUpdate();
         UpdateGameComponents();
     }
 

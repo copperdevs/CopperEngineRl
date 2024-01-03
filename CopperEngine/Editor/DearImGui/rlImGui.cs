@@ -17,6 +17,9 @@ using ImGuiNET;
 using ImGuizmoNET;
 using Raylib_cs;
 
+// TODO : fix pasting
+// TODO : update to newer rlimgui verson
+
 namespace CopperEngine.Editor.DearImGui;
 
 internal static class rlImGui
