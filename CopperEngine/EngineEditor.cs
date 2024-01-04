@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using CopperEngine.Editor;
 using CopperEngine.Editor.DearImGui;
+using CopperEngine.Project;
 using ImGuiNET;
 using Raylib_cs;
 
@@ -55,7 +56,8 @@ internal static class EngineEditor
         {
             if (ImGui.BeginMenu("File"))
             {
-                ImGui.MenuItem("New Project", null, ref EngineProjectManager.CreateProjectPopupOpen);
+                ImGui.MenuItem("New Project", null, ref ProjectManager.CreateProjectPopupOpen);
+                ImGui.MenuItem("Open Project", null, ref ProjectManager.LoadProjectPopupOpen);
                 ImGui.EndMenu();
             }
 
@@ -70,7 +72,8 @@ internal static class EngineEditor
 
         EditorWindows.ForEach(window => window.RenderWindow());
         
-        EngineProjectManager.CreateProjectPopup();
+        ProjectManager.LoadProjectPopup();
+        ProjectManager.CreateProjectPopup();
 
         rlImGui.End();
     }
