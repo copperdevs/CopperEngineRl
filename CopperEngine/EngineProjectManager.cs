@@ -5,28 +5,32 @@ namespace CopperEngine;
 
 public static class EngineProjectManager
 {
+    internal static string CurrentProjectPath = null!;
     internal static bool CreateProjectPopupOpen = false;
-    internal static string CreateProjectPopupInputPath = "";
     internal static string CreateProjectPopupInputName = "New Project";
 
     public static void SaveCurrentProject()
     {
+        
     }
 
     public static void LoadProject(string path)
     {
+        CurrentProjectPath = path;
     }
 
-    public static void CreateProject(string path, string name)
+    public static void CreateProject(string name)
     {
-        if (Directory.Exists($"{path}/{name}"))
+        if (Directory.Exists($"{Directory.GetCurrentDirectory()}/Projects/{name}"))
             return;
         
-        Directory.CreateDirectory($"{path}/{name}");
-        Directory.CreateDirectory($"{path}/{name}/Assets");
-        Directory.CreateDirectory($"{path}/{name}/ProjectSettings");
+        Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/Projects/{name}");
+        Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/Projects/{name}/Assets");
+        Directory.CreateDirectory($"{Directory.GetCurrentDirectory()}/Projects/{name}/ProjectSettings");
         
-        File.WriteAllText($"{path}/{name}/name.txt", name);
+        File.WriteAllText($"{Directory.GetCurrentDirectory()}/Projects/{name}/name.txt", name);
+        
+         CurrentProjectPath = $"{Directory.GetCurrentDirectory()}/Projects/{name}";
     }
 
     public static void CreateProjectPopup()
@@ -36,15 +40,13 @@ public static class EngineProjectManager
             ImGui.OpenPopup($"EngineProjectManager_NewProjectPopup");
             if (ImGui.BeginPopupModal("EngineProjectManager_NewProjectPopup"))
             {
-                ImGui.Text($"Project Location");
-                ImGui.InputText($"Project Location", ref CreateProjectPopupInputPath, uint.MaxValue-1);
-                ImGui.InputText($"Project Name", ref CreateProjectPopupInputName, uint.MaxValue-1);
+                ImGui.Text($"Project Location");;
+                ImGui.InputText($"Project Name", ref CreateProjectPopupInputName, 128);
 
                 if (ImGui.Button("Create Project"))
                 {
-                    CreateProject(CreateProjectPopupInputPath, CreateProjectPopupInputName);
+                    CreateProject(CreateProjectPopupInputName);
 
-                    CreateProjectPopupInputPath = "";
                     CreateProjectPopupInputName = "New Project";
 
                     CreateProjectPopupOpen = false;
